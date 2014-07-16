@@ -1,0 +1,124 @@
+% Default namespace
+\ns <http://www.example.com/ontology1#>
+
+\begin{ontology}[<http://www.example.com/ontology1>]
+	%\import <http://www.example.com/ontology2>
+	\a{rdfs:label, "An example"}
+	
+	% These are comments and they will be skipped
+	% during parsing
+	% insert axioms below
+	Child \cisa owl:Thing
+	Male \cisa (\cnot Female)
+	(\cnot (\cnot Mother)) \cisa (Parent \cand Male)
+	PersonWithChild \cisa \oexists{hasChild}{(Boy \cor Girl)}
+	\oexists{hasChild}{Child} \cisa Parent
+	Person \cisa \oforall{hasChilds}{((Person \cor Human) \cand Child)}
+	FathersOfStewie \cisa \ohasvalue{fatherOf}{Stewie}
+	Narcissist \cisa (\ohasself loves)
+	HappyFathers \cisa \o[>=2]{hasChilds}{Child}
+	SadFathers \cisa \o[<=1]{hasChilds}{Child}
+	FathersWithOneChild \cisa \o[=1]{hasChilds}{Child}
+	BornPeople \cisa \dforall{hasAge}{xsd:integer}
+	SeventeenYear \cisa \dhasvalue{hasAge}{"17"[xsd:integer]}
+	PeopleWithSecondName \cisa \d[=2]{hasName}
+	Person \cisa (\d[>=1]{hasName} \cand \d[=1]{hasSurname})
+	TalkingDog \cisa \candof{Dog, CanTalk}
+	Person \cisa \corof{Man, Woman}
+	GriffinFamilyMember \ceq \ooneof{Peter, Lois,  Stewie, Meg, Chris, Brian}
+	Boy \ceq (Child \cand Man)
+	Boy \cdisjoint Girl
+	Child \cdisjunion{Boy, Girl}
+	\calleq{Boy, (Child \cand Man), Ragazzo}
+	\calldisjoint{Boy, Girl}
+	hasDog \oisa hasPet
+	(\oinvof DogOf) \oisa hasPet
+	hasDog \oisa (\oinvof petOf)
+	\ochain{hasMother, hasSister} \oisa hasAunt
+	\ochain{hasMother, hasSister} \oisa (\oinvof auntOf)
+	hasBrother \oeq hasMaleSibling
+	hasBrother \oeq (\oinvof brotherOf)
+	(\oinvof brotherOf) \oeq hasBrother
+	hasFather \odisjoint hasMother
+	fatherOf \odisjoint (\oinvof hasMother)
+	(\oinvof hasFather) \odisjoint motherOf	
+	hasDog \orange Dog
+	(\oinvof dogOf) \orange Dog
+	hasDog \odomain Person
+	(\oinvof dogOf) \odomain Person
+	(\oinvof (\oinvof hasDog)) \odomain Person
+	(\oinvof (\oinvof (\oinvof dogOf))) \odomain Person
+	hasFather \ofunc
+	(\oinvof fatherOf) \ofunc
+	(\oinvof (\oinvof hasFather)) \ofunc
+	(\oinvof (\oinvof (\oinvof fatherOf))) \ofunc
+	fatherOf \oinvfunc
+	(\oinvof (\oinvof fatherOf)) \oinvfunc
+	(\oinvof hasFather) \oinvfunc
+	(\oinvof (\oinvof (\oinvof hasFather))) \oinvfunc
+	(\oinvof (\oinvof friend)) \osym
+	parentOf \oasym
+	(\oinvof hasParent) \oasym
+	(\oinvof (\oinvof parentOf)) \oasym
+	(\oinvof (\oinvof (\oinvof hasParent))) \oasym
+	knows \oreflex
+	(\oinvof (\oinvof knows)) \oreflex
+	marriedTo \oirreflex
+	(\oinvof (\oinvof marriedTo)) \oirreflex
+	ancestorOf \otrans
+	(\oinvof (\oinvof ancestorOf)) \otrans
+	hasFather \oinv fatherOf
+	hasFather \oinv (\oinvof hasFather)
+	(\oinvof fatherOf) \oinv fatherOf
+	\oalleq{hasBrother, hasMaleSibling, haFratello}
+	\oalldisjoint{hasFather, hasMother, hasIDontKnow}
+	hasLastName \disa hasName
+	hasName \deq seLlama
+	hasName \ddisjoint hasAddress [\a{rdfs:comment, "Comment"}, \a{rdfs:label, "Label"}]
+	hasName \drange xsd:string
+	hasName \ddomain Person
+	hasAge \dfunc
+	\dalleq{hasName, seLlama, siChiama}
+	\dalldisjoint{hasName, hasAddress, hasSomthingIDontKnow}
+	Meg \ieq Megan
+	Meg \idiff Brian
+	Dog(Brian)
+	(Dog \cand Talk)(Brian)
+	((Dog \cand Talk) \cor (\cnot Something))(Brian)
+	\ohasvalue{hasDog}{Brian}(Peter)
+	hasDog(Peter, Brian)
+	(\oinvof dogOf)(Peter, Brian)
+	(\oinvof (\oinvof hasDog))(Peter, Brian)
+	(\oinvof (\oinvof (\oinvof dogOf)))(Peter, Brian)
+	hasAge(Meg, "17"[xsd:integer])
+	!hasSon(Peter, Meg)
+	!(\oinvof sonfOf)(Peter, Meg)
+	!(\oinvof (\oinvof hasSon))(Peter, Meg)
+	!(\oinvof (\oinvof (\oinvof sonfOf)))(Peter, Meg)
+	!hasAge(Meg, "5"[xsd:integer])
+	\ialleq{Meg, Megan, Meggy}
+	\ialldiff{Peter, Meg, Chris, Stewie}	
+	Person \c
+	SSN \dt
+	SSN \dtdef (xsd:string \drres{xsd:pattern "[0-9]{3}-[0 -9]{2}-[0-9]{4}"}) [\a{rdfs:label, "SSN definition axiom"}, \a{rdfs:comment, "Made by me"}]
+	SSN \a{rdfs:label, "Social Security number"}
+	hasSSN \drange SSN
+	hasPet \o
+	hasAge \d
+	Author \a
+	Peter \i
+	owl:Thing \key{}{hasSSN}
+	livesAt(Peter, _:a1)
+	city(_:a1, Quahog)
+	state(_:a1, RI)
+	etichetta \aisa rdfs:label
+	etichetta \adomain Dog
+	etichetta \arange rdf:PlainLiteral
+	stringANDinteger \dtdef (xsd:string \drand xsd:integer)
+	stringORinteger \dtdef (xsd:string \dror xsd:integer)
+	stringANDintegerPrime \dtdef \drandof{xsd:string, xsd:integer}
+	stringORintegerPrime \dtdef \drorof{xsd:string, xsd:integer} 
+	peterone \dtdef \droneof{"Peter", "1"[xsd:integer]}
+	notstringANDinteger \dtdef (\drnot (xsd:string \drand xsd:integer))
+	botype \dtdef (xsd:integer \drres{xsd:minInclusive "5"[xsd:integer], xsd:maxExclusive "10"[xsd:integer]})
+\end{ontology}

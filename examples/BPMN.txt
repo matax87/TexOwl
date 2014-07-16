@@ -1,0 +1,3100 @@
+\ns <http://dkm.fbk.eu/index.php/BPMN_Ontology#>
+
+% Based on BPMN Specs 1.1 - See figure B.1 p240
+% Revision 24.09.2010
+
+% -----------------------------------------------------------------------------
+% Business Process Diagram - pag241 and Figure B.1 and Table B.1
+% -----------------------------------------------------------------------------
+
+\begin{ontology}[<http://dkm.fbk.eu/index.php/BPMN_Ontology>]
+business_process_diagram \a{rdfs:label, "Business Process Diagram"}
+business_process_diagram \a{rdfs:comment, "Gather the set of attributes of a 
+	Business Process Diagram"}
+
+business_process_diagram \cisa \o[=1]{has_business_process_diagram_id}
+has_business_process_diagram_id \a{rdfs:label, "Id"}
+has_business_process_diagram_name \a{rdfs:comment, "Name is an attribute that is
+	 text description of the Diagram."} 
+has_business_process_diagram_id \orange object
+has_business_process_diagram_id \odomain business_process_diagram
+
+business_process_diagram \cisa \d[=1]{has_business_process_diagram_name}
+has_business_process_diagram_name \a{rdfs:label, "Name"}
+has_business_process_diagram_name \a{rdfs:comment, "Name is an attribute that is
+	 text description of the Diagram."} 
+has_business_process_diagram_name \drange xsd:string
+has_business_process_diagram_name \ddomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_version}
+has_business_process_diagram_version \a{rdfs:label, "Version"} 
+has_business_process_diagram_version \a{rdfs:comment, "This defines the Version 
+	number of the Diagram."}
+has_business_process_diagram_version \drange xsd:string
+has_business_process_diagram_version \ddomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_author}
+has_business_process_diagram_author \a{rdfs:label, "Author"} 
+has_business_process_diagram_author \a{rdfs:comment, "This holds the name of the
+	author of the Diagram."} 
+has_business_process_diagram_author \drange xsd:string
+has_business_process_diagram_author \ddomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_language}
+has_business_process_diagram_language \a{rdfs:label, "Language"} 
+has_business_process_diagram_language \a{rdfs:comment, "This holds the name of
+	the language in which text is written. The default is English."} 
+has_business_process_diagram_language \drange xsd:string
+has_business_process_diagram_language \ddomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_query_language}
+has_business_process_diagram_query_language \a{rdfs:label, "Query Language"} 
+has_business_process_diagram_query_language \a{rdfs:comment, "A Language MAY be
+	provided so that the syntax of queries used in the Diagram can
+	be understood."} 
+has_business_process_diagram_query_language \drange xsd:string
+has_business_process_diagram_query_language \ddomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_creation_date}
+has_business_process_diagram_creation_date \a{rdfs:label, "Creation Date"} 
+has_business_process_diagram_creation_date \a{rdfs:comment, "This defines the
+	date on which the Diagram was create (for this Version)."} 
+has_business_process_diagram_creation_date \drange xsd:date
+has_business_process_diagram_creation_date \ddomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_modification_date}
+has_business_process_diagram_modification_date \a{rdfs:label, "Modification Date"} 
+has_business_process_diagram_modification_date \a{rdfs:comment, "This defines
+	the date on which the Diagram was last modified (for this Version)."} 
+has_business_process_diagram_modification_date \drange xsd:date
+has_business_process_diagram_modification_date \ddomain business_process_diagram
+
+business_process_diagram \cisa \o[>=1]{has_business_process_diagram_pools}
+has_business_process_diagram_pools \a{rdfs:label, "Pools"} 
+has_business_process_diagram_pools \a{rdfs:comment, "A BPD SHALL contain one
+	or more Pools. The boundary of one of the Pools MAY be invisible 
+	(especially if there is only one Pool in the Diagram). Refer to \"Pool\"
+	on page 75 for more information about Pools."} 
+has_business_process_diagram_pools \orange pool
+has_business_process_diagram_pools \odomain business_process_diagram
+
+business_process_diagram \cisa \d[<=1]{has_business_process_diagram_documentation}
+has_business_process_diagram_documentation \a{rdfs:label, "Documentation"} 
+has_business_process_diagram_documentation \a{rdfs:comment, "The modeler MAY 
+	add optional text documentation about the Diagram."} 
+has_business_process_diagram_documentation \drange xsd:string
+has_business_process_diagram_documentation \ddomain business_process_diagram
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% BPMN_element - Table B.2 & Figure B.2 p241
+% -----------------------------------------------------------------------------
+BPMN_element \a{rdfs:label, "BPMN element"}
+BPMN_element \a{rdfs:comment, "Base element"}
+
+BPMN_element \ceq (graphical_element \cor supporting_element)
+
+graphical_element \cisa (\cnot supporting_element)
+
+BPMN_element \cisa \o[=1]{has_BPMN_element_id}
+has_BPMN_element_id \a{rdfs:label, "Id"} 
+has_BPMN_element_id \a{rdfs:comment, "This is a unique Id that identifies the 
+	object from other objects within the Diagram."} 
+has_BPMN_element_id \orange object
+has_BPMN_element_id \odomain BPMN_element
+
+has_BPMN_element_category \a{rdfs:label, "Category"} 
+has_BPMN_element_category \a{rdfs:comment, "The modeler MAY add one or more 
+	defined Categories, which have user-defined semantics, and that can be 
+	used for purposes such as reporting and analysis. The details of 
+	Catogories is defined in Category on page 269."} 
+has_BPMN_element_category \orange category
+has_BPMN_element_category \odomain BPMN_element
+
+BPMN_element \cisa \d[<=1]{has_BPMN_element_documentation}
+has_BPMN_element_documentation \a{rdfs:label, "Documentation"} 
+has_BPMN_element_documentation \a{rdfs:comment, "The modeler MAY add text 
+	documentation about the object."} 
+has_BPMN_element_documentation \drange xsd:string
+has_BPMN_element_documentation \ddomain BPMN_element
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Graphical elements (basic BPD element) - p17, and Section B.2.2
+% -----------------------------------------------------------------------------
+
+graphical_element \a{rdfs:label, "Graphical element"}
+graphical_element \a{rdfs:comment, "These are the elements that define the 
+	basic look-and-feel of BPMN. Most business processes will be modeled 
+	adequately with these elements"}
+
+graphical_element \ceq \corof{flow_object, connecting_object, swimlane, artifact}
+
+flow_object \cisa (\cnot connecting_object)
+flow_object \cisa (\cnot swimlane)
+flow_object \cisa (\cnot artifact)
+connecting_object \cisa (\cnot swimlane)
+connecting_object \cisa (\cnot artifact)
+swimlane \cisa (\cnot artifact)
+
+% -----------------------------------------------------------------------------
+% Flow Object pag243 Table B.4
+% -----------------------------------------------------------------------------
+flow_object \a{rdfs:label, "Flow Object"} 
+flow_object \a{rdfs:comment, "Flow objects are the main graphical elements to 
+	define the behavior of a Business Process. There are three Flow Objects:
+	Events, Activities and Gateways"}
+
+flow_object \ceq \corof{event, activity, gateway}
+event \cisa (\cnot activity)
+event \cisa (\cnot gateway)
+activity \cisa (\cnot gateway)
+
+flow_object \cisa \o[=1]{has_flow_object_name}
+has_flow_object_name \a{rdfs:label, "Name"} 
+has_flow_object_name \a{rdfs:comment, "Name is an attribute that is a text 
+	description of the object."}
+has_flow_object_name \odomain flow_object
+has_flow_object_name \orange xsd:string
+
+has_flow_object_assignment \a{rdfs:label, "Assignment"} 
+has_flow_object_assignment \a{rdfs:comment, "One or more assignment expressions
+	MAY be made for the object. For activities, the Assignment SHALL be 
+	performed as defined by the AssignTime attribute. The Details of the 
+	Assignment is defined in Assignment on page 269."}
+has_flow_object_assignment \odomain flow_object
+has_flow_object_assignment \orange assignment
+
+% -----------------------------------------------------------------------------
+% Event - p245, Table B.5
+% -----------------------------------------------------------------------------
+
+event \a{rdfs:label, "Event"}
+event \a{rdfs:comment, "An event is something that \"happens\" during the course 
+	of a business process. These events affect the flow of the process and 
+	usually have a cause (trigger) or an impact  (result). Events are 
+	circles with open centers to allow internal markers to differentiate 
+	different triggers or results. There are three types of Events, based 
+	on when they affect the flow: Start, Intermediate, and End."}
+
+% Table B.5 p245
+event \cisa \o[=1]{has_event_type}
+has_event_type \a{rdfs:label, "EventType"}
+has_event_type \a{rdfs:comment, "An event is associated with a flow Dimension 
+	(e.g.,Start, Intermediate, End)"}
+has_event_type \odomain event
+has_event_type \orange event_types
+
+event_types \ceq \ooneof{start, intermediate, end}
+
+start \a{rdfs:label, "start"}
+intermediate \a{rdfs:label, "intermediate"}
+end \a{rdfs:label, "end"}
+
+start_event \ceq (event \cand \ohasvalue{has_event_type}{start})
+intermediate_event \ceq (event \cand \ohasvalue{has_event_type}{intermediate})
+end_event \ceq (event \cand \ohasvalue{has_event_type}{end})
+
+start_event \cisa (\cnot intermediate_event)
+start_event \cisa (\cnot end_event)
+intermediate_event \cisa (\cnot end_event)
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% start event - p244 fig b.2 
+% -----------------------------------------------------------------------------
+start_event \a{rdfs:label, "Start"}
+start_event \a{rdfs:comment, "As the name implies, the Start Event
+                      indicates where a particular process will
+                      start."}
+
+has_start_event_trigger \a{rdfs:label, "Trigger"}
+has_start_event_trigger \a{rdfs:comment, "Trigger (EventDetail)) is an attribute
+	that defines the type of trigger expected for a Start Event. Of the set
+	of EventDetailTypes (see Section B.11.7, \"Event Details,\" on page 270),
+	only four (4) can be applied to a Start Event: Message, Timer, 
+	Conditional, and Signal (see Table 9.4). 
+	If there is no EventDetail is defined, then this is considered a None 
+	End Event and the Event will not have an internal marker (see Table 9.4).
+	If there is more than one EventDetail is defined, this is considered a 
+	Multiple End Event and the Event will have the star internal marker 
+	(see Table 9.4)."}
+
+has_start_event_trigger \odomain start_event
+has_start_event_trigger \orange \corof{message_event_detail, timer_event_detail, conditional_event_detail, signal_event_detail}
+
+% -----------------------------------------------------------------------------
+% end event - p244 fig b.2 
+% -----------------------------------------------------------------------------
+end_event \a{rdfs:label, "End"}
+end_event \a{rdfs:comment, "As the name implies, the End Event
+                     indicates where a process will end."}
+
+has_end_event_result \a{rdfs:label, "Result"}
+has_end_event_result \a{rdfs:comment, "Result (EventDetail) is an attribute that
+	defines the type of result expected for an End Event. Of the set of 
+	EventDetailTypes (see Section B.11.7, \"Event Details,\" on page 270), 
+	only six (6) can be applied to an End Event: Message, Error, Cancel, 
+	Compensation, Signal, and Terminate (see Table 9.6).
+	If there is no EventDetail is defined, then this is considered a None 
+	End Event and the Event will not have an internal marker
+	(see Table 9.6).
+	If there is more than one EventDetail is defined, this is considered a 
+	Multiple End Event and the Event will have the star internal marker 
+	(see Table 9.6)."}
+
+has_end_event_result \odomain end_event
+has_end_event_result \orange \corof{message_event_detail, error_event_detail, cancel_event_detail, compensation_event_detail, signal_event_detail, terminate_event_detail}
+
+% -----------------------------------------------------------------------------
+% intermediate event - p244 fig b.2 
+% -----------------------------------------------------------------------------
+intermediate_event \a{rdfs:label, "Intermediate"}
+intermediate_event \a{rdfs:comment, "Intermediate Events occur between a Start
+                    Event and an End Event. It will affect the
+		    flow of the process, but will not start or
+		    (directly) terminate the process."}
+
+intermediate_event  \cisa \o[<=1]{has_intermediate_event_target}
+
+has_intermediate_event_trigger \a{rdfs:label, "Trigger"}
+has_intermediate_event_trigger \a{rdfs:comment, "Trigger (EventDetail) is an 
+	attribute that defines the type of trigger expected for an Intermediate 
+	Event. Of the set of EventDetailTypes (see Section B.11.7, Event 
+	Details, on page 270), only eight (8) can be applied to an Intermediate 
+	Event: Message, Timer, Error, Cancel, Compensation, Conditional, Link, 
+	and Signal (see Table 9.8).
+	If there is no EventDetail is defined, then this is considered a None 
+	Intermediate Event and the Event will not have an internal marker 
+	(see Table 9.8).
+	If there is more than one EventDetail is defined, this is considered a 
+	Multiple Intermediate Event and the Event will have the star internal 
+	marker (see Table 9.8)."}
+
+has_intermediate_event_trigger \odomain intermediate_event
+has_intermediate_event_trigger \orange \corof{message_event_detail, timer_event_detail, error_event_detail, cancel_event_detail, compensation_event_detail, conditional_event_detail, link_event_detail, signal_event_detail}
+
+has_intermediate_event_target \a{rdfs:label, "Target"}
+has_intermediate_event_target \a{rdfs:comment, "A Target MAY be included for the
+	Intermediate Event. The Target MUST be an activity (Sub-Process or 
+	Task). This means that the Intermediate Event is attached to the 
+	boundary of the activity and is used to signify an exception or 
+	compensation for that activity."}
+
+has_intermediate_event_target \odomain intermediate_event
+has_intermediate_event_target \orange activity
+
+% added 27.09.2010
+has_intermediate_event_target_inv \oinv has_intermediate_event_target
+
+% -----------------------------------------------------------------------------
+% Activity - pag246, Figure B.3, Table B.9
+% -----------------------------------------------------------------------------
+activity \a{rdfs:label, "Activity"} 
+activity \a{rdfs:comment, "An activity is a generic term for work that company
+         performs. An activity can be atomic or non-atomic (compound). The types
+	 of activities that are a part of a Process Model are: Process, 
+	 Sub-Process, and Task. Tasks and Sub-Processes are rounded rectangles. 
+	 Processes are either unbounded or a contained within a Pool."}
+
+activity \ceq (sub_process \cor task)
+sub_process \cisa (\cnot task)
+
+% DEFAULT_VALUE: task_activity_type
+activity \cisa \o[=1]{has_activity_activity_type}
+has_activity_activity_type \a{rdfs:label, "ActivityType"} 
+has_activity_activity_type \a{rdfs:comment, "The ActivityType MUST be of type 
+	Task or Sub-Process."}
+has_activity_activity_type \odomain activity
+has_activity_activity_type \orange activity_types
+
+activity_types \a{rdfs:label, "Activity Types"}
+activity_types \ceq \ooneof{task_activity_type, sub_process_activity_type}
+
+task_activity_type \a{rdfs:label, "task"}
+sub_process_activity_type \a{rdfs:label, "sub_process"}
+
+task_activity_type \idiff sub_process_activity_type
+
+task \ceq (activity \cand \ohasvalue{has_activity_activity_type}{task_activity_type})
+sub_process \ceq (activity \cand \ohasvalue{has_activity_activity_type}{sub_process_activity_type})
+
+% DEFAULT_VALUE: None
+activity \cisa \o[=1]{has_activity_status}
+has_activity_status \a{rdfs:label, "Status"} 
+has_activity_status \a{rdfs:comment, "The Status of an activity is determined 
+	when the activity is being executed by a process engine. The Status of 
+	an activity can be used within Assignment Expressions."}
+has_activity_status \odomain activity
+
+% REVISION 24.09.2010 (START)
+% has_activity_status \prange \datatype{string}\values{None,Ready,Active,Cancelled,Aborting,Aborted,Completing,Completed}
+
+activity_status \ceq \ooneof{None_activity_status_type, Ready_activity_status_type, Active_activity_status_type, Cancelled_activity_status_type, Aborting_activity_status_type, Aborted_activity_status_type, Completing_activity_status_type, Completed_activity_status_type}
+has_activity_status \orange activity_status
+
+\ialldiff{None_activity_status_type, Ready_activity_status_type, Active_activity_status_type, Cancelled_activity_status_type, Aborting_activity_status_type, Aborted_activity_status_type, Completing_activity_status_type, Completed_activity_status_type}
+
+% REVISION 24.09.2010 (END)
+
+has_activity_performers \a{rdfs:label, "Performers"}
+has_activity_performers \a{rdfs:comment, "One or more Performers MAY be entered.
+	The Performers attribute defines the resource that will be responsible 
+	for the activity. The Performers entry could be in the form of a 
+	specific individual, a group, an organization role or position, or an
+	organization."}
+has_activity_performers \ddomain activity
+has_activity_performers \drange xsd:string
+
+has_activity_properties \a{rdfs:label, "Properties"}
+has_activity_properties \a{rdfs:comment, "Modeler-defined Properties MAY be 
+	added to a activity. These Properties are \"local\" to the activity. All 
+	Tasks, Sub-activity objects, and Sub-activityes that are embedded SHALL 
+	have access to these Properties. The fully delineated name of these 
+	properties is \"activity name.property name\" (e.g., \"Add 
+	Customer.Customer Name\"). Further details about the definition of a 
+	Property can be found in \"Property on page 276.\""}
+has_activity_properties \odomain activity
+has_activity_properties \orange property
+
+has_activity_input_sets \a{rdfs:label, "Input set"}
+has_activity_input_sets \a{rdfs:comment, "The InputSets attribute defines the 
+	data requirements for input to the activity. Zero or more InputSets MAY
+	be defined. Each Input set is sufficient to allow the activity to be 
+	performed (if it has first been instantiated by the appropriate signal
+	arriving from an incoming Sequence Flow). Further details about the 
+	definition of an Input- Set can be found in Section B.11.10, \"InputSet,\"
+	on page 274."}
+has_activity_input_sets \odomain activity
+has_activity_input_sets \orange input_set
+
+has_activity_output_sets \a{rdfs:label, "Output set"}
+has_activity_output_sets \a{rdfs:comment, "The OutputSets attribute defines the 
+	data requirements for output from the activity. Zero or more OutputSets
+	MAY be defined. At the completion of the activity, only one of the 
+	OutputSets may be produced--It is up to the implementation of the 
+	activity to determine which set will be produced. However, the IORules 
+	attribute MAY indicate a relationship between an OutputSet and an 
+	InputSet that started the activity. Further details about the definition
+	of an OutputSet can be found in Section B.11.13, \"OutputSet,\" on page 
+	275."}
+has_activity_output_sets \odomain activity
+has_activity_output_sets \orange output_set
+
+has_activity_IO_rules \a{rdfs:label, "IO Rules"}
+has_activity_IO_rules \a{rdfs:comment, "The IORules attribute is a collection of
+	expressions, each of which specifies the required relationship between
+	one input and one output. That is, if the activity is instantiated with 
+	a specified input, that activity shall complete with the specified 
+	output."}
+has_activity_IO_rules \odomain activity
+has_activity_IO_rules \orange expression
+
+% DEFAULT_VALUE: 1
+activity \cisa \d[=1]{has_activity_start_quantity}
+has_activity_start_quantity \a{rdfs:label, "StartQuantity"}
+has_activity_start_quantity \a{rdfs:comment, "The default value is 1. The value 
+	MUST NOT be less than 1. This attribute defines the number of Tokens 
+	that must arrive before the activity can begin."}
+has_activity_start_quantity \ddomain activity
+has_activity_start_quantity \drange xsd:positiveInteger
+
+% DEFAULT_VALUE: 1
+activity \cisa \d[=1]{has_activity_completion_quantity}
+has_activity_completion_quantity \a{rdfs:label, "CompletionQuantity"}
+has_activity_completion_quantity \a{rdfs:comment, "The default value is 1. The 
+	value MUST NOT be less than 1. This attribute defines the number of 
+	Tokens that must be generated from the activity. This number of Tokens
+	will be sent done any outgoing Sequence Flow (assuming any Sequence Flow
+	Conditions are satisfied)."}
+has_activity_completion_quantity \ddomain activity
+has_activity_completion_quantity \drange xsd:positiveInteger
+
+activity \cisa \o[<=1]{has_activity_loop_type}
+has_activity_loop_type \a{rdfs:label, "LoopType"} 
+has_activity_loop_type \a{rdfs:comment, "LoopType is an attribute and is by 
+	default None, but MAY be set to Standard or MultiInstance. If so, the 
+	Loop marker SHALL be placed at the bottom center of the activity shape 
+	(see Figure 9.6 and Figure 9.15).
+	A Task of type Receive that has its Instantiate attribute set to True 
+	MUST NOT have a Standard or MultiInstance LoopType."}
+has_activity_loop_type \odomain activity
+has_activity_loop_type \orange loop_types
+
+loop_types \a{rdfs:label, "Loop Types"}
+loop_types \ceq \ooneof{standard, multi_instance}
+
+standard \a{rdfs:label, "standard"}
+multi_instance \a{rdfs:label, "multi_instance"}
+
+standard \idiff multi_instance
+
+standard_loop_activity \ceq (activity \cand \ohasvalue{has_activity_loop_type}{standard})
+multi_instance_loop_activity \ceq (activity \cand \ohasvalue{has_activity_loop_type}{multi_instance})
+
+% -----------------------------------------------------------------------------
+% Standard Loop Activity - pag249, Table B.10
+% loops are not axiomatizable in OWL
+% -----------------------------------------------------------------------------
+standard_loop_activity \a{rdfs:label, "Standard Loop Activity"} 
+standard_loop_activity \a{rdfs:comment, "An activity is a generic term for work 
+	that company performs. An activity can be atomic or non-atomic 
+	(compound). The types of activities that are a part of a Process Model 
+	are: Process, Sub-Process, and Task. Tasks and Sub-Processes are rounded
+	rectangles. Processes are either unbounded or a contained within a 
+	Pool."}
+
+standard_loop_activity \cisa \o[=1]{has_standard_loop_activity_loop_condition}
+has_standard_loop_activity_loop_condition \a{rdfs:label, "Loop Condition"}
+has_standard_loop_activity_loop_condition \a{rdfs:comment, "Standard Loops MUST 
+	have a boolean Expression to be evaluated, plus the timing when the 
+	expression SHALL be evaluated. The attributes of an Expression can be
+	found in \"Expression on page 273.\""}
+has_standard_loop_activity_loop_condition \odomain standard_loop_activity
+has_standard_loop_activity_loop_condition \orange expression	 
+	 
+standard_loop_activity \cisa \d[=1]{has_standard_loop_activity_loop_counter}
+has_standard_loop_activity_loop_counter \a{rdfs:label, "Loop Counter"}
+has_standard_loop_activity_loop_counter \a{rdfs:comment, "The LoopCounter 
+	attribute is used at runtime to count the number of loops and is
+	automatically updated by the process engine. The LoopCounter attribute 
+	MUST be incremented at the start of a loop. The modeler may use the
+	attribute in the LoopCondition Expression."}
+has_standard_loop_activity_loop_counter \ddomain standard_loop_activity
+has_standard_loop_activity_loop_counter \drange xsd:int
+
+standard_loop_activity \cisa \d[<=1]{has_standard_loop_activity_loop_maximum}
+has_standard_loop_activity_loop_maximum \a{rdfs:label, "Loop Maximum"}
+has_standard_loop_activity_loop_maximum \a{rdfs:comment, "The Maximum an 
+	optional attribute that provides is a simple way to add a cap to the
+	number of loops. This SHALL be added to the Expression defined in the
+	LoopCondition."}
+has_standard_loop_activity_loop_maximum \ddomain standard_loop_activity
+has_standard_loop_activity_loop_maximum \drange xsd:int
+
+% DEFAULT_VALUE: After
+standard_loop_activity \cisa \o[<=1]{has_standard_loop_activity_test_time}
+has_standard_loop_activity_test_time \a{rdfs:label, "Test Time"}
+has_standard_loop_activity_test_time \a{rdfs:comment, "The expressions that are 
+	evaluated Before the activity begins are equivalent to a programming 
+	while function.
+	The expression that are evaluated After the activity finishes are 
+	equivalent to a programming until function."}
+has_standard_loop_activity_test_time \odomain standard_loop_activity
+
+
+% REVISION 24.09.2010 (START)
+% has_standard_loop_activity_test_time \prange \datatype{string}\values{Before,After}
+
+standard_loop_activity_test_time_values \ceq \ooneof{Before_test_time_value, After_test_time_value}
+has_standard_loop_activity_test_time \orange standard_loop_activity_test_time_values
+
+Before_test_time_value \idiff After_test_time_value
+% REVISION 24.09.2010 (END)
+
+
+% -----------------------------------------------------------------------------
+% Multi Instance Loop Activity - pag250, Table B.11
+% loops are not axiomatizable in OWL
+% -----------------------------------------------------------------------------
+multi_instance_loop_activity \a{rdfs:label, "Multi Instance Loop Activity"} 
+multi_instance_loop_activity \a{rdfs:comment, "An activity is a generic term 
+	for work that company performs. An activity can be atomic or non-atomic
+	(compound). The types of activities that are a part of a Process Model 
+	are: Process, Sub-Process, and Task. Tasks and Sub-Processes are 
+	rounded rectangles. Processes are either unbounded or a contained 
+	within a Pool."}
+
+multi_instance_loop_activity \cisa \o[=1]{has_multi_instance_loop_activity_MI_condition}
+has_multi_instance_loop_activity_MI_condition \a{rdfs:label, "MI_Condition"}
+has_multi_instance_loop_activity_MI_condition \a{rdfs:comment, "MultiInstance 
+	Loops MUST have a numeric Expression to be evaluated--the Expression 
+	MUST resolve to an integer. The attributes of an Expression can be
+	found in \"Expression on page 273.\""}
+has_multi_instance_loop_activity_MI_condition \odomain multi_instance_loop_activity
+has_multi_instance_loop_activity_MI_condition \orange expression	 
+
+multi_instance_loop_activity \cisa \d[=1]{has_multi_instance_loop_activity_loop_counter}
+has_multi_instance_loop_activity_loop_counter \a{rdfs:label, "Loop Counter"}
+has_multi_instance_loop_activity_loop_counter \a{rdfs:comment, "The LoopCounter 
+	attribute is only applied for Sequential MultiInstance Loops and for 
+	processes that are being executed by a process engine. The attribute is 
+	updated at runtime by a process engine to count the number of loops as 
+	they occur. The LoopCounter attribute MUST be incremented at the start 
+	of a loop. Unlike a Standard loop, the modeler does not use this 
+	attribute in the MI_Condition Expression, but it can be used for 
+	tracking the status of a loop."}
+has_multi_instance_loop_activity_loop_counter \ddomain multi_instance_loop_activity
+has_multi_instance_loop_activity_loop_counter \drange xsd:int
+
+% DEFAULT_VALUE: Sequential
+multi_instance_loop_activity \cisa \o[=1]{has_multi_instance_loop_activity_MI_ordering}
+has_multi_instance_loop_activity_MI_ordering \a{rdfs:label, "MI_ordering"}
+has_multi_instance_loop_activity_MI_ordering \a{rdfs:comment, "This applies to 
+	only MultiInstance Loops. The MI_Ordering attribute defines whether the
+	loop instances will be performed sequentially or in parallel.
+	Sequential MI_Ordering is a more traditional loop.
+	Parallel MI_Ordering is equivalent to multi-instance specifications 
+	that other notations, such as UML Activity Diagrams use. If set to 
+	Parallel, the Parallel marker SHALL replace the Loop Marker at the 
+	bottom center of the activity shape (see Figure 9.9 and Figure 9.15)."}
+has_multi_instance_loop_activity_MI_ordering \odomain multi_instance_loop_activity
+
+
+% REVISION 24.09.2010 (START)
+
+has_multi_instance_loop_activity_MI_ordering \orange multi_instance_loop_activity_MI_orderings
+multi_instance_loop_activity_MI_orderings \ceq \ooneof{Parallel_MI_ordering_order, Sequential_MI_ordering_order}
+
+Parallel_MI_ordering_order \idiff Sequential_MI_ordering_order
+
+% has_multi_instance_loop_activity_MI_ordering \prange \datatype{string}\values{Parallel, Sequential}
+
+% DEFAULT_VALUE: All
+% multi_instance_loop_activity \cisa (\not \hasvalue has_multi_instance_loop_activity_MI_ordering.\string{Parallel}) \cor ((\hasvalue has_multi_instance_loop_activity_MI_ordering.\string{Parallel}) \cand (=1) has_multi_instance_loop_activity_MI_flow_condition)
+
+multi_instance_loop_activity \cisa ((\cnot \ohasvalue{has_multi_instance_loop_activity_MI_ordering}{Parallel_MI_ordering_order}) \cor (\ohasvalue{has_multi_instance_loop_activity_MI_ordering}{Parallel_MI_ordering_order} \cand \o[=1]{has_multi_instance_loop_activity_MI_flow_condition}))
+
+% REVISION 24.09.2010 (END)
+
+
+% DEFAULT_VALUE: All
+
+has_multi_instance_loop_activity_MI_flow_condition \a{rdfs:label, "MI_FlowCondition"}
+has_multi_instance_loop_activity_MI_flow_condition \a{rdfs:comment, "This 
+	attribute is equivalent to using a Gateway to control the flow past a 
+	set of parallel paths.
+	- An MI_FlowCondition of \"None\" is the same as uncontrolled flow (no
+	Gateway) and means that all activity instances SHALL generate a token 
+	that will continue when that instance is completed.
+	- An MI_FlowCondition of \"One\" is the same as an Exclusive Gateway and
+	means that the Token SHALL continue past the activity after only one of
+	the activity instances has completed. The activity will continue its 
+	other instances, but additional Tokens MUST NOT be passed from the 
+	activity.
+	- An MI_FlowCondition of \"All\" is the same as a Parallel Gateway and 
+	means that the Token SHALL continue past the activity after all of the 
+	activity instances have completed.
+	- An MI_FlowCondition of \"Complex\" is similar to that of a Complex
+	Gateway. The ComplexMI_FlowCondition attribute will determine the Token 
+	flow."}
+has_multi_instance_loop_activity_MI_flow_condition \odomain multi_instance_loop_activity
+
+% REVISION 24.09.2010 (START)
+
+multi_instance_loop_activity_MI_flow_condition_types \ceq \ooneof{None_MI_flow_condition_type, One_MI_flow_condition_type, All_MI_flow_condition_type, Complex_MI_flow_condition_type}
+has_multi_instance_loop_activity_MI_flow_condition \orange multi_instance_loop_activity_MI_flow_condition_types
+
+\ialldiff{None_MI_flow_condition_type, One_MI_flow_condition_type, All_MI_flow_condition_type, Complex_MI_flow_condition_type}
+
+All_MI_flow_condition_type \idiff Complex_MI_flow_condition_type
+
+% has_multi_instance_loop_activity_MI_flow_condition \prange \datatype{string}\values{None,One,All,Complex}
+
+% multi_instance_loop_activity \cisa (\not \hasvalue has_multi_instance_loop_activity_MI_flow_condition.\string{Complex}) \cor ((\hasvalue has_multi_instance_loop_activity_MI_flow_condition.\string{Complex}) \cand (=1) has_multi_instance_loop_activity_complex_MI_flow_condition)
+multi_instance_loop_activity \cisa ((\cnot \ohasvalue{has_multi_instance_loop_activity_MI_flow_condition}{Complex_MI_flow_condition_type}) \cor (\ohasvalue{has_multi_instance_loop_activity_MI_flow_condition}{Complex_MI_flow_condition_type} \cand \o[=1]{has_multi_instance_loop_activity_complex_MI_flow_condition}))
+
+% REVISION 24.09.2010 (END)
+
+
+has_multi_instance_loop_activity_complex_MI_flow_condition \a{rdfs:label, "ComplexMI_FlowCcondition"}
+has_multi_instance_loop_activity_complex_MI_flow_condition \a{rdfs:comment, "If
+	the MI_FlowCondition attribute is set to \"Complex,\" then an Expression 
+	Must be entered. This Expression that MAY reference Process data. The 
+	expression will be evaluated after each iteration of the Activity and 
+	SHALL resolve to a boolean. If the result of the expression evaluation 
+	is TRUE, then a Token will be sent down the activity's outgoing 
+	Sequence Flow. Otherwise, no Token will be sent. The attributes of an 
+	Expression can be found in \"Expression on page 273.\""}
+has_multi_instance_loop_activity_complex_MI_flow_condition \odomain multi_instance_loop_activity
+has_multi_instance_loop_activity_complex_MI_flow_condition \orange expression	 
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Sub Process - pag 251, Table B.12
+% -----------------------------------------------------------------------------
+sub_process \a{rdfs:label, "Sub-process"}
+sub_process \a{rdfs:comment, "A Sub-Process is a compound activity
+	               that is included within a Process. It is
+                       compound in that it can be broken down
+                       into a finer level of detail (a Process)
+                       through a set of sub-activities."}
+
+% DEFAULT_VALUE: embedded
+sub_process \cisa \o[=1]{has_sub_process_sub_process_type}
+has_sub_process_sub_process_type \a{rdfs:label, "SubProcessType"}
+has_sub_process_sub_process_type \a{rdfs:comment, "SubProcessType is an 
+	attribute that defines whether the Sub-Process details are embedded with
+	in the higher level Process or refers to another, re-usable Process.
+	The default is Embedded."}
+has_sub_process_sub_process_type \odomain sub_process
+has_sub_process_sub_process_type \orange sub_process_types
+
+sub_process_types \ceq \ooneof{embedded, reusable, reference}
+
+embedded \a{rdfs:label, "Embedded"}
+reusable \a{rdfs:label, "Reusable"}
+reference \a{rdfs:label, "Reference"}
+
+embedded_sub_process \ceq (sub_process \cand \ohasvalue{has_sub_process_sub_process_type}{embedded})
+reusable_sub_process \ceq (sub_process \cand \ohasvalue{has_sub_process_sub_process_type}{reusable})
+reference_sub_process \ceq (sub_process \cand \ohasvalue{has_sub_process_sub_process_type}{reference})
+
+embedded_sub_process \cisa (\cnot reusable_sub_process)
+embedded_sub_process \cisa (\cnot reference_sub_process)
+reusable_sub_process \cisa (\cnot reference_sub_process)
+
+% DEFAULT_VALUE: False
+sub_process \cisa \o[=1]{has_sub_process_is_a_transaction}
+has_sub_process_is_a_transaction \a{rdfs:label, "IsATransaction"} 
+has_sub_process_is_a_transaction \a{rdfs:comment, "TIsATransaction determines 
+	whether or not the behavior of the Sub-Process will follow the behavior
+	of a Transaction (see \"Sub-Process Behavior as a Transaction on page 
+	62.\")"}
+has_sub_process_is_a_transaction \odomain sub_process
+
+% REVISION 24.09.2010 (START)
+% has_sub_process_is_a_transaction \prange \datatype{boolean}
+has_sub_process_is_a_transaction \orange sub_process_is_a_transaction_boolean
+sub_process_is_a_transaction_boolean \ceq \ooneof{true_is_a_transaction_boolean, false_is_a_transaction_boolean} 
+false_is_a_transaction_boolean \idiff true_is_a_transaction_boolean
+
+% Not axiomatizable: Note that Transactions that are in different Pools and are connected through Message Flow MUST have the same TransactionId.
+% sub_process \cisa ((\hasvalue has_sub_process_is_a_transaction.\boolean{false}) \cand ((=0)has_sub_process_sub_transaction_ref)) \cor ((\hasvalue has_sub_process_is_a_transaction.\boolean{true}) \cand ((=1)has_sub_process_sub_transaction_ref))
+sub_process \cisa ((\ohasvalue{has_sub_process_is_a_transaction}{false_is_a_transaction_boolean} \cand \o[=0]{has_sub_process_sub_transaction_ref}) \cor (\ohasvalue{has_sub_process_is_a_transaction}{true_is_a_transaction_boolean} \cand \o[=1]{has_sub_process_sub_transaction_ref}))
+% REVISION 24.09.2010 (END)
+
+has_sub_process_sub_transaction_ref \a{rdfs:label, "Transaction_Ref"}
+has_sub_process_sub_transaction_ref \a{rdfs:comment, "If the IsATransaction 
+	attribute is False, then a Transaction MUST NOT be identified. If the 
+	IsATransaction attribute is True, then a Transaction MUST be identified.
+	The attributes of a Transaction can be found in \"Transaction on page 
+	277\". 
+	Note that Transactions that are in different Pools and are connected 
+	through Message Flow MUST have the same TransactionId."}
+has_sub_process_sub_transaction_ref \odomain sub_process
+has_sub_process_sub_transaction_ref \orange transaction
+
+% -----------------------------------------------------------------------------
+% Embedded Sud-Process - pag 251, Table B.13
+% -----------------------------------------------------------------------------
+embedded_sub_process \a{rdfs:label, "Embedded Sub-process"}
+embedded_sub_process \a{rdfs:comment, ""}
+		       
+has_embedded_sub_process_sub_graphical_elements \a{rdfs:label, "GraphicalElements"}
+has_embedded_sub_process_sub_graphical_elements \a{rdfs:comment, "The 
+	GraphicalElements attribute identifies all of the objects (e.g., 
+	Events, Activities, Gateways, and Artifacts) that are contained within 
+	the Embedded Sub-Process."}
+has_embedded_sub_process_sub_graphical_elements \odomain embedded_sub_process
+has_embedded_sub_process_sub_graphical_elements \orange graphical_element
+
+% DEFAULT_VALUE: False
+embedded_sub_process \cisa \o[=1]{has_embedded_sub_process_ad_hoc}
+has_embedded_sub_process_ad_hoc \a{rdfs:label, "Ad_hoc"}
+has_embedded_sub_process_ad_hoc \a{rdfs:comment, "AdHoc is a boolean attribute, which has a default of False. This specifies whether
+	the embedded_sub_process is Ad Hoc or not. The activities within an Ad 
+	Hoc embedded_sub_process are not controlled or sequenced in a particular
+	order, their performance is determined by the performers of the 
+	activities. If set to True, then the Ad Hoc marker SHALL be placed at 
+	the bottom center of the embedded_sub_process or the 
+	Sub-embedded_sub_process shape for Ad Hoc embedded_sub_processes."}
+has_embedded_sub_process_ad_hoc \odomain embedded_sub_process
+
+% REVISION 24.09.2010 (START)
+
+% has_embedded_sub_process_ad_hoc \prange \datatype{boolean}
+% embedded_sub_process \cisa (\hasvalue has_embedded_sub_process_ad_hoc.\boolean{false}) \cor (\hasvalue has_embedded_sub_process_ad_hoc.\boolean{true} \cand (=1) has_embedded_sub_process_ad_hoc_ordering \cand (=1) has_embedded_sub_process_ad_hoc_completion_condition)
+
+embedded_sub_process \cisa (\ohasvalue{has_embedded_sub_process_ad_hoc}{false_ad_hoc_boolean} \cor \candof{\ohasvalue{has_embedded_sub_process_ad_hoc}{true_ad_hoc_boolean}, \o[=1]{has_embedded_sub_process_ad_hoc_ordering}, \o[=1]{has_embedded_sub_process_ad_hoc_completion_condition}})
+
+has_embedded_sub_process_ad_hoc \orange embedded_sub_process_ad_hoc_boolean
+embedded_sub_process_ad_hoc_boolean \ceq \ooneof{true_ad_hoc_boolean, false_ad_hoc_boolean} 
+false_ad_hoc_boolean \idiff true_ad_hoc_boolean
+
+% REVISION 24.09.2010 (END)
+
+
+
+% DEFAULT_VALUE: Parallel
+has_embedded_sub_process_ad_hoc_ordering \a{rdfs:label, "AdHocOrdering"}
+has_embedded_sub_process_ad_hoc_ordering \a{rdfs:comment, "If the 
+        embedded_sub_process is Ad Hoc (the AdHoc attribute is True), then the 
+	AdHocOrdering attribute MUST be included. This attribute defines if the
+	activities within the embedded_sub_process can be performed in Parallel
+	or must be performed sequentially. The default setting is Parallel and
+	the setting of Sequential is a restriction on the performance that may 
+	be required due to shared resources."}
+has_embedded_sub_process_ad_hoc_ordering \ddomain embedded_sub_process
+
+% REVISION 24.09.2010 (START)
+% has_embedded_sub_process_ad_hoc_ordering \prange \datatype{string}\values{Sequential,Parallel}
+has_embedded_sub_process_ad_hoc_ordering \orange embedded_sub_process_ad_hoc_ordering_orders
+embedded_sub_process_ad_hoc_ordering_orders \ceq \ooneof{Parallel_embedded_sub_process_ad_hoc_ordering_order, Sequential_embedded_sub_process_ad_hoc_ordering_order}
+
+Parallel_embedded_sub_process_ad_hoc_ordering_order \idiff Sequential_embedded_sub_process_ad_hoc_ordering_order
+% REVISION 24.09.2010 (END)
+
+
+has_embedded_sub_process_ad_hoc_completion_condition \a{rdfs:label, "AdHocCompletionCondition"}
+has_embedded_sub_process_ad_hoc_completion_condition \a{rdfs:comment, "If the 
+	embedded_sub_process is Ad Hoc (the AdHoc attribute is True), then the
+	AdHocCompletionCondition attribute MUST be included. This attribute 
+	defines the conditions when the embedded_sub_process will end."}
+has_embedded_sub_process_ad_hoc_completion_condition \odomain embedded_sub_process
+has_embedded_sub_process_ad_hoc_completion_condition \orange expression
+
+% -----------------------------------------------------------------------------
+% Reusable Sud-Process - pag 252, Table B.14
+% -----------------------------------------------------------------------------
+reusable_sub_process \a{rdfs:label, "Reusable Sub-process"}
+reusable_sub_process \a{rdfs:comment, ""}
+
+reusable_sub_process \cisa \o[=1]{has_reusable_sub_process_sub_diagram_ref}
+	       
+has_reusable_sub_process_sub_diagram_ref \a{rdfs:label, "DiagramRef"}
+has_reusable_sub_process_sub_diagram_ref \a{rdfs:comment, "The BPD MUST be 
+	identified. The attributes of a BPD can be found in \"Business Process 
+	Diagram Attributes on page 31.\""}
+has_reusable_sub_process_sub_diagram_ref \odomain reusable_sub_process
+has_reusable_sub_process_sub_diagram_ref \orange business_process_diagram
+
+reusable_sub_process \cisa \o[=1]{has_reusable_sub_process_sub_process_ref}
+	       
+has_reusable_sub_process_sub_process_ref \a{rdfs:label, "ProcessRef"}
+has_reusable_sub_process_sub_process_ref \a{rdfs:comment, "A Process MUST be 
+	identified. The attributes of a Process can be found in \"Processes on 
+	page 32\""}
+has_reusable_sub_process_sub_process_ref \odomain reusable_sub_process
+has_reusable_sub_process_sub_process_ref \orange process
+
+% si puo' specificare di piu' in base al commento? NO
+has_reusable_sub_process_sub_input_maps \a{rdfs:label, "InputMaps"}
+has_reusable_sub_process_sub_input_maps \a{rdfs:comment, "Multiple input 
+        mappings MAY be made between the Reusable Sub-Process and the Process 
+	referenced by this object. These mappings are in the form of an 
+	expression. A specific mapping expression MUST specify the mapping of
+	Properties between the two Processes OR the mapping of Artifacts between
+	the two Processes."}
+has_reusable_sub_process_sub_input_maps \odomain reusable_sub_process
+has_reusable_sub_process_sub_input_maps \orange expression
+
+% si puo' specificare di piu' in base al commento? NO
+has_reusable_sub_process_sub_output_maps \a{rdfs:label, "OutputMaps"}
+has_reusable_sub_process_sub_output_maps \a{rdfs:comment, "Multiple output 
+	mappings MAY be made between the Reusable Sub-Process and the Process 
+	referenced by this object. These mappings are in the form of an 
+	expression. A specific mapping expression MUST specify the mapping of
+	Properties between the two Processes OR the mapping of Artifacts between
+	the two Processes."}
+has_reusable_sub_process_sub_output_maps \odomain reusable_sub_process
+has_reusable_sub_process_sub_output_maps \orange expression
+
+% -----------------------------------------------------------------------------
+% Reference Sub-Process - pag 252, Table B.15
+% -----------------------------------------------------------------------------
+reference_sub_process \a{rdfs:label, "Reference Sub-process"}
+reference_sub_process \a{rdfs:comment, ""}
+
+reference_sub_process \cisa \o[=1]{has_reference_sub_process_sub_sub_process_ref}
+	       
+has_reference_sub_process_sub_sub_process_ref \a{rdfs:label, "SubProcessRef"}
+has_reference_sub_process_sub_sub_process_ref \a{rdfs:comment, "The Sub-Process
+	being referenced MUST be identified. The attributes for the Sub-Process
+	element can be found in Table B.12."}
+has_reference_sub_process_sub_sub_process_ref \odomain reference_sub_process
+has_reference_sub_process_sub_sub_process_ref \orange sub_process
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Task - pag 252, Table B.16
+% -----------------------------------------------------------------------------
+task \a{rdfs:label, "Task [Atomic]"}
+task \a{rdfs:comment, "A Task is an atomic activity that is included within a 
+	Process. A Task is used when the work in the Process is not broken down
+	to a finer level of Process Model detail."}
+
+% vedi assiomi aggiunti in fondo.- 9.4.3.1
+task \cisa \o[<=1]{has_task_task_type}
+has_task_task_type \a{rdfs:label, "TaskType"}
+has_task_task_type \a{rdfs:comment, "TaskType is an attribute that has a default
+	of None, but MAY be set to Send, Receive, User, Script, Abstract, 
+	Manual, Reference, or Service. The TaskType will be impacted by the 
+	Message Flow to and/or from the Task, if Message Flow are used. A 
+	TaskType of Receive MUST NOT have an outgoing Message Flow. A TaskType
+	of Send MUST NOT have an incoming Message Flow. A TaskType of Script or
+	Manual MUST NOT have an incoming or an outgoing Message Flow.
+	The TaskType list MAY be extended to include new types. 
+	The attributes for specific settings of TaskType can be found in Table 
+	B.17 through Table B.22."}
+has_task_task_type \odomain task
+has_task_task_type \orange task_types
+
+task_types \ceq \ooneof{service_task_type, receive_task_type, send_task_type, user_task_type, script_task_type, abstract_task_type, manual_task_type, reference_task_type}
+
+service_task_type \a{rdfs:label, "Service"}
+receive_task_type \a{rdfs:label, "Receive"}
+send_task_type \a{rdfs:label, "Send"}
+user_task_type \a{rdfs:label, "User"}
+script_task_type \a{rdfs:label, "Script"}
+abstract_task_type \a{rdfs:label, "Abstract"}
+manual_task_type \a{rdfs:label, "Manual"}
+reference_task_type \a{rdfs:label, "Reference"}
+
+service_task \ceq (task \cand \ohasvalue{has_task_task_type}{service_task_type}) 
+receive_task \ceq (task \cand \ohasvalue{has_task_task_type}{receive_task_type}) 
+send_task \ceq (task \cand \ohasvalue{has_task_task_type}{send_task_type}) 
+user_task \ceq (task \cand \ohasvalue{has_task_task_type}{user_task_type}) 
+script_task \ceq (task \cand \ohasvalue{has_task_task_type}{script_task_type}) 
+abstract_task \ceq (task \cand \ohasvalue{has_task_task_type}{abstract_task_type}) 
+manual_task \ceq (task \cand \ohasvalue{has_task_task_type}{manual_task_type}) 
+reference_task \ceq (task \cand \ohasvalue{has_task_task_type}{reference_task_type}) 
+
+service_task \cisa (\cnot receive_task)
+service_task \cisa (\cnot send_task)
+service_task \cisa (\cnot user_task)
+service_task \cisa (\cnot script_task)
+service_task \cisa (\cnot abstract_task)
+service_task \cisa (\cnot manual_task)
+service_task \cisa (\cnot reference_task)
+receive_task \cisa (\cnot send_task)
+receive_task \cisa (\cnot user_task)
+receive_task \cisa (\cnot script_task)
+receive_task \cisa (\cnot abstract_task)
+receive_task \cisa (\cnot manual_task)
+receive_task \cisa (\cnot reference_task)
+send_task \cisa (\cnot user_task)
+send_task \cisa (\cnot script_task)
+send_task \cisa (\cnot abstract_task)
+send_task \cisa (\cnot manual_task)
+send_task \cisa (\cnot reference_task)
+user_task \cisa (\cnot script_task)
+user_task \cisa (\cnot abstract_task)
+user_task \cisa (\cnot manual_task)
+user_task \cisa (\cnot reference_task)
+script_task \cisa (\cnot abstract_task)
+script_task \cisa (\cnot manual_task)
+script_task \cisa (\cnot reference_task)
+abstract_task \cisa (\cnot manual_task)
+abstract_task \cisa (\cnot reference_task)
+manual_task \cisa (\cnot reference_task)
+
+% -----------------------------------------------------------------------------
+% Service Task - pag 253, Table B.17
+% -----------------------------------------------------------------------------
+service_task \a{rdfs:label, "Service Task"}
+service_task \a{rdfs:comment, ""}
+
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+service_task \cisa \o[=1]{has_service_task_in_message_ref}
+has_service_task_in_message_ref \a{rdfs:label, "InMessageRef"} 
+has_service_task_in_message_ref \a{rdfs:comment, "A Message for the InMessageRef
+	attribute MUST be entered. This indicates that the Message will be 
+	received at the start of the Task, after the availability of any defined
+	InputSets. One or more corresponding incoming Message Flows MAY be shown
+	on the diagram. However, the display of the Message Flow is not 
+	required. The Message is applied to all incoming Message Flow, but can 
+	arrive for only one of the incoming Message Flow for a single instance 
+	of the Task."} 
+has_service_task_in_message_ref \odomain service_task
+has_service_task_in_message_ref \orange message
+
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+service_task \cisa \o[=1]{has_service_task_out_message_ref}
+has_service_task_out_message_ref \a{rdfs:label, "OutMessageRef"} 
+has_service_task_out_message_ref \a{rdfs:comment, "A Message for the 
+	OutMessageRef attribute MUST be entered. The sending of this message
+	marks the completion of the Task, which may cause the production of an
+	OutputSet. One or more corresponding outgoing Message Flow MAY be shown
+	on the diagram. However, the display of the Message Flow is not 
+	required. The Message is applied to all outgoing Message Flow and the
+	Message will be sent down all outgoing Message Flow at the completion of
+	a single instance of the Task."} 
+has_service_task_out_message_ref \odomain service_task
+has_service_task_out_message_ref \orange message
+
+% DEFAULT_VALUE: Web_Service
+has_service_task_implementation \a{rdfs:label, "Implementation"}
+has_service_task_implementation \a{rdfs:comment, "This attribute specifies the
+	technology that will be used to send or receive the message. A Web 
+	service is the default technology."}
+has_service_task_implementation \odomain service_task
+
+% REVISION 28.09.2010 (START)
+% has_service_task_implementation \prange \datatype{string}\values{Web_Service,Other,Unspecified}
+has_service_task_implementation \orange service_task_implementation_implementations
+service_task_implementation_implementations \ceq \ooneof{Web_Service_service_task_implementation, Other_service_task_implementation, Unspecified_service_task_implementation}
+
+\ialldiff{Web_Service_service_task_implementation, Other_service_task_implementation, Unspecified_service_task_implementation}
+% REVISION 24.09.2010 (END)
+
+
+% -----------------------------------------------------------------------------
+% Receive Task - pag 254, Table B.18
+% -----------------------------------------------------------------------------
+receive_task \a{rdfs:label, "Receive Task"}
+receive_task \a{rdfs:comment, ""}
+
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+receive_task \cisa \o[=1]{has_receive_task_message_ref}
+has_receive_task_message_ref \a{rdfs:label, "MessageRef"} 
+has_receive_task_message_ref \a{rdfs:comment, "A Message for the MessageRef
+	attribute MUST be entered. This indicates that the Message will be
+	received by the Task. The Message in this context is equivalent to an 
+	in-only message pattern (Web service). One or more corresponding 
+	incoming Message Flow MAY be shown on the diagram. However, the display
+	of the Message Flow is not required. The Message is applied to all
+	incoming Message Flow, but can arrive for only one of the incoming
+	Message Flow for a single instance of the Task."} 
+has_receive_task_message_ref \odomain receive_task
+has_receive_task_message_ref \orange message
+
+% DEFAULT_VALUE: False
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+receive_task \cisa \o[=1]{has_receive_task_instantiate}
+has_receive_task_instantiate \a{rdfs:label, "Instantiate"}
+has_receive_task_instantiate \a{rdfs:comment, "Receive Tasks can be defined as
+	the instantiation mechanism for the Process with the Instantiate 
+	attribute. This attribute MAY be set to true if the Task is the first
+	activity after the Start Event or a starting Task if there is no Start 
+	Event. Multiple Tasks MAY have this attribute set to True."}
+has_receive_task_instantiate \odomain receive_task
+
+% REVISION 24.09.2010 (START)
+% has_receive_task_instantiate \prange \datatype{boolean}
+has_receive_task_instantiate \orange receive_task_instantiate_boolean
+receive_task_instantiate_boolean \ceq \ooneof{true_receive_task_instantiate_boolean, false_receive_task_instantiate_boolean}
+
+true_receive_task_instantiate_boolean \idiff false_receive_task_instantiate_boolean
+% REVISION 24.09.2010 (END)
+
+% DEFAULT_VALUE: Web_Service
+has_receive_task_implementation \a{rdfs:label, "Implementation"}
+has_receive_task_implementation \a{rdfs:comment, "This attribute specifies the
+	technology that will be used to receive the message. A Web service is 
+	the default technology."}
+has_receive_task_implementation \odomain receive_task
+
+% REVISION 24.09.2010 (START)
+% has_receive_task_implementation \prange \datatype{string}\values{Web_Service,Other,Unspecified}
+has_receive_task_implementation \orange receive_task_implementation_implementations
+receive_task_implementation_implementations \ceq \ooneof{Web_Service_receive_task_implementation, Other_receive_task_implementation, Unspecified_receive_task_implementation}
+
+\ialldiff{Web_Service_receive_task_implementation, Other_receive_task_implementation, Unspecified_receive_task_implementation}
+% REVISION 24.09.2010 (END)
+
+% -----------------------------------------------------------------------------
+% Send Task - pag 254, Table B.19
+% -----------------------------------------------------------------------------
+send_task \a{rdfs:label, "Send Task"}
+send_task \a{rdfs:comment, ""}
+
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+send_task \cisa \o[=1]{has_send_task_message_ref}
+has_send_task_message_ref \a{rdfs:label, "MessageRef"} 
+has_send_task_message_ref \a{rdfs:comment, "A Message for the MessageRef
+	attribute MUST be entered. This indicates that the Message will be sent
+	by the Task. The Message in this context is equivalent to an out-only 
+	message pattern (Web service). One or more corresponding outgoing Message
+	Flow MAY be shown on the diagram. However, the display of the Message 
+	Flow is not required. The Message is applied to all outgoing Message
+	Flow and the Message will be sent down all outgoing Message Flow at the
+	completion of a single instance of the Task."} 
+has_send_task_message_ref \odomain send_task
+has_send_task_message_ref \orange message
+
+% DEFAULT_VALUE: Web_Service
+has_send_task_implementation \a{rdfs:label, "Implementation"}
+has_send_task_implementation \a{rdfs:comment, "This attribute specifies the
+	technology that will be used to send the message. A Web service
+	is the default technology."}
+has_send_task_implementation \odomain send_task
+
+% REVISION 24.09.2010 (START)
+% has_send_task_implementation \prange \datatype{string}\values{Web_Service,Other,Unspecified}
+has_send_task_implementation \orange send_task_implementation_implementations
+send_task_implementation_implementations \ceq \ooneof{Web_Service_send_task_implementation, Other_send_task_implementation, Unspecified_send_task_implementation}
+
+\ialldiff{Web_Service_send_task_implementation, Other_send_task_implementation, Unspecified_send_task_implementation}
+% REVISION 24.09.2010 (END)
+
+
+% -----------------------------------------------------------------------------
+% User Task - pag 255, Table B.20
+% -----------------------------------------------------------------------------
+user_task \a{rdfs:label, "User Task"}
+user_task \a{rdfs:comment, ""}
+
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+user_task \cisa \o[=1]{has_user_task_in_message_ref}
+has_user_task_in_message_ref \a{rdfs:label, "InMessageRef"} 
+has_user_task_in_message_ref \a{rdfs:comment, "A Message for the InMessageRef
+	attribute MUST be entered. This indicates that the Message will be
+	received at the start of the Task, after the availability of any defined
+	InputSets. One or more corresponding incoming Message Flows MAY be shown
+	on the diagram. However, the display of the Message Flow is not 
+	required.
+	The Message is applied to all incoming Message Flow, but can arrive for
+	only one of the incoming Message Flow for a single instance of the 
+	Task."} 
+has_user_task_in_message_ref \odomain user_task
+has_user_task_in_message_ref \orange message
+
+% si puo' specificare di piu' in base al commento? "One or more .... MAY be shown on the diagram". - Does it means that at least one always exists?
+user_task \cisa \o[=1]{has_user_task_out_message_ref}
+has_user_task_out_message_ref \a{rdfs:label, "OutMessageRef"} 
+has_user_task_out_message_ref \a{rdfs:comment, "A Message for the OutMessageRef
+	attribute MUST be entered. The sending of this message marks the
+	completion of the Task, which may cause the production of an OutputSet.
+	One or more corresponding outgoing Message Flow MAY be shown on the
+	diagram. However, the display of the Message Flow is not required.
+	The Message is applied to all outgoing Message Flow and the Message will
+	be sent down all outgoing Message Flow at the completion of a single
+	instance of the Task."} 
+has_user_task_out_message_ref \odomain user_task
+has_user_task_out_message_ref \orange message
+
+% DEFAULT_VALUE: Web_Service
+has_user_task_implementation \a{rdfs:label, "Implementation"}
+has_user_task_implementation \a{rdfs:comment, "This attribute specifies the
+	technology that will be used by the Performers to perform the task. 
+	A Web service is the default technology."}
+has_user_task_implementation \odomain user_task
+
+% REVISION 24.09.2010 (START)
+% has_user_task_implementation \prange \datatype{string}\values{Web_Service,Other,Unspecified}
+has_user_task_implementation \orange user_task_implementation_implementations
+user_task_implementation_implementations \ceq \ooneof{Web_Service_user_task_implementation, Other_user_task_implementation, Unspecified_user_task_implementation}
+
+\ialldiff{Web_Service_user_task_implementation, Other_user_task_implementation, Unspecified_user_task_implementation}
+% REVISION 24.09.2010 (END)
+
+% -----------------------------------------------------------------------------
+% Script Task - pag 255, Table B.21
+% -----------------------------------------------------------------------------
+script_task \a{rdfs:label, "Script Task"}
+script_task \a{rdfs:comment, ""}
+
+script_task \cisa \d[<=1]{has_script_task_script}
+has_script_task_script \a{rdfs:label, "Script"} 
+has_script_task_script \a{rdfs:comment, "The modeler MAY include a script that 
+	can be run when the Task is performed. If a script is not included, 
+	then the Task will act equivalent to a TaskType of None."} 
+has_script_task_script \ddomain script_task
+has_script_task_script \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Abstract Task - pag 252, Table B.16
+% -----------------------------------------------------------------------------
+% Not defined in the document....
+
+% -----------------------------------------------------------------------------
+% Manual Task - pag 252, Table B.16
+% -----------------------------------------------------------------------------
+% No additional attributes.
+
+% -----------------------------------------------------------------------------
+% Reference Task - pag 255, Table B.22
+% -----------------------------------------------------------------------------
+reference_task \a{rdfs:label, "Reference Task"}
+reference_task \a{rdfs:comment, ""}
+
+reference_task \cisa \o[=1]{has_reference_task_task_ref}
+has_reference_task_task_ref \a{rdfs:label, "TaskRef"} 
+has_reference_task_task_ref \a{rdfs:comment, "The Task being referenced MUST be 
+	identified. The attributes for the Task element can be found in Table 
+	B.16."} 
+has_reference_task_task_ref \odomain reference_task
+has_reference_task_task_ref \orange task
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Gateway - pag 256, Table B.23, Figure B.4
+% -----------------------------------------------------------------------------
+gateway \a{rdfs:label, "Gateway"} 
+gateway \a{rdfs:comment, "A Gateway is used to control the divergence and 
+	convergence of Sequence Flow. Thus, it will determine branching, 
+	forking, merging, and joining of paths. Internal Markers will indicate
+	the type of behavior control."}
+
+% DEFAULT_VALUE: exclusive
+gateway \cisa \o[=1]{has_gateway_gateway_type}
+has_gateway_gateway_type \a{rdfs:label, "GatewayType"} 
+has_gateway_gateway_type \a{rdfs:comment, "GatewayType is by default Exclusive.
+	The GatewayType MAY be set to Inclusive, Complex, or Parallel. The 
+	GatewayType will determine the behavior of the Gateway, both for
+	incoming and outgoing Sequence Flow, and will determine the internal 
+	indicator (as shown in Figure 9.17)."}
+has_gateway_gateway_type \odomain gateway
+has_gateway_gateway_type \orange gateway_types
+
+gateway_types \a{rdfs:label, "Gateway Types"}
+gateway_types \a{rdfs:comment, "Icons within the diamond shape will
+               indicate the type of flow control behavior.
+	       The types of control include: 
+	            1. exclusive -- exclusive decision and
+	                merging. Both Data-Based and Event-Based. Data-Based 
+			can be shown with or without the \"X\" marker.
+ 		    2. esclusive -- inclusive decision and merging
+		    3. complex -- complex conditions and situations (e.g., 
+		        3 out of 5)
+  		    4. parallel -- forking and joining
+               Each type of control affects both the
+	       incoming and outgoing Flow."}
+gateway_types \ceq \ooneof{exclusive, inclusive, complex, parallel}
+
+
+exclusive \a{rdfs:label, "exclusive"}
+exclusive \a{rdfs:comment, "exclusive -- exclusive decision parallel merging. 
+	Data-Based or Event-Based - can be shown with inclusive without the 
+	\"X\" marker."}
+
+inclusive \a{rdfs:label, "inclusive"}
+inclusive \a{rdfs:comment, "inclusive -- inclusive decision parallel merging"}
+
+complex \a{rdfs:label, "complex"}
+complex \a{rdfs:comment, "Complex -- complex conditions parallel situations 
+	(e.g., 3 out of 5)"}
+
+parallel \a{rdfs:label, "parallel"}
+parallel \a{rdfs:comment, "parallel -- forking parallel joining"}
+
+\ialldiff{exclusive, inclusive, complex, parallel}
+
+exclusive_gateway \ceq (gateway \cand \ohasvalue{has_gateway_gateway_type}{exclusive})
+inclusive_gateway \ceq (gateway \cand \ohasvalue{has_gateway_gateway_type}{inclusive})
+parallel_gateway \ceq (gateway \cand \ohasvalue{has_gateway_gateway_type}{parallel})
+complex_gateway \ceq (gateway \cand \ohasvalue{has_gateway_gateway_type}{complex})
+
+% assiomi espressi nel commento aggiunti in fondo - 9.5.1.4
+has_gateway_gate \a{rdfs:label, "Gates"} 
+has_gateway_gate \a{rdfs:comment, "There MAY be zero or more Gates (except where
+	noted below). Zero Gates are allowed if the Gateway is last object in a 
+	process flow and there are no Start or 	End Events for the Process.
+	If there are zero or only one incoming Sequence Flow, then there MUST be
+	at least two Gates.
+	For Exclusive Data-Based Gateways: When two Gates are required, one of
+	them MAY be the DefaultGate.
+	For Exclusive Event-Based Gateways: There MUST be two or more Gates. 
+	(Note that this type of Gateway does not act only as a Merge--it is 
+	always a Decision, at least.) 
+	For Inclusive Gateways: When two Gates are required, one of them MAY be 
+	the DefaultGate."}
+has_gateway_gate \odomain gateway
+has_gateway_gate \orange gate
+
+% -----------------------------------------------------------------------------
+% Exclusive Gateway - pag257, Section B.7.2
+% -----------------------------------------------------------------------------
+exclusive_gateway \a{rdfs:label, "Exclusive Gateway"}
+exclusive_gateway \a{rdfs:comment, "Exclusive Gateway"}
+
+% DEFAULT_VALUE: data_exclusive_type
+exclusive_gateway \cisa \o[=1]{has_exclusive_gateway_exclusive_type}
+has_exclusive_gateway_exclusive_type \a{rdfs:label, "ExclusiveType"} 
+has_exclusive_gateway_exclusive_type \a{rdfs:comment, "ExclusiveType is by 
+	default Data. The ExclusiveType MAY be set to Event. Since Data-Based 
+	Exclusive Gateways is the subject of this section, the attribute MUST
+	be set to Data for the attributes and behavior defined in this section
+	to apply to the Gateway."}
+has_exclusive_gateway_exclusive_type \odomain exclusive_gateway
+has_exclusive_gateway_exclusive_type \orange exclusive_types
+
+exclusive_types \a{rdfs:label, "Exclusive Types"}
+exclusive_types \a{rdfs:comment, ""}
+exclusive_types \ceq \ooneof{data_exclusive_type, event_exclusive_type}
+
+data_exclusive_type \a{rdfs:label, "data"}
+data_exclusive_type \a{rdfs:comment, "data -- Data-Based"}
+
+event_exclusive_type \a{rdfs:label, "event"}
+event_exclusive_type \a{rdfs:comment, "event -- Event-based"}
+
+data_exclusive_type \idiff event_exclusive_type
+
+data_based_exclusive_gateway \ceq (exclusive_gateway \cand \ohasvalue{has_exclusive_gateway_exclusive_type}{data_exclusive_type})
+event_based_exclusive_gateway \ceq (exclusive_gateway \cand \ohasvalue{has_exclusive_gateway_exclusive_type}{event_exclusive_type})
+
+% -----------------------------------------------------------------------------
+% Data Based Exclusive Gateway - pag257, Table B.24
+% -----------------------------------------------------------------------------
+data_based_exclusive_gateway \a{rdfs:label, "Data Based Exclusive Gateway"}
+data_based_exclusive_gateway \a{rdfs:comment, "Data Based Exclusive Gateway"}
+
+% DEFAULT_VALUE: False
+data_based_exclusive_gateway \cisa \d[=1]{has_data_based_exclusive_gateway_marker_visible}
+has_data_based_exclusive_gateway_marker_visible \a{rdfs:label, "MarkerVisible"} 
+has_data_based_exclusive_gateway_marker_visible \a{rdfs:comment, "This attribute
+	determines if the Exclusive Marker is displayed in the center of the
+	Gateway diamond (an \"X\"). The marker is displayed if the attribute is 
+	True and it is not displayed if the attribute is False. By default, the
+	marker is not displayed."}
+has_data_based_exclusive_gateway_marker_visible \ddomain data_based_exclusive_gateway
+has_data_based_exclusive_gateway_marker_visible \drange xsd:boolean
+
+data_based_exclusive_gateway \cisa \o[<=1]{has_data_based_exclusive_gateway_default_gate}
+has_data_based_exclusive_gateway_default_gate \a{rdfs:label, "DefaultGate"} 
+has_data_based_exclusive_gateway_default_gate \a{rdfs:comment, "A Default Gate 
+	MAY be specified (see Section B.11.9, \"Gate,\" on page 274)."}
+has_data_based_exclusive_gateway_default_gate \odomain data_based_exclusive_gateway
+has_data_based_exclusive_gateway_default_gate \orange gate
+
+% -----------------------------------------------------------------------------
+% Event Based Exclusive Gateway - pag258, Table B.25
+% -----------------------------------------------------------------------------
+event_based_exclusive_gateway \a{rdfs:label, "Event Based Exclusive Gateway"}
+event_based_exclusive_gateway \a{rdfs:comment, "Event Based Exclusive Gateway"}
+
+event_based_exclusive_gateway \cisa \d[=1]{has_event_based_exclusive_gateway_instantiate}
+
+% DEFAULT_VALUE: False
+has_event_based_exclusive_gateway_instantiate \a{rdfs:label, "MarkerVisible"} 
+has_event_based_exclusive_gateway_instantiate \a{rdfs:comment, "Event-Based
+	Gateways can be defined as the instantiation mechanism for the Process 
+	with the Instantiate attribute. This attribute MAY be set to true if the
+	Gateway is the first element after the Start Event or a starting Gateway
+	if there is no Start Event (i.e., there are no incoming Sequence Flow)."}
+has_event_based_exclusive_gateway_instantiate \ddomain event_based_exclusive_gateway
+has_event_based_exclusive_gateway_instantiate \drange xsd:boolean
+
+% -----------------------------------------------------------------------------
+% Inclusive Gateway - pag258, Table B.26
+% -----------------------------------------------------------------------------
+inclusive_gateway \a{rdfs:label, "Inclusive Gateway"}
+inclusive_gateway \a{rdfs:comment, "Inclusive Gateway"}
+
+inclusive_gateway \cisa \o[<=1]{has_inclusive_gateway_default_gate}
+
+has_inclusive_gateway_default_gate \a{rdfs:label, "DefaultGate"} 
+has_inclusive_gateway_default_gate \a{rdfs:comment, "A Default Gate MAY be 
+	specified (see Section B.11.9, \"Gate,\" on page 274)."}
+has_inclusive_gateway_default_gate \odomain inclusive_gateway
+has_inclusive_gateway_default_gate \orange gate
+
+% -----------------------------------------------------------------------------
+% Complex Gateway - pag258, Table B.27
+% -----------------------------------------------------------------------------
+complex_gateway \a{rdfs:label, "Complex Gateway"}
+complex_gateway \a{rdfs:comment, "Complex Gateway"}
+
+complex_gateway \cisa \o[<=1]{has_complex_gateway_incoming_condition}
+complex_gateway \cisa (\o[<=1]{has_sequence_flow_target_ref_inv} \cor (\o[>=2]{has_sequence_flow_target_ref_inv} \cand \oexists{has_complex_gateway_incoming_condition}{expression}))
+has_complex_gateway_incoming_condition \a{rdfs:label, "Incoming Condition"} 
+has_complex_gateway_incoming_condition \a{rdfs:comment, "If there are Multiple 
+	incoming Sequence Flow, an IncomingCondition expression MUST be set by 
+	the modeler. This will consist of an expression that can reference
+	Sequence Flow names and or Process Properties (Data)."}
+has_complex_gateway_incoming_condition \odomain complex_gateway
+has_complex_gateway_incoming_condition \orange expression
+
+complex_gateway \cisa \o[<=1]{has_complex_gateway_outgoing_condition}
+complex_gateway \cisa (\o[<=1]{has_sequence_flow_source_ref_inv} \cor (\o[>=2]{has_sequence_flow_source_ref_inv} \cand \oexists{has_complex_gateway_outgoing_condition}{expression}))
+has_complex_gateway_outgoing_condition \a{rdfs:label, "Outgoing Condition"} 
+has_complex_gateway_outgoing_condition \a{rdfs:comment, "If there are Multiple 
+	outgoing Sequence Flow, an OutgoingCondition expression MUST be set by 
+	the modeler. This will consist of an expression that can reference
+	(outgoing) Sequence Flow Ids and or Process Properties (Data)."}
+has_complex_gateway_outgoing_condition \odomain complex_gateway
+has_complex_gateway_outgoing_condition \orange expression
+
+% -----------------------------------------------------------------------------
+% Parallel Gateway - pag258, Table B.28
+% -----------------------------------------------------------------------------
+parallel_gateway \a{rdfs:label, "Parallel Gateway"}
+parallel_gateway \a{rdfs:comment, "Parallel Gateway"}
+% No additional parameters defined
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Swimlane - pag260, Table B.28
+% -----------------------------------------------------------------------------
+swimlane \a{rdfs:label, "Swimlane"}
+swimlane \a{rdfs:comment, "There are two ways of grouping the primary modeling
+	elements through \"swimlane\": Pools and Lanes"}
+swimlane \ceq (pool \cor lane)
+pool \cisa (\cnot lane)
+
+% Table B.28
+swimlane \cisa \d[=1]{has_swimlane_name}
+has_swimlane_name \a{rdfs:label, "Name"} 
+has_swimlane_name \a{rdfs:comment, "Name is an attribute that is text 
+	description of the Swimlane."}
+has_swimlane_name \ddomain swimlane
+has_swimlane_name \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Pool - pag260, Table B.29
+% -----------------------------------------------------------------------------
+pool \a{rdfs:label, "Pool"}
+pool \a{rdfs:comment, "A Pool represents a Participant in a Process. It is
+                      also acts as a \"swimlane\" and a graphical container
+                      for partitioning a set of activities from other Pools,
+                      usually in the context of B2B situations."}
+
+pool \cisa \o[<=1]{has_pool_process_ref}
+has_pool_process_ref \a{rdfs:label, "ProcessRef"} 
+has_pool_process_ref \a{rdfs:comment, "The ProcessRef attribute defines the 
+	Process that is contained within the Pool. Each Pool MAY have a Process.
+	The attributes for a Process can be found in \"These attributes are used 
+	for Graphical Elements (which are Flow Objects (Section B.4,\"Common Flow
+	Object Attributes,\" on page 243), Connecting Objects (Section B.10, 
+	\"Graphical Connecting Objects,\" on page 263), Swimlanes (Section B.8, 
+	\"Swimlanes (Pools and Lanes),\" on page 259), and Artifacts (Section B.9,
+	\"Artifacts,\" on page 260)), and Supporting Elements (Section B.11,
+	\"Supporting Elements,\" on page 266). on page 241.\""}
+has_pool_process_ref \odomain pool
+has_pool_process_ref \orange process
+
+pool \cisa \o[=1]{has_pool_participant_ref}
+has_pool_participant_ref \a{rdfs:label, "ParticipantRef"} 
+has_pool_participant_ref \a{rdfs:comment, "The Modeler MUST define the 
+	Participant for a Pool. The Participant can be either a Role or an
+	Entity. The attributes for a Participant can be found in \"Participant on
+	page 276.\""}
+has_pool_participant_ref \odomain pool
+has_pool_participant_ref \orange participant
+
+% Ci serve la condizione nel commento "If there is only one Lane, then that Lane shares the name of the Pool and only the Pool name is displayed. If there is more than one Lane, then each Lane has to have its own name and all names are displayed."?
+pool \cisa \o[>=1]{has_pool_lanes}
+has_pool_lanes \a{rdfs:label, "Lanes"} 
+has_pool_lanes \a{rdfs:comment, "There MUST one or more Lanes within a Pool. If 
+	there is only one Lane, then that Lane shares the name of the Pool and 
+	only the Pool name is displayed. If there is more than one Lane, then 
+	each Lane has to have its own name and all names are displayed. The 
+	attributes for a Lane can be found in \"Lane on page 89.\""}
+has_pool_lanes \odomain pool
+has_pool_lanes \orange lane
+
+% DEFAULT_VALUE: True
+% Ci serve la condizione nel commento "This attribute defines if the rectangular boundary for the Pool is visible. Only one Pool in the Diagram MAY have the attribute set to False."?
+pool \cisa \d[=1]{has_pool_boundary_visible}
+has_pool_boundary_visible \a{rdfs:label, "boundary_visible"} 
+has_pool_boundary_visible \a{rdfs:comment, "This attribute defines if the 
+	rectangular boundary for the Pool is visible. Only one Pool in the 
+	Diagram MAY have the attribute set to False."}
+has_pool_boundary_visible \ddomain pool
+has_pool_boundary_visible \drange xsd:boolean
+
+% DEFAULT_VALUE: False
+% Ci serve la condizione nel commento "This attribute defines if the Pool is the "main" Pool or the focus of the diagram. Only one Pool in the Diagram MAY have the attribute set to True."?
+pool \cisa \d[=1]{has_pool_main_pool}
+has_pool_main_pool \a{rdfs:label, "main_pool"} 
+has_pool_main_pool \a{rdfs:comment, "This attribute defines if the Pool is the 
+	\"main\" Pool or the focus of the diagram. Only one Pool in the Diagram 
+	MAY have the attribute set to True."}
+has_pool_main_pool \ddomain pool
+has_pool_main_pool \drange xsd:boolean
+
+% -----------------------------------------------------------------------------
+% Lane - pag260, Table B.30
+% -----------------------------------------------------------------------------
+lane \a{rdfs:label, "Lane"}
+lane \a{rdfs:comment, "A Lane is a sub-partition within a Pool and will extend 
+	the entire length of the Pool, either vertically or horizontally. Lanes 
+	are used to organize and categorize activities."}
+		      
+has_lane_lanes \a{rdfs:label, "Lanes"} 
+has_lane_lanes \a{rdfs:comment, "This attribute identifies any Lanes that are 
+	nested within the current Lane."}
+has_lane_lanes \odomain lane
+has_lane_lanes \orange lane
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Artifact - pag260, Table B.31, Figure B.6
+% -----------------------------------------------------------------------------
+artifact \a{rdfs:label, "Artifact"}
+artifact \a{rdfs:comment, "Artifacts are used to provide additional information 
+	about the Process. There are three standardized Artifacts, but modelers
+	or modeling tools are free to add as many Artifacts as required. There 
+	may be addition BPMN efforts to standardize a larger set of Artifacts 
+	for general use or for vertical markets. The current set of Artifacts 
+	include: Data Object, Group, Annotation"}
+
+artifact \ceq \corof{data_object, group, annotation}
+data_object \cisa (\cnot group)
+data_object \cisa (\cnot annotation)
+group \cisa (\cnot annotation)
+
+% Table B.31
+artifact \cisa \o[=1]{has_artifact_type}
+has_artifact_type \a{rdfs:label, "Name"} 
+has_artifact_type \a{rdfs:comment, "The ArtifactType MAY be set to DataObject, 
+	Group, or Annotation. 
+	The ArtifactType list MAY be extended to include new types."}
+has_artifact_type \odomain artifact
+has_artifact_type \orange artifact_types
+
+artifact_types \ceq \ooneof{data_object_artifact_type, group_artifact_type, annotation_artifact_type}
+
+data_object_artifact_type \a{rdfs:label, "Data Object"}
+group_artifact_type \a{rdfs:label, "Group"}
+annotation_artifact_type \a{rdfs:label, "Annotation"}
+
+data_object \ceq (artifact \cand \ohasvalue{has_artifact_type}{data_object_artifact_type})
+group \ceq (artifact \cand \ohasvalue{has_artifact_type}{group_artifact_type})
+annotation \ceq (artifact \cand \ohasvalue{has_artifact_type}{annotation_artifact_type})
+
+% -----------------------------------------------------------------------------
+% Data Object - pag262, Table B.32
+% -----------------------------------------------------------------------------
+data_object \a{rdfs:label, "Data Object"}
+data_object \a{rdfs:comment, "Data Objects are considered Artifacts because they
+	do not have any direct effect on the Sequence Flow or Message Flow of 
+	the Process, but they do provide information about what activities 
+	require to be performed and/or what they produce."}
+
+data_object \cisa \d[=1]{has_data_object_name}
+has_data_object_name \a{rdfs:label, "Name"} 
+has_data_object_name \a{rdfs:comment, "Name is an attribute that is text 
+	description of the object."}
+has_data_object_name \ddomain data_object
+has_data_object_name \drange xsd:string
+
+data_object \cisa \d[<=1]{has_data_object_state}
+has_data_object_state \a{rdfs:label, "State"} 
+has_data_object_state \a{rdfs:comment, "State is an optional attribute that 
+	indicates the impact the Process has had on the Data Object. Multiple 
+	Data Objects with the same name MAY share the same state within one 
+	Process."}
+has_data_object_state \ddomain data_object
+has_data_object_state \drange xsd:string
+
+has_data_object_properties \a{rdfs:label, "Properties"} 
+has_data_object_properties \a{rdfs:comment, "Modeler-defined Properties MAY be 
+	added to a Data Object. The fully delineated name of these properties 
+	are \"process name.task name.property name\" (e.g., 
+	\"Add Customer.Review Credit Report.Score\"). Further details about the
+	definition of a Property can be found in \"Property on page 276.\""}
+has_data_object_properties \odomain data_object
+has_data_object_properties \orange property
+
+% -----------------------------------------------------------------------------
+% Annotation (aka Text Annotation) - pag262, Table B.33
+% -----------------------------------------------------------------------------
+annotation \a{rdfs:label, "Annotation"}
+annotation \a{rdfs:label, "Text Annotation"}
+annotation \a{rdfs:comment, "Text Annotations are a mechanism for a modeler to
+	(attached with an provide additional information for the reader of a 
+	Association) BPMN Diagram."}
+
+annotation \cisa \d[=1]{has_annotation_text}
+has_annotation_text \a{rdfs:label, "Text"} 
+has_annotation_text \a{rdfs:comment, "Text is an attribute that is text that 
+	the modeler wishes to communicate to the reader	of the Diagram."}
+has_annotation_text \ddomain annotation
+has_annotation_text \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Group - pag262, Table B.34
+% -----------------------------------------------------------------------------
+group \a{rdfs:label, "Group"}
+group \a{rdfs:comment, "A grouping of activities that does not affect the 
+	Sequence Flow. The grouping can be used for documentation or analysis 
+	purposes. Groups can also be used to identify the activities of a
+	distributed transaction that is shown across Pools."}
+
+group \cisa \o[=1]{has_group_category_ref}
+has_group_category_ref \a{rdfs:label, "CategoryRef"} 
+has_group_category_ref \a{rdfs:comment, "CategoryRef specifies the Category that
+	the Group represents (Further details about the definition of a Category
+	can be found in \"Category on page 269.\"). The name of the Category 
+	provides the label for the Group. The graphical elements within the 
+	boundaries of the Group will be assigned the Category."}
+has_group_category_ref \odomain group
+has_group_category_ref \orange category
+
+has_group_graphical_element \a{rdfs:label, "GraphicalElement"} 
+has_group_graphical_element \a{rdfs:comment, "The GraphicalElements attribute 
+	identifies all of the graphical elements (e.g., Events, Activities, 
+	Gateways, and Artifacts) that are within the boundaries of the Group."}
+has_group_graphical_element \odomain group
+has_group_graphical_element \orange graphical_element
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Connecting Object - pag264, Table B.35, Figure B.7
+% -----------------------------------------------------------------------------
+connecting_object \a{rdfs:label, "Connecting object"}
+connecting_object \a{rdfs:comment, "There are three ways of connecting the Flow 
+	Objects to each other or other information. There are three Connecting
+	Objects: Sequence Flow, Message Flow, and Association"}
+
+connecting_object \ceq \corof{sequence_flow, message_flow, association}
+sequence_flow \cisa (\cnot message_flow)
+sequence_flow \cisa (\cnot association)
+message_flow \cisa (\cnot association)
+
+connecting_object \cisa \d[<=1]{has_connecting_object_name}
+has_connecting_object_name \a{rdfs:label, "Name"} 
+has_connecting_object_name \a{rdfs:comment, "Name is an attribute that is text 
+	description of the object."} 
+has_connecting_object_name \ddomain connecting_object
+has_connecting_object_name \drange xsd:string
+
+connecting_object \cisa \o[=1]{has_connecting_object_source_ref}
+has_connecting_object_source_ref \a{rdfs:label, "SourceRef"} 
+has_connecting_object_source_ref \a{rdfs:comment, "SourceRef is an attribute 
+	that identifies which Graphical Element the Connecting Object is 
+	connected from. Note: there are restrictions as to what objects Sequence
+	Flow and Message Flow can connect. Refer to the Sequence Flow 
+	Connections section and the Message Flow Connections section for each 
+	Flow Object, Swimlane, and Artifact."} 
+has_connecting_object_source_ref \odomain connecting_object
+has_connecting_object_source_ref \orange graphical_element
+
+connecting_object \cisa \o[=1]{has_connecting_object_target_ref}
+has_connecting_object_target_ref \a{rdfs:label, "TargetRef"} 
+has_connecting_object_target_ref \a{rdfs:comment, "Target is an attribute that 
+	identifies which Graphical Element the Connecting Object is connected 
+	to. Note: there are restrictions as to what objects Sequence Flow and
+	Message Flow can connect. Refer to the Sequence Flow Connections section
+	and the Message Flow Connections section for each Flow Object, Swimlane,
+	and Artifact."} 
+has_connecting_object_target_ref \odomain connecting_object
+has_connecting_object_target_ref \orange graphical_element
+
+% Inverse property of "has_connecting_object_source_ref" and "has_connecting_object_target_ref"
+has_connecting_object_source_ref_inv \oinv has_connecting_object_source_ref
+has_connecting_object_target_ref_inv \oinv has_connecting_object_target_ref
+
+
+% -----------------------------------------------------------------------------
+% Sequence Flow - pag264, Table B.36
+% -----------------------------------------------------------------------------
+sequence_flow \a{rdfs:label, "Sequence Flow"}
+sequence_flow \a{rdfs:comment, "A Sequence Flow is used to show the order that
+              activities will be performed in a Process."}
+
+% assiomi espressi nel commento aggiunti in fondo
+% DEFAULT_VALUE: Expression
+sequence_flow \cisa \o[=1]{has_sequence_flow_condition_type}
+has_sequence_flow_condition_type \a{rdfs:label, "Condition Type"} 
+has_sequence_flow_condition_type \a{rdfs:comment, "By default, the ConditionType
+	of a Sequence Flow is None. This means that there is no evaluation at 
+	runtime to determine whether or not the Sequence Flow will be used. Once
+	a Token is ready to traverse the Sequence Flow (i.e., the Source is an
+	activity that has completed), then the Token will do so. The normal, 
+	uncontrolled use of Sequence Flow, in a sequence of activities, will 
+	have a None ConditionType (see Figure 10.1). A None ConditionType MUST 
+	NOT be used if the Source of the Sequence Flow is an Exclusive 
+	Data-Based or Inclusive Gateway. 
+	The ConditionType attribute MAY be set to Expression if the Source of 
+	the Sequence Flow is a Task, a Sub-Process, or a Gateway of type 
+	Exclusive-Data-Based or Inclusive.
+	If the ConditionType attribute is set to Expression, then a condition 
+	marker SHALL be added to the line if the Sequence Flow is outgoing from 
+	an activity (see Figure 10.2). However, a condition indicator MUST NOT 
+	be added to the line if the Sequence Flow is outgoing from a Gateway.
+	An Expression ConditionType MUST NOT be used if the Source of the 
+	Sequence Flow is an Event-Based Exclusive Gateway, a Complex Gateway, a 
+	Parallel Gateway, a Start Event, or an Intermediate Event. In addition, 
+	an Expression ConditionType MUST NOT be used if the Sequence Flow is 
+	associated with the Default Gate of a Gateway.
+	The ConditionType attribute MAY be set to Default only if the Source of 
+	the Sequence Flow is an activity or an Exclusive Data-Based Gateway. If
+	the ConditionType is Default, then the Default marker SHALL be displayed
+	(see Figure 10.3)."} 
+has_sequence_flow_condition_type \odomain sequence_flow
+
+% REVISION 24.09.2010 (START)
+% has_sequence_flow_condition_type \prange \datatype{string}\values{None,Expression,Default}
+sequence_flow_condition_types \ceq \ooneof{None_sequence_flow_condition_type, Expression_sequence_flow_condition_type, Default_sequence_flow_condition_type}
+has_sequence_flow_condition_type \orange sequence_flow_condition_types
+
+\ialldiff{None_sequence_flow_condition_type, Expression_sequence_flow_condition_type, Default_sequence_flow_condition_type}
+
+% sequence_flow \cisa (\not \hasvalue has_sequence_flow_condition_type.\string{Expression}) \cor ((\hasvalue has_sequence_flow_condition_type.\string{Expression}) \cand ((=1) has_sequence_flow_condition_expression))
+sequence_flow \cisa ((\cnot \ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type}) \cor (\ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type} \cand \o[=1]{has_sequence_flow_condition_expression}))
+
+% REVISION 24.09.2010 (END)
+
+
+has_sequence_flow_condition_expression \a{rdfs:label, "Condition Expression"} 
+has_sequence_flow_condition_expression \a{rdfs:comment, "If the ConditionType 
+	attribute is set to Expression, then the ConditionExpression attribute 
+	MUST be defined as a valid expression. The expression will be evaluated
+	at runtime. If the result of the evaluation is TRUE, then a Token will 
+	be generated and will traverse the Sequence--Subject to any constraints 
+	imposed by a Source that is a Gateway."} 
+has_sequence_flow_condition_expression \odomain sequence_flow
+has_sequence_flow_condition_expression \orange expression
+
+% restrict "has_connecting_object_source_ref" and "has_connecting_object_target_ref" to domain Sequence flow
+has_sequence_flow_source_ref \oisa has_connecting_object_source_ref
+has_sequence_flow_target_ref \oisa has_connecting_object_target_ref
+
+has_sequence_flow_source_ref \a{rdfs:label, "SequenceFlow_SourceRef"} 
+has_sequence_flow_source_ref \a{rdfs:comment, "SourceRef is an attribute 
+	that identifies which Graphical Element the Connecting Object is 
+	connected from. Note: there are restrictions as to what objects Sequence
+	Flow and Message Flow can connect. Refer to the Sequence Flow 
+	Connections section and the Message Flow Connections section for each 
+	Flow Object, Swimlane, and Artifact."} 
+has_sequence_flow_source_ref \odomain sequence_flow
+% has_sequence_flow_source_ref \prange graphical_element
+
+has_sequence_flow_target_ref \a{rdfs:label, "SequenceFlow_TargetRef"} 
+has_sequence_flow_target_ref \a{rdfs:comment, "Target is an attribute that 
+	identifies which Graphical Element the Connecting Object is connected 
+	to. Note: there are restrictions as to what objects Sequence Flow and
+	Message Flow can connect. Refer to the Sequence Flow Connections section
+	and the Message Flow Connections section for each Flow Object, Swimlane,
+	and Artifact."} 
+has_sequence_flow_target_ref \odomain sequence_flow
+% has_sequence_flow_target_ref \prange graphical_element
+
+% Inverse property of "has_sequence_flow_source_ref" and "has_sequence_flow_target_ref"
+has_sequence_flow_source_ref_inv \oinv has_sequence_flow_source_ref
+has_sequence_flow_target_ref_inv \oinv has_sequence_flow_target_ref
+
+
+% -----------------------------------------------------------------------------
+% Message Flow - pag265, Table B.37
+% -----------------------------------------------------------------------------
+message_flow \a{rdfs:label, "Message Flow"}
+message_flow \a{rdfs:comment, "A Message Flow is used to show the flow of
+             messages between two participants that are
+             prepared to send and receive them. In BPMN, two
+             separate Pools in the Diagram will represent the two
+             participants (e.g., business entities or business
+             roles)."}
+
+message_flow \cisa \o[<=1]{has_message_flow_message_ref}
+has_message_flow_message_ref \a{rdfs:label, "MessageRef"} 
+has_message_flow_message_ref \a{rdfs:comment, "MessageRef is an optional 
+	attribute that identifies the Message that is being sent. The attributes
+	of a Message can be found in \"Message on page 275.\""} 
+has_message_flow_message_ref \odomain message_flow
+has_message_flow_message_ref \orange message
+
+% restrict "has_connecting_object_source_ref" and "has_connecting_object_target_ref" to domain Message flow
+has_message_flow_source_ref \oisa has_connecting_object_source_ref
+has_message_flow_target_ref \oisa has_connecting_object_target_ref
+
+has_message_flow_source_ref \a{rdfs:label, "MessageFlow_SourceRef"} 
+has_message_flow_source_ref \a{rdfs:comment, "SourceRef is an attribute 
+	that identifies which Graphical Element the Connecting Object is 
+	connected from. Note: there are restrictions as to what objects Sequence
+	Flow and Message Flow can connect. Refer to the Sequence Flow 
+	Connections section and the Message Flow Connections section for each 
+	Flow Object, Swimlane, and Artifact."} 
+has_message_flow_source_ref \odomain message_flow
+% has_message_flow_source_ref \orange graphical_element
+
+has_message_flow_target_ref \a{rdfs:label, "MessageFlow_TargetRef"} 
+has_message_flow_target_ref \a{rdfs:comment, "Target is an attribute that 
+	identifies which Graphical Element the Connecting Object is connected 
+	to. Note: there are restrictions as to what objects Sequence Flow and
+	Message Flow can connect. Refer to the Sequence Flow Connections section
+	and the Message Flow Connections section for each Flow Object, Swimlane,
+	and Artifact."} 
+has_message_flow_target_ref \odomain message_flow
+% has_message_flow_target_ref \orange graphical_element
+
+% Inverse property of "has_message_flow_source_ref" and "has_message_flow_target_ref"
+has_message_flow_source_ref_inv \oinv has_message_flow_source_ref
+has_message_flow_target_ref_inv \oinv has_message_flow_target_ref
+
+% -----------------------------------------------------------------------------
+% Association - pag265, Table B.38
+% -----------------------------------------------------------------------------
+association \a{rdfs:label, "Association"}
+association \a{rdfs:comment, "An Association is used to associate information
+            with Flow Objects. Text and graphical non-Flow
+            Objects can be associated with the Flow Objects."}
+
+% DEFAULT_VALUE: None
+association \cisa \o[=1]{has_association_direction}
+has_association_direction \a{rdfs:label, "Direction"} 
+has_association_direction \a{rdfs:comment, "Direction is an attribute that 
+	defines whether or not the Association shows any directionality with an 
+	arrowhead. The default is None (no arrowhead). A value of One means that
+	the arrowhead SHALL be at the Target Object. A value of Both means that 
+	there SHALL be an arrowhead at both ends of the Association line."} 
+has_association_direction \odomain association
+
+% REVISION 24.09.2010 (START)
+
+has_association_direction \orange association_directions
+association_directions \ceq \ooneof{None_association_direction, One_association_directions, Both_association_directions}
+
+\ialldiff{None_association_direction, One_association_directions, Both_association_directions}
+% has_association_direction \prange \datatype{string}\values{None,One,Both}
+% REVISION 24.09.2010 (END)
+
+% -----------------------------------------------------------------------------
+% Supporting elements - see Appendix B.11 and Fig B.8
+% -----------------------------------------------------------------------------
+supporting_element \a{rdfs:label, "Supporting Element"}
+supporting_element \a{rdfs:comment, "Supporting Element is one of two main 
+	elements that are of type BPMN Element (see Figure B.1). The other is 
+	Graphical Element. There are 16 types, and a few subtypes, of Support 
+	Element. These are: These are: Assignments (see Section B.11.3 on page 
+	269), Categories (see Section B.11.4 on page 269), Entities (see Section
+	B.11.5 on page 269), Event Details (see Section B.11.7 on page 270), 
+	Expressions (see Section B.11.8 on page 273), Gates (see Section B.11.9
+	on page 274), Inputs (see Section B.11.10 on page 274), Messages (see 
+	Section B.11.11 on page 275), Outputs (see Section B.11.13 on page 275),
+	Participants (see Section B.11.14 on page 276), Processes (see Section 
+	B.3 on page 242), Properties (see Section B.11.15 on page 276), Roles 
+	(see Section B.11.16 on page 276), Conditions (see Section B.11.5 on 
+	page 269), Transactions (see Section B.11.19 on page 277), and Web 
+	Services (see Section B.11.20 on page 277)."}
+
+supporting_element \ceq \corof{process, message, condition, event_detail, assignment, expression, property, transaction, gate, web_service, role, entity, participant, category, output_set, input_set}
+
+process \cisa (\cnot message)
+process \cisa (\cnot condition)
+process \cisa (\cnot event_detail)
+process \cisa (\cnot assignment)
+process \cisa (\cnot expression)
+process \cisa (\cnot property)
+process \cisa (\cnot transaction)
+process \cisa (\cnot gate)
+process \cisa (\cnot web_service)
+process \cisa (\cnot role)
+process \cisa (\cnot entity)
+process \cisa (\cnot participant)
+process \cisa (\cnot category)
+process \cisa (\cnot output_set)
+process \cisa (\cnot input_set)
+
+message \cisa (\cnot condition)
+message \cisa (\cnot event_detail)
+message \cisa (\cnot assignment)
+message \cisa (\cnot expression)
+message \cisa (\cnot property)
+message \cisa (\cnot transaction)
+message \cisa (\cnot gate)
+message \cisa (\cnot web_service)
+message \cisa (\cnot role)
+message \cisa (\cnot entity)
+message \cisa (\cnot participant)
+message \cisa (\cnot category)
+message \cisa (\cnot output_set)
+message \cisa (\cnot input_set)
+
+condition \cisa (\cnot event_detail)
+condition \cisa (\cnot assignment)
+condition \cisa (\cnot expression)
+condition \cisa (\cnot property)
+condition \cisa (\cnot transaction)
+condition \cisa (\cnot gate)
+condition \cisa (\cnot web_service)
+condition \cisa (\cnot role)
+condition \cisa (\cnot entity)
+condition \cisa (\cnot participant)
+condition \cisa (\cnot category)
+condition \cisa (\cnot output_set)
+condition \cisa (\cnot input_set)
+
+event_detail \cisa (\cnot assignment)
+event_detail \cisa (\cnot expression)
+event_detail \cisa (\cnot property)
+event_detail \cisa (\cnot transaction)
+event_detail \cisa (\cnot gate)
+event_detail \cisa (\cnot web_service)
+event_detail \cisa (\cnot role)
+event_detail \cisa (\cnot entity)
+event_detail \cisa (\cnot participant)
+event_detail \cisa (\cnot category)
+event_detail \cisa (\cnot output_set)
+event_detail \cisa (\cnot input_set)
+
+assignment \cisa (\cnot expression)
+assignment \cisa (\cnot property)
+assignment \cisa (\cnot transaction)
+assignment \cisa (\cnot gate)
+assignment \cisa (\cnot web_service)
+assignment \cisa (\cnot role)
+assignment \cisa (\cnot entity)
+assignment \cisa (\cnot participant)
+assignment \cisa (\cnot category)
+assignment \cisa (\cnot output_set)
+assignment \cisa (\cnot input_set)
+
+expression \cisa (\cnot property)
+expression \cisa (\cnot transaction)
+expression \cisa (\cnot gate)
+expression \cisa (\cnot web_service)
+expression \cisa (\cnot role)
+expression \cisa (\cnot entity)
+expression \cisa (\cnot participant)
+expression \cisa (\cnot category)
+expression \cisa (\cnot output_set)
+expression \cisa (\cnot input_set)
+
+property \cisa (\cnot transaction)
+property \cisa (\cnot gate)
+property \cisa (\cnot web_service)
+property \cisa (\cnot role)
+property \cisa (\cnot entity)
+property \cisa (\cnot participant)
+property \cisa (\cnot category)
+property \cisa (\cnot output_set)
+property \cisa (\cnot input_set)
+
+transaction \cisa (\cnot gate)
+transaction \cisa (\cnot web_service)
+transaction \cisa (\cnot role)
+transaction \cisa (\cnot entity)
+transaction \cisa (\cnot participant)
+transaction \cisa (\cnot category)
+transaction \cisa (\cnot output_set)
+transaction \cisa (\cnot input_set)
+
+gate \cisa (\cnot web_service)
+gate \cisa (\cnot role)
+gate \cisa (\cnot entity)
+gate \cisa (\cnot participant)
+gate \cisa (\cnot category)
+gate \cisa (\cnot output_set)
+gate \cisa (\cnot input_set)
+
+web_service \cisa (\cnot role)
+web_service \cisa (\cnot entity)
+web_service \cisa (\cnot participant)
+web_service \cisa (\cnot category)
+web_service \cisa (\cnot output_set)
+web_service \cisa (\cnot input_set)
+
+role \cisa (\cnot entity)
+role \cisa (\cnot participant)
+role \cisa (\cnot category)
+role \cisa (\cnot output_set)
+role \cisa (\cnot input_set)
+
+entity \cisa (\cnot participant)
+entity \cisa (\cnot category)
+entity \cisa (\cnot output_set)
+entity \cisa (\cnot input_set)
+
+participant \cisa (\cnot category)
+participant \cisa (\cnot output_set)
+participant \cisa (\cnot input_set)
+
+category \cisa (\cnot output_set)
+category \cisa (\cnot input_set)
+
+output_set \cisa (\cnot input_set)
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% ArtifactInput B.11.1 pag 268 table B.39
+% -----------------------------------------------------------------------------
+% Al momento questa classe non e' definita come sottoclasse di Supporting Element
+artifact_input \a{rdfs:label, "ArtifactInput"}
+artifact_input \a{rdfs:comment, "artifact_input, which is used in the definition
+	of attributes for all graphical elements."}
+	
+artifact_input \cisa \o[=1]{has_artifact_input_artifact_ref}
+has_artifact_input_artifact_ref \a{rdfs:label, "ArtifactRef"} 
+has_artifact_input_artifact_ref \a{rdfs:comment, "This attribute identifies an 
+	Artifact that will be used as an input to an activity. The identified 
+	Artifact will be part of an InputSet for an activity."}
+has_artifact_input_artifact_ref \orange artifact
+has_artifact_input_artifact_ref \odomain artifact_input
+
+% DEFAULT_VALUE: True
+artifact_input \cisa \d[=1]{has_artifact_input_required_for_start}
+has_artifact_input_required_for_start \a{rdfs:label, "RequiredForStart"} 
+has_artifact_input_required_for_start \a{rdfs:comment, "The default value for 
+	this attribute is True. This means that the Input is required for an 
+	activity to start. If set to False, then the activity MAY start within 
+	the input if it is available, but MAY accept the input (more than once) 
+	after the activity has started. An InputSet may have a some of 
+	ArtifactInputs that have this attribute set to True and some that are 
+	set to False."} 
+has_artifact_input_required_for_start \drange xsd:boolean
+has_artifact_input_required_for_start \ddomain artifact_input
+
+% -----------------------------------------------------------------------------
+% ArtifactOutput B.11.2 pag 268 table B.40
+% -----------------------------------------------------------------------------
+% Al momento questa classe non e' definita come sottoclasse di Supporting Element
+artifact_output \a{rdfs:label, "ArtifactOutput"}
+artifact_output \a{rdfs:comment, "artifact_output, which is used in the 
+	definition of attributes for all graphical elements."}
+	
+artifact_output \cisa \o[=1]{has_artifact_output_artifact_ref}
+has_artifact_output_artifact_ref \a{rdfs:label, "ArtifactRef"} 
+has_artifact_output_artifact_ref \a{rdfs:comment, "This attribute identifies an 
+	Artifact that will be used as an output from an activity.
+	The identified Artifact will be part of an OutputSet for an activity."} 
+has_artifact_output_artifact_ref \orange artifact
+has_artifact_output_artifact_ref \odomain artifact_output
+
+% DEFAULT_VALUE: True
+artifact_output \cisa \d[=1]{has_artifact_output_produce_at_completion}
+has_artifact_output_produce_at_completion \a{rdfs:label, "ProduceAtCompletion"} 
+has_artifact_output_produce_at_completion \a{rdfs:comment, "The default value 
+	for this attribute is True. This means that the Output will be produced 
+	when an activity has been completed. If set to False, then the activity
+	MAY produce the output (more than once) before it has completed. An 
+	OutputSet may have a some of ArtifactOutputs that have this attribute 
+	set to True and some that are set to False."} 
+has_artifact_output_produce_at_completion \drange xsd:boolean
+has_artifact_output_produce_at_completion \ddomain artifact_output
+
+% -----------------------------------------------------------------------------
+% Assignment see page 269 - table B.41
+% -----------------------------------------------------------------------------
+assignment \a{rdfs:label, "Assignment"}
+assignment \a{rdfs:comment, "Assignment, which is used in the definition of 
+	attributes for Process, Activities, Events, Gateways, and Gates, and 
+	which extends the set of common BPMN Element attributes"}
+
+assignment \cisa \o[=1]{has_assignment_to}
+has_assignment_to \a{rdfs:label, "To"}
+has_assignment_to \a{rdfs:comment, "The target for the Assignment MUST be a 
+	Property of the Process or the activity itself."}
+has_assignment_to \odomain assignment
+has_assignment_to \orange property
+
+assignment \cisa \o[=1]{has_assignment_from}
+has_assignment_from \a{rdfs:label, "From"}
+has_assignment_from \a{rdfs:comment, "The Expression MUST be made up of a 
+	combination of Values, Properties, and Attributes, which are separated 
+	by operators such as add or multiply. The expression language is defined
+	in the ExpressionLanguage attribute of the Business Process Diagram - 
+	see \"Business Process Diagram Attributes on page 241.\""}
+has_assignment_from \odomain assignment
+has_assignment_from \orange expression
+
+% DEFAULT_VALUE: Start
+assignment \cisa \o[<=1]{has_assignment_assign_time}
+has_assignment_assign_time \a{rdfs:label, "AssignTime"} 
+has_assignment_assign_time \a{rdfs:comment, "An Assignment MAY have a AssignTime
+	setting. If the Object is an activity (Task, Sub-Process, or Process), 
+	then the Assignment MUST have an AssignTime. A value of Start means that
+	the assignment SHALL occur at the start of the activity. This can be 
+	used to assign the higher-level (global) Properties of the Process to 
+	the (local) Properties of the activity as an input to the activity. A 
+	value of End means that the assignment SHALL occur at the end of the 
+	activity. This can be used to assign the (local) Properties of the 
+	activity to the higher-level (global) Properties of the Process as an 
+	output to the activity."} 
+has_assignment_assign_time \odomain assignment
+
+% REVISION 24.09.2010 (START)
+
+has_assignment_assign_time \orange assignment_assign_time
+assignment_assign_time \ceq \ooneof{Start_assignment_assign_time, End_assignment_assign_time}
+
+Start_assignment_assign_time \idiff End_assignment_assign_time
+
+% has_assignment_assign_time \prange \datatype{string}\values{Start,End}
+% REVISION 24.09.2010 (END)
+
+% -----------------------------------------------------------------------------
+% Category - see page 269 - table B.42
+% -----------------------------------------------------------------------------
+category \a{rdfs:label, "Category"}
+category \a{rdfs:comment, "Category, which is used in the definition of 
+	attributes for all BPMN elements, and which extends the set of common 
+	BPMN Element attributes (see Table B.2). Since a Category is also a 
+	BPMN element, a Category can have Categories to create a hierarchical 
+	structure of Categories."}
+
+category \cisa \d[=1]{has_category_name}
+has_category_name \a{rdfs:label, "Name"}
+has_category_name \a{rdfs:comment, "Name is an attribute that is text 
+	description of the Category and is used to visually distinguish the 
+	category."}
+has_category_name \ddomain category
+has_category_name \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Condition page 269 - table B.43
+% -----------------------------------------------------------------------------
+condition \a{rdfs:label, "Condition"} 
+condition \a{rdfs:comment, "Condition, which is used in the definition of 
+	attributes for Start Event and Intermediate Event, and which extends the
+	set of common BPMN Element attributes (see Table B.2)."} 
+
+condition \cisa (\d[=1]{has_condition_name} \cor \o[=1]{has_condition_condition_expression})
+has_condition_name \a{rdfs:label, "Name"}
+has_condition_name \a{rdfs:comment, "Name is an optional attribute that is text 
+	description of the Condition. If a Name is not entered, then a 
+	ConditionExpression MUST be entered."}
+has_condition_name \ddomain condition
+has_condition_name \drange xsd:string
+
+has_condition_condition_expression \a{rdfs:label, "ConditionExpression"}
+has_condition_condition_expression \a{rdfs:comment, "A ConditionExpression MAY 
+	be entered. In some cases the Condition itself will be stored and 
+	maintained in a separate application (e.g., a Rules Engine). If a 
+	ConditionExpression is not entered, then a Name MUST be entered. The 
+	attributes of an Expression can be found in \"Expression on page 273.\""}
+has_condition_condition_expression \odomain condition
+has_condition_condition_expression \orange expression
+
+% -----------------------------------------------------------------------------
+% Entity - see page 270 - table B.44
+% -----------------------------------------------------------------------------
+entity \a{rdfs:label, "Entity"}
+entity \a{rdfs:comment, "Entity, which is used in the definition of attributes 
+	for a Participant, and which extends the set of common BPMN Element 
+	attributes (see Table B.2)."}
+
+entity \cisa \d[=1]{has_entity_name}
+has_entity_name \a{rdfs:label, "Name"}
+has_entity_name \a{rdfs:comment, "Name is an attribute that is text description 
+	of the Entity."}
+has_entity_name \ddomain entity
+has_entity_name \drange xsd:string
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Event Detail - see page 270 - table B.45 & Figure B.2
+% -----------------------------------------------------------------------------
+event_detail \a{rdfs:label, "Event Detail"}
+event_detail \a{rdfs:comment, "present the attributes common to all Event 
+	Details and the specific attributes for the Event Details that have 
+	additional attributes. Note that the Cancel and Terminate Event Details
+	do not have additional attributes"}
+
+event_detail_types \ceq \ooneof{cancel_event_detail_type, compensation_event_detail_type, link_event_detail_type, error_event_detail_type, conditional_event_detail_type, message_event_detail_type, terminate_event_detail_type, timer_event_detail_type, signal_event_detail_type}
+
+% DEFAULT_VALUE: message_event_detail_type
+event_detail  \cisa \o[=1]{has_event_detail_type}
+has_event_detail_type \a{rdfs:label, "Event Detail Type"}
+has_event_detail_type \a{rdfs:comment, "The EventDetailType attribute defines 
+	the type of trigger expected for an Event. The set of types includes 
+	Message, Timer, Error, Conditional, Link, Signal, Compensate,
+	Cancel, and Terminate. The EventTypes (Start, Intermediate, and End) 
+	will each have a subset of the EventDetailTypes that can be used.
+	The EventDetailType list MAY be extended to include new types. These new
+	types MAY have a new modeler- or tool-defined Marker to fit within the 
+	boundaries of the Event."}
+has_event_detail_type \odomain event_detail
+has_event_detail_type \orange event_detail_types
+
+cancel_event_detail_type \a{rdfs:label, "cancel"}
+compensation_event_detail_type \a{rdfs:label, "compensation"}
+link_event_detail_type \a{rdfs:label, "link"}
+error_event_detail_type \a{rdfs:label, "error"}
+conditional_event_detail_type \a{rdfs:label, "conditional"}
+message_event_detail_type \a{rdfs:label, "message"}
+terminate_event_detail_type \a{rdfs:label, "terminate"}
+timer_event_detail_type \a{rdfs:label, "timer"}
+signal_event_detail_type \a{rdfs:label, "signal"}
+
+\ialldiff{cancel_event_detail_type, compensation_event_detail_type, link_event_detail_type, error_event_detail_type, conditional_event_detail_type, message_event_detail_type, terminate_event_detail_type, timer_event_detail_type, signal_event_detail_type}
+
+% -----------------------------------------------------------------------------
+% Cancel Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+cancel_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{cancel_event_detail_type})
+cancel_event_detail \a{rdfs:label, "Cancel Event Detail"}
+
+% -----------------------------------------------------------------------------
+% Conditional Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+conditional_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{conditional_event_detail_type})
+conditional_event_detail \a{rdfs:label, "Conditional Event Detail"}
+
+conditional_event_detail \cisa \o[=1]{has_conditional_event_condition_ref}
+has_conditional_event_condition_ref \a{rdfs:label, "ConditionRef"}
+has_conditional_event_condition_ref \a{rdfs:comment, "If the Trigger is 
+	Conditional, then a Condition MUST be entered. The attributes of
+	a Condition can be found in Section B.11.5, \"Condition,\" on page 269."}
+has_conditional_event_condition_ref \odomain conditional_event_detail
+has_conditional_event_condition_ref \orange condition
+
+% -----------------------------------------------------------------------------
+% Compensation Event Detail (EventDetail) - see page 271 - Table B.47
+% -----------------------------------------------------------------------------
+compensation_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{compensation_event_detail_type})
+compensation_event_detail \a{rdfs:label, "Compensation Event Detail"}
+
+compensation_event_detail \cisa \o[<=1]{has_activity_ref}
+has_activity_ref \a{rdfs:label, "ActivityRef"}
+has_activity_ref \a{rdfs:comment, "For an End Event:
+	If the Result is a Compensation, then the Activity that needs to be 
+	compensated MAY be supplied. If an Activity is not supplied, then the 
+	Event broadcast to all completed activities in the Process Instance.
+	For an Intermediate Event within Normal Flow:
+	If the Trigger is a Compensation, then the Activity that needs to be 
+	compensated MAY be supplied. If an Activity is not supplied, then the 
+	Event broadcast to all completed activities in the Process Instance. 
+	This \"throws\" the compensation.
+	For an Intermediate Event attached to the boundary of an Activity:
+	This Event \"catches\" the compensation. No further information is 
+	required. The Activity the Event is attached to will provide the Id 
+	necessary to match the compensation event with the event that \"threw\" 
+	the compensation or the compensation will be a broadcast."}
+has_activity_ref \odomain compensation_event_detail
+has_activity_ref \orange activity
+
+% -----------------------------------------------------------------------------
+% Error Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+error_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{error_event_detail_type})
+error_event_detail \a{rdfs:label, "Error Event Detail"}
+
+% vedi assiomi aggiunti in fondo 9.3.5.4
+error_event_detail \cisa \d[<=1]{has_error_detail_error_code}
+has_error_detail_error_code \a{rdfs:label, "ErrorCode"} 
+has_error_detail_error_code \a{rdfs:comment, "For an End Event:
+	If the Result is an Error, then the ErrorCode MUST be supplied.This 
+	\"throws\" the error.
+	For an Intermediate Event within Normal Flow:
+	If the Trigger is an Error, then the ErrorCode MUST be entered. This 
+	\"throws\" the error.
+	For an Intermediate Event attached to the boundary of an Activity:
+	If the Trigger is an Error, then the ErrorCode MAY be entered. This 
+	Event \"catches\" the error. If there is no ErrorCode, then any error 
+	SHALL trigger the Event. If there is an ErrorCode, then only an error 
+	that matches the ErrorCode SHALL trigger the Event."}
+has_error_detail_error_code \ddomain error_event_detail
+has_error_detail_error_code \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Link Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+link_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{link_event_detail_type})
+link_event_detail \a{rdfs:label, "Link Event Detail"}
+
+link_event_detail \cisa \d[=1]{has_link_event_name}
+has_link_event_name \a{rdfs:label, "Name"} 
+has_link_event_name \a{rdfs:comment, "If the Trigger is a Link, then the Name 
+	MUST be entered."}
+has_link_event_name \ddomain link_event_detail
+has_link_event_name \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Message Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+message_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{message_event_detail_type})
+message_event_detail \a{rdfs:label, "Message Event Detail"}
+
+message_event_detail \cisa \o[=1]{has_message_event_message_ref}
+has_message_event_message_ref \a{rdfs:label, "MessageRef"}
+has_message_event_message_ref \a{rdfs:comment, "If the EventDetailType is a 
+	MessageRef, then the a Message MUST be supplied. The attributes of a 
+	Message can be found in Section B.11.11, \"Message,\" on page 275."}
+has_message_event_message_ref \odomain message_event_detail
+has_message_event_message_ref \orange message
+
+% DEFAULT_VALUE: Web_Service
+message_event_detail \cisa \o[=1]{has_message_event_implementation}
+has_message_event_implementation \a{rdfs:label, "Implementation"}
+has_message_event_implementation \a{rdfs:comment, "This attribute specifies the
+	technology that will be used to send or receive the message. A Web 
+	service is the default technology."}
+has_message_event_implementation \odomain message_event_detail
+
+% REVISION 24.09.2010 (START)
+
+has_message_event_implementation \orange message_event_implementation_implementations
+message_event_implementation_implementations \ceq \ooneof{Web_Service_message_event_implementation, Other_message_event_implementation, Unspecified_message_event_implementation}
+
+\ialldiff{Web_Service_message_event_implementation, Other_message_event_implementation, Unspecified_message_event_implementation}
+
+% has_message_event_implementation \prange \datatype{string}\values{Web_Service,Other,Unspecified}
+% REVISION 24.09.2010 (END)
+% -----------------------------------------------------------------------------
+% Signal Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+signal_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{signal_event_detail_type})
+signal_event_detail \a{rdfs:label, "Signal Event Detail"}
+
+signal_event_detail \cisa \o[=1]{has_signal_event_signal_ref}
+has_signal_event_signal_ref \a{rdfs:label, "SignalRef"}
+has_signal_event_signal_ref \a{rdfs:comment, "If the Trigger is a Signal, then 
+	a Signal Shall be entered. The attributes of a Signal can be found in 
+	Section B.11.17, \"Signal,\" on page 277."}
+has_signal_event_signal_ref \odomain signal_event_detail
+has_signal_event_signal_ref \orange signal
+
+% -----------------------------------------------------------------------------
+% Terminate Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+terminate_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{terminate_event_detail_type})
+terminate_event_detail \a{rdfs:label, "Terminate Event Detail"}
+
+% -----------------------------------------------------------------------------
+% Timer Event Detail (EventDetail) - see page 244 - Figure B.2
+% -----------------------------------------------------------------------------
+timer_event_detail \ceq (event_detail \cand \ohasvalue{has_event_detail_type}{timer_event_detail_type})
+timer_event_detail \a{rdfs:label, "Timer Event Detail"}
+
+timer_event_detail \cisa (\o[=1]{has_timer_event_time_date} \cor \o[=1]{has_timer_event_time_cycle})
+
+has_timer_event_time_date \a{rdfs:label, "TimeDate"}
+has_timer_event_time_date \a{rdfs:comment, "If the Trigger is a Timer, then a 
+	TimeDate MAY be entered. If a TimeDate is not entered, then a TimeCycle
+	MUST be entered (see the attribute below). The attributes of a 
+	TimeDateExpression can be found in Section B.11.18 on page 277"}
+has_timer_event_time_date \odomain timer_event_detail
+has_timer_event_time_date \orange time_date_expression
+
+has_timer_event_time_cycle \a{rdfs:label, "TimeCycle"}
+has_timer_event_time_cycle \a{rdfs:comment, "If the Trigger is a Timer, then a 
+	TimeCycle MAY be entered. If a TimeCycle is not entered, then a 
+	TimeDate MUST be entered (see the attribute above)."}
+has_timer_event_time_cycle \odomain timer_event_detail
+has_timer_event_time_cycle \orange time_date_expression
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Expression - see page 273 - table B.53
+% -----------------------------------------------------------------------------
+expression \a{rdfs:label, "Expression"}
+expression \a{rdfs:comment, "Expression, which is used in the definition of 
+	attributes for Start Event, Intermediate Event, Activity, Complex 
+	Gateway, and Sequence Flow, and which extends the set of common BPMN 
+	Element attributes (see Table B.2)."}
+
+expression \cisa \d[=1]{has_expression_expression_body}
+has_expression_expression_body \a{rdfs:label, "ExpressionBody"}
+has_expression_expression_body \a{rdfs:comment, "An ExpressionBody MUST be 
+	entered to provide the text of the expression, which will be written in 
+	the language defined by the ExpressionLanguage attribute."}
+has_expression_expression_body \ddomain expression
+has_expression_expression_body \drange xsd:string
+
+expression \cisa \d[=1]{has_expression_expression_language}
+has_expression_expression_language \a{rdfs:label, "ExpressionLanguage"}
+has_expression_expression_language \a{rdfs:comment, "A Language MUST be provided
+	to identify the language of the ExpressionBody. The value of the 
+	ExpressionLanguage should follow the naming conventions for the version 
+	of the specified language."}
+has_expression_expression_language \ddomain expression
+has_expression_expression_language \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% TimeDate Expression (Expression) - see page 273 - table B.53
+% -----------------------------------------------------------------------------
+time_date_expression \cisa expression
+
+time_date_expression \a{rdfs:label, "TimeDate Expression"}
+time_date_expression \a{rdfs:comment, "The TimeDateExpression supporting 
+	element is a sub-type of the Expression Element (Expression on page 273)
+	and uses all the attributes of the Expression Element."}
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% Gate see page 274 - table B.54
+% -----------------------------------------------------------------------------
+gate \a{rdfs:label, "Gate"} 
+gate \a{rdfs:comment, "Gate, which is used in the definition of attributes for 
+	Gateways, and which extends the set of common BPMN Element attributes 
+	(see Table B.2)."} 
+
+gate \cisa \o[=1]{has_gate_outgoing_sequence_flow_ref}
+has_gate_outgoing_sequence_flow_ref \a{rdfs:label, "OutgoingSequenceFlowRef"}
+has_gate_outgoing_sequence_flow_ref \a{rdfs:comment, "Each Gate MUST 
+	have an associated (outgoing) Sequence Flow. The attributes of a 
+	Sequence Flow can be found in the Section B.10.2 on page 264.
+	For Exclusive Event-Based, Complex, and Parallel Gateways:
+		The Sequence Flow MUST have its Condition attribute set to None 
+		(there is not an evaluation of a condition expression).
+	For Exclusive Data-Based, and Inclusive Gateways:
+		The Sequence Flow MUST have its Condition attribute set to 
+		Expression and MUST have a valid ConditionExpression. The 
+		ConditionExpression MUST be unique for all the Gates within the 
+		Gateway. If there is only one Gate (i.e., the Gateway is acting 
+		only as a Merge), then Sequence Flow MUST have its Condition 
+		set to None.
+	For DefaultGates:
+		The Sequence Flow MUST have its Condition attribute set to 
+		Otherwise"}
+has_gate_outgoing_sequence_flow_ref \odomain gate
+has_gate_outgoing_sequence_flow_ref \orange sequence_flow
+
+has_gate_assignments \a{rdfs:label, "Assignments"}
+has_gate_assignments \a{rdfs:comment, "One or more assignment expressions MAY be
+	made for each Gate. The Assignment SHALL be performed when the Gate is 
+	selected. The Assignment is defined in the Section B.11.3 on page 269."}
+has_gate_assignments \odomain gate
+has_gate_assignments \orange assignment
+
+% -----------------------------------------------------------------------------
+% InputSet see page 274 - table B.55
+% -----------------------------------------------------------------------------
+input_set \a{rdfs:label, "Input Set"}
+input_set \a{rdfs:comment, "InputSet, which is used in the definition of common
+	attributes for Activities and for attributes of a Process, and which 
+	extends the set of common BPMN Element attributes (see Table B.2)."}
+
+input_set \cisa (\oexists{has_input_set_artifact_input}{artifact_input} \cor \oexists{has_input_set_property_input}{property})
+has_input_set_artifact_input \a{rdfs:label, "ArtifactInput"}
+has_input_set_artifact_input \a{rdfs:comment, "Zero or more ArtifactInputs MAY 
+	be defined for each InputSet. For the combination of ArtifactInputs and 
+	PropertyInputs, there MUST be at least one item defined for the 
+	InputSet. An ArtifactInput is an Artifact, usually a Data Object. Note 
+	that the Artifacts MAY also be displayed on the diagram and MAY be 
+	connected to the activity through an Association--however, it is not 
+	required for them to be displayed. Further details about the definition
+	of an ArtifactInput can be found in Section B.11.1 on page 268."}
+has_input_set_artifact_input \odomain input_set
+has_input_set_artifact_input \orange artifact_input
+
+has_input_set_property_input \a{rdfs:label, "PropertyInput"}
+has_input_set_property_input \a{rdfs:comment, "Zero or more PropertyInputs MAY 
+	be defined for each InputSet. For the combination of ArtifactInputs and
+	PropertyInputs, there MUST be at least one item defined for the 
+	InputSet."}
+has_input_set_property_input \odomain input_set
+has_input_set_property_input \orange property
+
+% -----------------------------------------------------------------------------
+% Message - see page 275 - table B.56
+% -----------------------------------------------------------------------------
+message \a{rdfs:label, "Message"}
+message \a{rdfs:comment, "Message, which is used in the definition of attributes
+	for a Start Event, End Event, Intermediate Event, Task, and Message 
+	Flow, and which extends the set of common BPMN Element attributes (see 
+	Table B.2)"}
+
+message \cisa \d[=1]{has_message_name}
+has_message_name \a{rdfs:label, "Name"}
+has_message_name \a{rdfs:comment, "Name is an attribute that is text description
+	of the Message."}
+has_message_name \ddomain message
+has_message_name \drange xsd:string
+
+has_message_property \a{rdfs:label, "Property"}
+has_message_property \a{rdfs:comment, "Multiple Properties MAY entered for the 
+	Message. The attributes of a Property can be found in \"Property on 
+	page 276.\""}
+has_message_property \odomain message
+has_message_property \orange property
+
+message \cisa \o[=1]{has_message_from_ref}
+has_message_from_ref \a{rdfs:label, "FromRef"}
+has_message_from_ref \a{rdfs:comment, "This defines the source of the Message. 
+	The attributes for a Participant can be found in \"Participant on page 
+	276.\""}
+has_message_from_ref \odomain message
+has_message_from_ref \orange participant
+
+message \cisa \o[=1]{has_message_to_ref}
+has_message_to_ref \a{rdfs:label, "ToRef"}
+has_message_to_ref \a{rdfs:comment, "This defines the source of the Message. 
+	The attributes for a Participant can be found in \"Participant on page 
+	276.\""}
+has_message_to_ref \odomain message
+has_message_to_ref \orange participant
+
+% -----------------------------------------------------------------------------
+% Object B.11.12 pag 275
+% -----------------------------------------------------------------------------
+% Al momento questa classe non e' definita come sottoclasse di Supporting Element
+object \a{rdfs:label, "Object"}
+object \a{rdfs:comment, "Object, which is used in the definition of attributes 
+	for all graphical elements."}
+	
+% Deve essere unico per ogni oggetto	
+object \cisa \d[=1]{has_object_id}
+has_object_id \a{rdfs:label, "Id"} 
+has_object_id \a{rdfs:comment, "The Id attribute provides a unique identifier 
+	for all objects on a diagram. That is, each object MUST have a different
+	value for the ObjectId attribute."} 
+has_object_id \drange xsd:string
+has_object_id \ddomain object
+
+% -----------------------------------------------------------------------------
+% OutputSet see page 275 - table B.58
+% -----------------------------------------------------------------------------
+output_set \a{rdfs:label, "Output Set"} 
+output_set \a{rdfs:comment, "OutputSet, which is used in the definition of 
+	common attributes for Activities and for attributes of a Process, and 
+	which extends the set of common BPMN Element attributes 
+	(see Table B.2)."} 
+
+output_set \cisa (\oexists{has_output_set_artifact_output}{artifact_output} \cor \oexists{has_output_set_property_output}{property})
+has_output_set_artifact_output \a{rdfs:label, "ArtifactOutput"}
+has_output_set_artifact_output \a{rdfs:comment, "Zero or more ArtifactOutputs 
+	MAY be defined for each InputSet. For the combination of ArtifactOutputs
+	and PropertyOutputs, there MUST be at least one item defined for the 
+	OutputSet. An ArtifactOutput is an Artifact, usually a Data Object. Note
+	that the Artifacts MAY also be displayed on the diagram and MAY be 
+	connected to the activity through an Association--however, it is not
+	required for them to be displayed. Further details about the definition 
+	of an ArtifactOutput can be found in Section B.11.2 on page 268."}
+has_output_set_artifact_output \odomain output_set
+has_output_set_artifact_output \orange artifact_output
+
+has_output_set_property_output \a{rdfs:label, "PropertyOutput"}
+has_output_set_property_output \a{rdfs:comment, "Zero or more PropertyOutputs 
+	MAY be defined for each InputSet. For the combination of ArtifactOutputs
+	and PropertyOutputs, there MUST be at least one item defined for the 
+	OutputSet."}
+has_output_set_property_output \odomain output_set
+has_output_set_property_output \orange property
+
+% -----------------------------------------------------------------------------
+% Participant see page 276 - table B.59
+% -----------------------------------------------------------------------------
+participant \a{rdfs:label, "Participant"}
+participant \a{rdfs:comment, "Participant, which is used in the definition of 
+	attributes for a Pool, Message, and Web service, and which extends the 
+	set of common BPMN Element attributes (see Table B.2)."}
+
+participant \cisa \o[=1]{has_participant_participant_type}
+
+% DEFAULT_VALUE: Role
+has_participant_participant_type \a{rdfs:label, "ParticipantType"} 
+has_participant_participant_type \a{rdfs:comment, ""} 
+has_participant_participant_type \odomain participant
+
+% REVISION 24.09.2010 (START)
+has_participant_participant_type \orange participant_participant_type
+participant_participant_type \ceq \ooneof{Role_participant_type, Entity_participant_type}
+
+Role_participant_type \idiff Entity_participant_type
+% has_participant_participant_type \prange \datatype{string}\values{Role,Entity}
+% participant \cisa (\hasvalue has_participant_participant_type.\string{Role} \cand (=1) has_participant_role_ref) \cor (\hasvalue has_participant_participant_type.\string{Entity} \cand (=1) has_participant_entity_ref)
+participant \cisa ((\ohasvalue{has_participant_participant_type}{Role_participant_type} \cand \o[=1]{has_participant_role_ref}) \cor (\ohasvalue{has_participant_participant_type}{Entity_participant_type} \cand \o[=1]{has_participant_entity_ref}))
+
+
+% REVISION 24.09.2010 (END)
+
+has_participant_role_ref \a{rdfs:label, "RoleRef"}
+has_participant_role_ref \a{rdfs:comment, "If the ParticipantType = Role, then 
+	a Role MUST be identified. The attributes for a Role can be found in 
+	\"Role on page 276.\""}
+has_participant_role_ref \odomain participant
+has_participant_role_ref \orange role
+
+has_participant_entity_ref \a{rdfs:label, "EntityRef"}
+has_participant_entity_ref \a{rdfs:comment, "If the ParticipantType = Entity, 
+	then an Entity MUST be identified. The attributes for an Entity can be 
+	found in \"Condition on page 269.\""}
+has_participant_entity_ref \odomain participant
+has_participant_entity_ref \orange entity
+
+% -----------------------------------------------------------------------------
+% Property - see page 277 - table B.62
+% -----------------------------------------------------------------------------
+property \a{rdfs:label, "Property"}
+property \a{rdfs:comment, "Property, which is used in the definition of 
+	attributes for a Process and common activity attributes, and which
+	extends the set of common BPMN Element attributes (see Table B.2)."}
+
+property \cisa \d[=1]{has_property_name}
+has_property_name \a{rdfs:label, "Name"}
+has_property_name \a{rdfs:comment, "Each Property has a Name (e.g., 
+	name=\"Customer Name\")."}
+has_property_name \ddomain property
+has_property_name \drange xsd:string
+
+property \cisa \d[=1]{has_property_type}
+has_property_type \a{rdfs:label, "Type"}
+has_property_type \a{rdfs:comment, "Each Property has a Type (e.g., 
+	type=\"String\"). Properties may be defined hierarchically."}
+has_property_type \ddomain property
+has_property_type \drange xsd:string
+
+property \cisa \o[<=1]{has_property_value}
+has_property_value \a{rdfs:label, "Value"}
+has_property_value \a{rdfs:comment, "Each Property MAY have a Value specified."}
+has_property_value \odomain property
+has_property_value \orange expression
+
+% DEFAULT_VALUE: False
+property \cisa \d[<=1]{has_property_correlation}
+has_property_correlation \a{rdfs:label, "Correlation"}
+has_property_correlation \a{rdfs:comment, "If the Correlation attribute is set 
+	to True, then the Property is marked to be used for correlation 
+	(e.g., for incoming Messages)."}
+has_property_correlation \ddomain property
+has_property_correlation \drange xsd:boolean
+
+% -----------------------------------------------------------------------------
+% Role - see page 276 - table B.61
+% -----------------------------------------------------------------------------
+role \a{rdfs:label, "Role"}
+role \a{rdfs:comment, "Role, which is used in the definition of attributes for 
+	a Participant, and which extends the set of common BPMN Element 
+	attributes (see Table B.2)."}
+
+role \cisa \d[=1]{has_role_name}
+has_role_name \a{rdfs:label, "Name"}
+has_role_name \a{rdfs:comment, "Name is an attribute that is text description of
+	the Role."}
+has_role_name \ddomain role
+has_role_name \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Signal - see page 277 - table B.62
+% -----------------------------------------------------------------------------
+% Al momento questa classe non e' definita come sottoclasse di Supporting Element
+signal \a{rdfs:label, "signal"}
+signal \a{rdfs:comment, "Signal, which is used in the definition of attributes 
+	for a Start Event, End Event, Intermediate Event, and which extends the 
+	set of common BPMN Element attributes (see Table B.2)."}
+
+signal \cisa \d[=1]{has_signal_name}
+has_signal_name \a{rdfs:label, "Name"}
+has_signal_name \a{rdfs:comment, "Name is an attribute that is text description 
+	of the Signal."}
+has_signal_name \ddomain signal
+has_signal_name \drange xsd:string
+
+has_signal_property \a{rdfs:label, "Property"}
+has_signal_property \a{rdfs:comment, "Multiple Properties MAY entered for the 
+	Signal. The attributes of a Property can be found in Property on page 
+	276."}
+has_signal_property \odomain signal
+has_signal_property \orange property
+
+% -----------------------------------------------------------------------------
+% Transaction see page 277 - table B.63
+% -----------------------------------------------------------------------------
+transaction \a{rdfs:label, "Transaction"}
+transaction \a{rdfs:comment, "Transaction, which is used in the definition of 
+	attributes for a Sub-Process, and which extends the set of common BPMN 
+	Element attributes (see Table B.2)."}
+	
+transaction \cisa \d[=1]{has_transaction_transaction_id}
+has_transaction_transaction_id \a{rdfs:label, "TransactionId"} 
+has_transaction_transaction_id \a{rdfs:comment, "The TransactionId attribute 
+	provides an identifier for the Transactions used within a diagram."} 
+has_transaction_transaction_id \drange xsd:string
+has_transaction_transaction_id \ddomain transaction
+
+transaction \cisa \d[=1]{has_transaction_transaction_protocol}
+has_transaction_transaction_protocol \a{rdfs:label, "TransactionProtocol"} 
+has_transaction_transaction_protocol \a{rdfs:comment, "This identifies the 
+	Protocol (e.g., WS-Transaction or BTP) that will be used to control the
+	transactional behavior of the Sub-Process."} 
+has_transaction_transaction_protocol \drange xsd:string
+has_transaction_transaction_protocol \ddomain transaction
+
+% DEFAULT_VALUE: Compensate
+transaction \cisa \o[=1]{has_transaction_transaction_method}
+has_transaction_transaction_method \a{rdfs:label, "TransactionMethod"} 
+has_transaction_transaction_method \a{rdfs:comment, "TransactionMethod is an 
+	attribute that defines the technique that will be used to undo a 
+	Transaction that has been cancelled. The default is Compensate, but the
+	attribute MAY be set to Store or Image."} 
+has_transaction_transaction_method \odomain transaction
+
+% REVISION 24.09.2010 (START)
+% has_transaction_transaction_method \prange \datatype{string}\values{Compensate,Store,Image}
+has_transaction_transaction_method \orange transaction_transaction_methods
+transaction_transaction_methods \ceq \ooneof{Compensate_transaction_transaction_method, Store_transaction_transaction_method, Image_transaction_transaction_method}
+
+\ialldiff{Compensate_transaction_transaction_method, Store_transaction_transaction_method, Image_transaction_transaction_method}
+% REVISION 24.09.2010 (END)
+
+
+% -----------------------------------------------------------------------------
+% Web Service - see page 277 - table B.64
+% -----------------------------------------------------------------------------
+web_service \a{rdfs:label, "Web Service"}
+web_service \a{rdfs:comment, "Web Service, which is used in the definition of 
+	attributes for Message Start Event, Message Intermediate Event, Message 
+	End Event, Receive Task, Send Task, Service Task, and User Task, and 
+	which extends the set of common BPMN Element attributes
+	(see Table B.2)."}
+
+web_service \cisa \o[=1]{has_web_service_participant_ref}
+has_web_service_participant_ref \a{rdfs:label, "ParticipantRef"}
+has_web_service_participant_ref \a{rdfs:comment, "A Participant for the Web 
+	Service MUST be entered. The attributes for a Participant can be found 
+	in \"Participant on page 276.\""}
+has_web_service_participant_ref \odomain web_service
+has_web_service_participant_ref \orange participant
+
+web_service \cisa \d[=1]{has_web_service_interface}
+has_web_service_interface \a{rdfs:label, "Interface"}
+has_web_service_interface \a{rdfs:comment, "(aka portType) An Interface for the 
+	Web Service MUST be entered."}
+has_web_service_interface \ddomain web_service
+has_web_service_interface \drange xsd:string
+
+web_service \cisa \d[>=1]{has_web_service_operation}
+has_web_service_operation \a{rdfs:label, "Operation"}
+has_web_service_operation \a{rdfs:comment, "One or more Operations for the Web 
+	Service MUST be entered."}
+has_web_service_operation \ddomain web_service
+has_web_service_operation \drange xsd:string
+
+% -----------------------------------------------------------------------------
+% Process - see page 242 (and page 86) Table B.3
+% -----------------------------------------------------------------------------
+process \a{rdfs:label, "Process"}
+process \a{rdfs:comment, "A Process is an activity performed within or across 
+	companies or organizations. In BPMN a Process is depicted as a graph of 
+	Flow Objects, which are a set of other activities and the controls that
+	sequence them. The concept of process is intrinsically hierarchical. 
+	Processes may be defined at any level from enterprise-wide processes to
+	processes performed by a single person. Low-level processes may be
+	grouped together to achieve a common business goal. Note that BPMN 
+	defines the term Process fairly specifically and defines a Business 
+	Process more generically as a set of activities that are performed 
+	within an organization or across organizations. Thus a Business Process,
+	as shown in a Business Process Diagram, may contain more than one 
+	separate Process. Each Process may have its own Sub-Processes and would
+	be contained within a Pool (Section B.8.2, on page 260). The individual
+	Processes would be independent in terms of Sequence Flow, but could have
+	Message Flow connecting them."}
+
+process \cisa \d[=1]{has_process_name}
+has_process_name \a{rdfs:label, "Name"}
+has_process_name \a{rdfs:comment, "Name is an attribute that is a text 
+	description of the object."}
+has_process_name \ddomain process
+has_process_name \drange xsd:string
+
+% DEFAULT_VALUE: None
+process \cisa \o[=1]{has_process_process_type}
+has_process_process_type \a{rdfs:label, "process_type"}
+has_process_process_type \a{rdfs:comment, "ProcessType is an attribute that
+	provides information about which lower-level language the Pool will be 
+	mapped. By default, the ProcessType is None (or undefined)."}
+has_process_process_type \odomain process
+
+% REVISION 24.09.2010 (START)
+
+has_process_process_type \orange process_process_types
+process_process_types \ceq \ooneof{None_process_process_type, Private_process_process_type, Abstract_process_process_type, Collaboration_process_process_type}
+
+\ialldiff{None_process_process_type, Private_process_process_type, Abstract_process_process_type, Collaboration_process_process_type}
+
+% has_process_process_type \drange xsd:string}\values{None,Private,Abstract,Collaboration}
+% REVISION 24.09.2010 (END)
+
+% DEFAULT_VALUE: None
+process \cisa \o[=1]{has_process_status}
+has_process_status \a{rdfs:label, "Status"}
+has_process_status \a{rdfs:comment, "The Status of a Process is determined when 
+	the Process is being executed by a process engine. The Status of a 
+	Process can be used within Assignment Expressions."}
+has_process_status \odomain process
+
+% REVISION 24.09.2010 (START)
+% has_process_status \prange \datatyoe{string}\values{None,Ready,Active,Cancelled,Aborting,Aborted,Completing,Completed}
+process_status \ceq \ooneof{None_process_status_type, Ready_process_status_type, Active_process_status_type, Cancelled_process_status_type, Aborting_process_status_type, Aborted_process_status_type, Completing_process_status_type, Completed_process_status_type}
+has_process_status \orange process_status
+
+\ialldiff{None_process_status_type, Ready_process_status_type, Active_process_status_type, Cancelled_process_status_type, Aborting_process_status_type, Aborted_process_status_type, Completing_process_status_type, Completed_process_status_type}
+% REVISION 24.09.2010 (END)
+
+has_process_graphical_elements \a{rdfs:label, "Graphical Elements"}
+has_process_graphical_elements \a{rdfs:comment, "The GraphicalElements attribute
+	identifies all of the objects (e.g., Events, Activities, Gateways, and 
+	Artifacts) that are contained within the Process."}
+has_process_graphical_elements \odomain process
+has_process_graphical_elements \orange graphical_element
+
+has_process_assignments \a{rdfs:label, "Assignments"}
+has_process_assignments \a{rdfs:comment, "One or more assignment expressions 
+	MAY be made for the object. The Assignment SHALL be performed as defined
+	by the AssignTime attribute (see below). The details of Assignment is 
+	defined in \"Assignment on page 269.\"."}
+has_process_assignments \odomain process
+has_process_assignments \orange assignment
+
+has_process_performers \a{rdfs:label, "Performers"}
+has_process_performers \a{rdfs:comment, "One or more Performers MAY be entered. 
+	The Performers attribute defines the resource that will be responsible 
+	for the Process. The Performers entry could be in the form of a specific
+        individual, a group, an organization role or position, or an
+	organization."}
+has_process_performers \ddomain process
+has_process_performers \drange xsd:string
+
+has_process_properties \a{rdfs:label, "Properties"}
+has_process_properties \a{rdfs:comment, "Modeler-defined Properties MAY be added
+	to a Process. These Properties are \"local\" to the Process. All Tasks, 
+	Sub-Process objects, and Sub-Processes that are embedded SHALL have 
+	access to these Properties. The fully delineated name of these 
+	properties is \"process name.property name\" (e.g., 
+	\"Add Customer.Customer Name\"). If a process is embedded within another 
+	Process, then the fully delineated name SHALL also be preceded by the 
+	Parent Process name for as many Parents there are until the top level 
+	Process. Further details about the definition of a Property can be found
+	in \"Property on page 276.\""}
+has_process_properties \odomain process
+has_process_properties \orange property
+
+has_process_input_sets \a{rdfs:label, "Input set"}
+has_process_input_sets \a{rdfs:comment, "The InputSets attribute defines the 
+	data requirements for input to the Process. Zero or more InputSets MAY 
+	be defined. Each Input set is sufficient to allow the Process to be 
+	performed (if it has first been instantiated by the appropriate signal 
+	arriving from an incoming Sequence Flow). Further details about the 
+	definition of an Input-Set can be found in Section B.11.10 on page 274."}
+has_process_input_sets \odomain process
+has_process_input_sets \orange input_set
+
+has_process_output_sets \a{rdfs:label, "Output set"}
+has_process_output_sets \a{rdfs:comment, "The OutputSets attribute defines the 
+	data requirements for output from the Process. Zero or more OutputSets 
+	MAY be defined. At the completion of the Process, only one of the 
+	OutputSets may be produced--It is up to the implementation of the
+	Process to determine which set will be produced. However, the IORules 
+	attribute MAY indicate a relationship between an OutputSet and an 
+	InputSet that started the Process. Further details about the definition
+	of an OutputSet can be found in Section B.11.13 on page 275."}
+has_process_output_sets \odomain process
+has_process_output_sets \orange output_set
+
+% DEFAULT_VALUE: False
+process \cisa \o[=1]{has_process_ad_hoc}
+has_process_ad_hoc \a{rdfs:label, "Ad_hoc"}
+has_process_ad_hoc \a{rdfs:comment, "AdHoc is a boolean attribute, which has a 
+	default of False. This specifies whether the Process is Ad Hoc or not. 
+	The activities within an Ad Hoc Process are not controlled or sequenced 
+	in a particular order, their performance is determined by the performers
+	of the activities. If set to True, then the Ad Hoc marker SHALL be 
+	placed at the bottom center of the Process or the Sub-Process shape for
+	Ad Hoc Processes."}
+has_process_ad_hoc \odomain process
+
+% REVISION 24.09.2010 (START)
+% has_process_ad_hoc \drange \datatype{boolean}
+
+process \cisa (\ohasvalue{has_process_ad_hoc}{false_process_ad_hoc_boolean} \cor \candof{\ohasvalue{has_process_ad_hoc}{true_process_ad_hoc_boolean}, \o[=1]{has_process_ad_hoc_ordering}, \o[=1]{has_process_ad_hoc_completion_condition}})
+% process \cisa (\hasvalue has_process_ad_hoc.\boolean{false}) \cor (\hasvalue has_process_ad_hoc.\boolean{true} \cand (=1) has_process_ad_hoc_ordering \cand (=1) has_process_ad_hoc_completion_condition)
+has_process_ad_hoc \orange process_ad_hoc_boolean 
+process_ad_hoc_boolean \ceq \ooneof{true_process_ad_hoc_boolean, false_process_ad_hoc_boolean}
+
+true_process_ad_hoc_boolean \idiff false_process_ad_hoc_boolean
+% REVISION 24.09.2010 (END)
+
+
+
+% DEFAULT_VALUE: Parallel
+has_process_ad_hoc_ordering \a{rdfs:label, "AdHocOrdering"}
+has_process_ad_hoc_ordering \a{rdfs:comment, "If the Process is Ad Hoc (the 
+	AdHoc attribute is True), then the AdHocOrdering attribute MUST be 
+	included. This attribute defines if the activities within the Process 
+	can be performed in Parallel or must be performed sequentially. The 
+	default setting is Parallel and the setting of Sequential is a 
+	restriction on the performance that may be required due to shared 
+	resources."}
+has_process_ad_hoc_ordering \odomain process
+
+% REVISION 24.09.2010 (START)
+% has_process_ad_hoc_ordering \drange \datatype{string}\values{Parallel, Sequential}
+has_process_ad_hoc_ordering \orange process_ad_hoc_ordering_orders
+process_ad_hoc_ordering_orders \ceq \ooneof{Parallel_process_ad_hoc_ordering_order, Sequential_process_ad_hoc_ordering_order}
+
+Parallel_process_ad_hoc_ordering_order \idiff Sequential_process_ad_hoc_ordering_order
+% REVISION 24.09.2010 (END)
+
+has_process_ad_hoc_completion_condition \a{rdfs:label, "AdHocCompletionCondition"}
+has_process_ad_hoc_completion_condition \a{rdfs:comment, "If the Process is 
+	Ad Hoc (the AdHoc attribute is True), then the AdHocCompletionCondition 
+	attribute MUST be included. This attribute defines the conditions when 
+	the Process will end."}
+has_process_ad_hoc_completion_condition \odomain process
+has_process_ad_hoc_completion_condition \orange expression
+
+
+% -----------------------------------------------------------------------------
+% Additional axioms
+% -----------------------------------------------------------------------------
+
+
+% TO DO: Note that if a sub-process has been expanded within a Diagram, the objects within the sub-process cannot be connected to objects outside of the sub-process. Nor can Sequence Flow cross a Pool boundary.
+% Sequence Flow Table 8.4 pag 30
+sequence_flow \cisa \oforall{has_connecting_object_source_ref}{\corof{intermediate_event, start_event, task, sub_process, gateway}}
+sequence_flow \cisa \oforall{has_connecting_object_target_ref}{\corof{intermediate_event, end_event, task, sub_process, gateway}}
+
+
+% TO DO: All Message Flow must connect two separate Pools. They can connect to the Pool boundary or to Flow Objects within the Pool boundary. They cannot connect two objects within the same Pool.
+% Message Flow Table 8.5 pag 31
+message_flow \cisa \oforall{has_connecting_object_source_ref}{\corof{(intermediate_event \cand \oexists{has_intermediate_event_trigger}{message_event_detail}), (end_event \cand \oexists{has_end_event_result}{message_event_detail}), task, sub_process, pool}}
+message_flow \cisa \oforall{has_connecting_object_target_ref}{\corof{(intermediate_event \cand \oexists{has_intermediate_event_trigger}{message_event_detail}), (start_event \cand \oexists{has_start_event_trigger}{message_event_detail}), task, sub_process, pool}}
+
+
+% For activities (Task, Sub-Process, and Process), the Assignment SHALL be performed as defined by the AssignTime attribute. If the Object is an activity (Task, Sub-Process, or Process), then the Assignment MUST have an AssignTime.
+% REVISION 24.09.2010 (START)
+% activity \cisa (\forall has_flow_object_assignment.(\hasvalue has_assignment_assign_time.\string{Start} \cor \hasvalue has_assignment_assign_time.\string{End}))
+activity \cisa \oforall{has_flow_object_assignment}{(\ohasvalue{has_assignment_assign_time}{Start_assignment_assign_time} \cor \ohasvalue{has_assignment_assign_time}{End_assignment_assign_time})}
+% REVISION 24.09.2010 (END)
+
+
+% 9.3.2 Start Event 
+% TO DO: If the Start Event is used, then there MUST NOT be other flow elements that do not have incoming Sequence Flow\u2014all other Flow Objects MUST be a target of at least one Sequence Flow.
+% - Exceptions to this are activities that are defined as being Compensation activities (have the Compensation Marker). Compensation activities MUST NOT have any incoming Sequence Flow, even if there is a Start Event in the Process level. See Section 10.3, \u201cCompensation Association,\u201d on page 129 for more information on Compensation activities.
+% - An exception to this is the Intermediate Event, which MAY be without an incoming Sequence Flow (when attached to an activity boundary).
+
+% TO DO: If there is an End Event, then there MUST be at least one Start Event.
+
+% 9.3.2.3 Start Event - A Start Event MUST be a source for Sequence Flow.
+start_event \cisa \oexists{has_connecting_object_source_ref_inv}{sequence_flow}
+
+% 9.3.2.3 Start Event - The Condition attribute for all outgoing Sequence Flow MUST be set to None.
+% REVISION 24.09.2010 (START)
+% start_event \cisa \forall has_connecting_object_source_ref_inv.(sequence_flow \cand \hasvalue has_sequence_flow_condition_type.\string{None})
+start_event \cisa \oforall{has_connecting_object_source_ref_inv}{(sequence_flow \cand \ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type})}
+% REVISION 24.09.2010 (END)
+
+% TO DO: 9.3.3 End Event -  If there is a Start Event, then there MUST be at least one End Event.
+
+% TO DO: If an End Event is used, then there MUST NOT be other flow elements that do not have any outgoing Sequence Flow\u2014all other Flow Objects MUST be a source of at least one Sequence Flow.
+% - Exceptions to this are activities that are defined as being Compensation activities (have the Compensation Marker). Compensation Activities MUST NOT have any outgoing Sequence Flow, even if there is an End Event in the Process level. Section 10.3, \u201cCompensation Association,\u201d on page 129 for more information on Compensation activities.
+
+% TO DO: Link Event uses are limited to a single Process level (i.e., they cannot link a parent Process with a Sub-Process). Paired Intermediate Events can also be used as \u201cOff-Page Connectors\u201d for printing a Process across multiple pages. They can also be used as generic \u201cGo To\u201d objects within the Process level. There can be multiple Source Link Events, but there can only be one Target Link Event.
+
+
+% intermediate event sequence flow connections 9.3.4.4
+none_intermediate_event \ceq (intermediate_event \cand (\cnot \oexists{has_intermediate_event_trigger}{event_detail}))
+cancel_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{cancel_event_detail}}
+compensation_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{compensation_event_detail}}
+
+link_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{link_event_detail}}
+error_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{error_event_detail}}
+conditional_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{conditional_event_detail}}
+message_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{message_event_detail}}
+timer_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{timer_event_detail}}
+signal_intermediate_event \ceq \candof{intermediate_event, \o[=1]{has_intermediate_event_trigger}, \oexists{has_intermediate_event_trigger}{signal_event_detail}}
+multiple_intermediate_event \ceq (intermediate_event \cand \o[>=2]{has_intermediate_event_trigger})
+
+% 9.3.4.3 activity boundary intermediate event
+activity_boundary_intermediate_event \ceq (intermediate_event \cand \oexists{has_intermediate_event_target}{activity})
+not_activity_boundary_intermediate_event \ceq (intermediate_event \cand (\cnot \oexists{has_intermediate_event_target}{activity}))
+
+activity_boundary_intermediate_event \cisa \corof{cancel_intermediate_event, compensation_intermediate_event, error_intermediate_event, conditional_intermediate_event, message_intermediate_event, timer_intermediate_event, signal_intermediate_event, multiple_intermediate_event}
+
+% REVISION 24.09.2010 (START)
+% activity_boundary_intermediate_event \cisa (\exists has_intermediate_event_target.(sub_process \cand \hasvalue has_sub_process_is_a_transaction.\boolean{true})) \cor ((\not \exists has_intermediate_event_target.(sub_process \cand \hasvalue has_sub_process_is_a_transaction.\boolean{true})) \cand (\not cancel_intermediate_event))
+activity_boundary_intermediate_event \cisa (\oexists{has_intermediate_event_target}{(sub_process \cand \ohasvalue{has_sub_process_is_a_transaction}{true_is_a_transaction_boolean})} \cor ((\cnot \oexists{has_intermediate_event_target}{(sub_process \cand \ohasvalue{has_sub_process_is_a_transaction}{true_is_a_transaction_boolean})}) \cand (\cnot cancel_intermediate_event)))
+
+% REVISION 24.09.2010 (END)
+
+
+% 9.3.4.4 Sequence Flow - target Sequence Flow
+activity_boundary_intermediate_event \cisa (\cnot \oexists{has_connecting_object_target_ref_inv}{sequence_flow})
+
+% source Sequence Flow & compensation trigger
+activity_boundary_intermediate_event \cisa (((\cnot compensation_intermediate_event) \cand \o[=1]{has_sequence_flow_source_ref_inv}) \cor (compensation_intermediate_event \cand (\cnot \oexists{has_sequence_flow_source_ref_inv}{sequence_flow})))
+
+% normal flow intermediate event
+not_activity_boundary_intermediate_event \cisa \corof{none_intermediate_event, compensation_intermediate_event, link_intermediate_event, conditional_intermediate_event, message_intermediate_event, timer_intermediate_event, signal_intermediate_event}
+
+not_activity_boundary_intermediate_event \cisa (((\cnot (none_intermediate_event \cor compensation_intermediate_event)) \cand \o[<=1]{has_sequence_flow_target_ref_inv}) \cor ((none_intermediate_event \cor compensation_intermediate_event) \cand \o[=1]{has_sequence_flow_target_ref_inv}))
+
+% An Intermediate Event MUST be a source for Sequence Flow; it MUST have one (and only one) outgoing Sequence Flow.
+not_activity_boundary_intermediate_event \cisa (link_intermediate_event \cor ((\cnot link_intermediate_event) \cand \o[=1]{has_sequence_flow_source_ref_inv}))
+
+% link trigger
+not_activity_boundary_intermediate_event \cisa ((\cnot link_intermediate_event) \cor (link_intermediate_event \cand (\cnot (\oexists{has_sequence_flow_source_ref_inv}{sequence_flow} \cand \oexists{has_sequence_flow_target_ref_inv}{sequence_flow}))))
+
+% TO DO: If there is a Source Link Event, there MUST be a matching Target Link Event (they have the same Name)	There MAY be multiple Source Link Events for a single Target Link Event. There MUST NOT be multiple Target Link Events for a single Source Link Event.
+
+
+% intermediate event message flow connections 
+% - An Intermediate Event of type Message MAY be the target for Message Flow; it can have one incoming Message Flow. 
+% - An Intermediate Event of type Message MAY be a source for Message Flow; it can have one outgoing Message Flow. 
+% - An Intermediate Event of type Message MAY have an incoming Message Flow or an outgoing Message Flow, but not both.
+intermediate_event \cisa (\candof{(\cnot message_intermediate_event), \o[=0]{has_message_flow_source_ref_inv}, \o[=0]{has_message_flow_target_ref_inv}} \cor (message_intermediate_event \cand ((\o[<=1]{has_message_flow_source_ref_inv} \cand \o[=0]{has_message_flow_target_ref_inv}) \cor (\o[=0]{has_message_flow_source_ref_inv} \cand \o[<=1]{has_message_flow_target_ref_inv}))))
+
+% 9.3.5.4 Error Event Detail - For an End Event: the ErrorCode MUST be supplied.
+end_event \cisa ((\cnot \oexists{has_end_event_result}{error_event_detail}) \cor \oexists{has_end_event_result}{(error_event_detail \cand \d[=1]{has_error_detail_error_code})}) 
+
+% 9.3.5.4 Error Event Detail - For an Intermediate Event within Normal Flow:the ErrorCode MUST be entered. 
+not_activity_boundary_intermediate_event \cisa ((\cnot error_intermediate_event) \cor \oexists{has_intermediate_event_trigger}{(error_event_detail \cand \d[=1]{has_error_detail_error_code})})
+
+% Table 9.18 - Common Activity Attributes
+% A Task of type Receive that has its Instantiate attribute set to True MUST NOT have a Standard or MultiInstance LoopType.
+% REVISION 24.09.2010 (START)
+% receive_task \cisa (\hasvalue has_receive_task_instantiate.\boolean{false}) \cor  (\hasvalue has_receive_task_instantiate.\boolean{true} \cand \not \exists has_activity_loop_type.loop_types)
+receive_task \cisa (\ohasvalue{has_receive_task_instantiate}{true_receive_task_instantiate_boolean} \cand (\cnot \oexists{has_activity_loop_type}{loop_types}))
+% REVISION 24.09.2010 (END)
+
+
+
+
+% 9.4.2.6 Sub-process sequence Flow Connections
+% The Incoming Sequence Flow\u2019s attribute TargetRef MAY be extended to include both the Sub-Process object (at the parent level) and a Start Event that resides within the details of the Sub-Process. This provides a direct connection from the parent-level Sequence Flow to the lower-level Start Event for situations where there is more than one Start Event in the Sub-Process. The form of the extension would be \u201cSub-Process.Start.\u201d ?
+
+
+% 9.4.3.1 Task Attributes
+receive_task \cisa (\cnot \oexists{has_connecting_object_source_ref_inv}{message_flow})
+send_task \cisa (\cnot \oexists{has_connecting_object_target_ref_inv}{message_flow})
+script_task \cisa (\cnot (\oexists{has_connecting_object_target_ref_inv}{message_flow} \cor \oexists{has_connecting_object_source_ref_inv}{message_flow}))
+manual_task \cisa (\cnot (\oexists{has_connecting_object_target_ref_inv}{message_flow} \cor \oexists{has_connecting_object_source_ref_inv}{message_flow}))
+
+% 9.4.3.3 Receive Task Attributes
+% TO DO: A Receive Task is often used to start a Process. In a sense, the Process is bootstrapped by the receipt of the message. In order for the Task to Instantiate the Process it must meet one of the following conditions:
+% - The Process does not have a Start Event and the Receive Task has no incoming Sequence Flow.
+% - The Incoming Sequence Flow for the Receive Task has a source of a Start Event. Note that no other incoming Sequence Flow are allowed for the Receive Task.
+
+
+% TO DO: Instantiate False: This attribute MAY be set to true if the Task is the first activity after the Start Event or a starting Task if there is no Start Event (i.e., there are no incoming Sequence Flow). Multiple Tasks MAY have this attribute set to True.
+
+
+% 9.5.1.2  Gateways
+% TO DO: Zero Gates are allowed if the Gateway is last object in a Process flow and there are no Start or End Events for the Process. 
+
+% If there are zero or only one incoming Sequence Flow, then there MUST be at least two Gates.
+gateway \cisa (\o[>=2]{has_sequence_flow_target_ref_inv} \cor (\o[<=1]{has_sequence_flow_target_ref_inv} \cand \o[>=2]{has_gateway_gate}))
+
+% For Inclusive Gateways & Exclusive Data-Based Gateways: When two Gates are required, one of them MAY be the DefaultGate.
+
+% For Exclusive Event-Based Gateways: There MUST be two or more Gates. (Note that this type of Gateway does not act only as a Merge--it is always a Decision, at least.)
+event_based_exclusive_gateway \cisa \o[>=2]{has_gateway_gate}
+
+
+% 9.5.1.4  Gates
+% Attenzione, va garantito che il gate punti a un sequence flow tale che il sequence flow abbia il gateway come source!!
+has_gateway_gate_inv \oinv has_gateway_gate
+has_inclusive_gateway_default_gate_inv \oinv has_inclusive_gateway_default_gate
+has_data_based_exclusive_gateway_default_gate_inv \oinv has_data_based_exclusive_gateway_default_gate
+
+gate \cisa \o[=1]{has_gateway_gate_inv}
+
+
+% REVISION 24.09.2010 (START)
+% For Exclusive Event-Based, Complex, and Parallel Gateways: The Sequence Flow MUST have its Condition attribute set to None (there is not an evaluation of a condition expression).
+
+% gate \cisa (\exists has_gateway_gate_inv.(\not event_based_exclusive_gateway)) \cor (\exists has_gateway_gate_inv.event_based_exclusive_gateway \cand \exists has_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{None}))
+% gate \cisa (\exists has_gateway_gate_inv.(\not complex_gateway)) \cor (\exists has_gateway_gate_inv.complex_gateway \cand \exists has_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{None}))
+% gate \cisa (\exists has_gateway_gate_inv.(\not parallel_gateway)) \cor (\exists has_gateway_gate_inv.parallel_gateway \cand \existshas_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{None}))
+gate \cisa (\oexists{has_gateway_gate_inv}{(\cnot event_based_exclusive_gateway)} \cor (\oexists{has_gateway_gate_inv}{event_based_exclusive_gateway} \cand \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type}}))
+gate \cisa (\oexists{has_gateway_gate_inv}{(\cnot complex_gateway)} \cor (\oexists{has_gateway_gate_inv}{complex_gateway} \cand \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type}}))
+gate \cisa (\oexists{has_gateway_gate_inv}{(\cnot parallel_gateway)} \cor (\oexists{has_gateway_gate_inv}{parallel_gateway} \cand \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type}}))
+
+% For Exclusive Data-Based, and Inclusive Gateways: The Sequence Flow MUST have its Condition attribute set to Expression and MUST have a valid ConditionExpression. 
+% If there is only one Gate (i.e., the Gateway is acting only as a Merge), then Sequence Flow MUST have its Condition set to None.
+% gate \cisa (\exists has_gateway_gate_inv.(\not inclusive_gateway)) \cor (\exists has_gateway_gate_inv.inclusive_gateway \cand ((=1)has_gateway_gate_inv \cand \exists has_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{None})) \cor ((>=2)has_gateway_gate_inv \cand \exists has_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{Expression})))
+% gate \cisa (\exists has_gateway_gate_inv.(\not data_based_exclusive_gateway)) \cor (\exists has_gateway_gate_inv.data_based_exclusive_gateway \cand ((=1)has_gateway_gate_inv \cand \exists has_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{None})) \cor ((>=2)has_gateway_gate_inv \cand \exists has_gate_outgoing_sequence_flow_ref.(\hasvalue has_sequence_flow_condition_type.\string{Expression})))
+
+% This two axioms are not translated correctly by latex2owl
+% here is the correct axiom to insert in protege in the owl version to replace the translated one
+% ((has_gate_outgoing_sequence_flow_ref some (has_sequence_flow_condition_type value Expression_sequence_flow_condition_type)
+%   and has_gateway_gate_inv some (has_gateway_gate min 2 Thing))
+%  or (has_gate_outgoing_sequence_flow_ref some (has_sequence_flow_condition_type value None_sequence_flow_condition_type)
+%       and has_gateway_gate_inv some (has_gateway_gate exactly 1 Thing))
+%  and has_gateway_gate_inv some inclusive_gateway)
+% or (has_gateway_gate_inv some (not inclusive_gateway))
+% 
+% 
+% ((has_gate_outgoing_sequence_flow_ref some (has_sequence_flow_condition_type value Expression_sequence_flow_condition_type)
+%   and has_gateway_gate_inv some (has_gateway_gate min 2 Thing))
+%  or (has_gate_outgoing_sequence_flow_ref some (has_sequence_flow_condition_type value None_sequence_flow_condition_type)
+%       and has_gateway_gate_inv some (has_gateway_gate exactly 1 Thing))
+%  and has_gateway_gate_inv some data_based_exclusive_gateway)
+% or (has_gateway_gate_inv some (not data_based_exclusive_gateway))
+gate \cisa \corof{\oexists{has_gateway_gate_inv}{(\cnot inclusive_gateway)}, \candof{\oexists{has_gateway_gate_inv}{inclusive_gateway}, \o[=1]{has_gateway_gate_inv}, \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type}}}, (\o[>=2]{has_gateway_gate_inv} \cand \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type}})}
+gate \cisa (\oexists{has_gateway_gate_inv}{(\cnot data_based_exclusive_gateway)} \cor ((\oexists{has_gateway_gate_inv}{data_based_exclusive_gateway} \cand (\o[=1]{has_gateway_gate_inv} \cand \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type}})) \cor (\o[>=2]{has_gateway_gate_inv} \cand \oexists{has_gate_outgoing_sequence_flow_ref}{\ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type}})))
+
+% WARNING: "The ConditionExpression MUST be unique for all the Gates within the Gateway." cannot be axiomatized in OWL 
+
+
+% For DefaultGates: The Sequence Flow MUST have its Condition attribute set to Otherwise (OTHERWISE non e' un valore definito! Boh, forse si intende un valore diverso da None) Condizione pero' in conflitto con 10.1.2.1 sotto!
+% gate \cisa (\not \exists has_inclusive_gateway_default_gate_inv.inclusive_gateway) \cor (\exists has_inclusive_gateway_default_gate_inv.inclusive_gateway \cand \exists has_gate_outgoing_sequence_flow_ref.(\not \hasvalue has_sequence_flow_condition_type.\string{None}))
+% gate \cisa (\not \exists has_data_based_exclusive_gateway_default_gate_inv.data_based_exclusive_gateway) \cor (\exists has_data_based_exclusive_gateway_default_gate_inv.data_based_exclusive_gateway \cand \exists has_gate_outgoing_sequence_flow_ref.(\not \hasvalue has_sequence_flow_condition_type.\string{None}))
+
+% REVISION 24.09.2010 (END)
+
+% 9.5.2.4  Event-Based Exclusive Gates
+
+% A gateway can be used to start a process. In order for the Gateway to Instantiate the Process it must meet one of the following conditions:
+% - The Process does not have a Start Event and the Gateway has no incoming Sequence Flow.
+% - The Incoming Sequence Flow for the Gateway has a source of a Start Event.
+% - - Note that no other incoming Sequence Flow are allowed for the Gateway (in particular, a loop connection from a downstream object).
+% - The Targets for the Gateway\u2019s outgoing Sequence Flow MUST NOT be a Timer Intermediate Event.
+
+
+% 9.5.2.5 Event-Based Exclusive Gates - Attribute Instantiate 
+% Event-Based Gateways can be defined as the instantiation mechanism for the Process with the Instantiate attribute. This attribute MAY be set to true if the Gateway is the first element after the Start Event or a starting Gateway if there is no Start Event (i.e., there are no incoming Sequence Flow).
+
+
+% 9.5.2.6 Event-Based Exclusive Gates - Sequence Flow
+% The Event-Based Exclusive Decisions are configured by having outgoing Sequence Flow target a Task of TaskType Receive or an Intermediate Event (see Figure 9.23 and Figure 9.24). All of the outgoing Sequence Flow must have this type of target; there cannot be a mixing of condition expressions and Intermediate Events for a given Decision. The Target of the Gateway\u2019s outgoing Sequence Flow MUST be one of the following objects:
+% - Task with the TaskType attribute set to Receive.
+% - Intermediate Event with the Trigger attribute set to Message, Timer, Signal.
+% - If one Gate Target is a Task, then an Intermediate Event with a Trigger Message MUST NOT be used as a Target for another Gate. That is, messages MUST be received by only Receive Tasks or only Message Events, but not a mixture of both for a given Gateway.
+event_based_exclusive_gateway \cisa (\oforall{has_gateway_gate}{\oexists{has_gate_outgoing_sequence_flow_ref}{\oexists{has_connecting_object_target_ref}{\corof{receive_task, timer_intermediate_event, signal_intermediate_event}}}} \cor \oforall{has_gateway_gate}{\oexists{has_gate_outgoing_sequence_flow_ref}{\oexists{has_connecting_object_target_ref}{\corof{message_intermediate_event, timer_intermediate_event, signal_intermediate_event}}}})
+
+
+% 9.5.3 Inclusive Gateways
+
+% REVISION 24.09.2010 (START)
+% sequence_flow \cisa (\not \hasvalue has_sequence_flow_condition_type.\string{Expression}) \cor ((\hasvalue has_sequence_flow_condition_type.\string{Expression}) \cand \forall has_connecting_object_source_ref.(\not event))
+% sequence_flow \cisa (\not \hasvalue has_sequence_flow_condition_type.\string{Expression}) \cor ((\hasvalue has_sequence_flow_condition_type.\string{Expression}) \cand \forall has_connecting_object_source_ref.(\not parallel_gateway))
+
+sequence_flow \cisa ((\cnot \ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type}) \cor (\ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type} \cand \oforall{has_connecting_object_source_ref}{(\cnot event)}))
+sequence_flow \cisa ((\cnot \ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type}) \cor (\ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type} \cand \oforall{has_connecting_object_source_ref}{(\cnot parallel_gateway)}))
+
+% If a conditional Sequence Flow is used from a source activity, then there MUST be at least one other outgoing Sequence Flow from that activity. The additional Sequence Flow(s) MAY also be conditional, but it is not required that they are conditional. Problema con cardinalita'
+% activity \cisa (\not \exists has_sequence_flow_source_ref_inv.(sequence_flow \cand \hasvalue has_sequence_flow_condition_type.\string{Expression})) \cor ((\exists has_sequence_flow_source_ref_inv.(sequence_flow \cand \hasvalue has_sequence_flow_condition_type.\string{Expression})) \cand (>=2)has_sequence_flow_source_ref_inv)
+activity \cisa ((\cnot \oexists{has_sequence_flow_source_ref_inv}{(sequence_flow \cand \ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type})}) \cor (\oexists{has_sequence_flow_source_ref_inv}{(sequence_flow \cand \ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type})} \cand \o[>=2]{has_sequence_flow_source_ref_inv}))
+% REVISION 24.09.2010 (END)
+
+% 9.6.2 Pool
+% The Sequence Flow can cross the boundaries between Lanes of a Pool, but cannot cross the boundaries of a Pool.
+
+
+% 9.7.4 Group - The graphical elements within the Group will be assigned the Category of the Group.
+
+
+% 10.1.2.1  Sequence flow - condition Type
+
+% REVISION 24.09.2010 (START)
+sequence_flow \cisa ((\oexists{has_connecting_object_source_ref}{(data_based_exclusive_gateway \cor inclusive_gateway)} \cand (\cnot \ohasvalue{has_sequence_flow_condition_type}{None_sequence_flow_condition_type})) \cor (\cnot \oexists{has_connecting_object_source_ref}{(data_based_exclusive_gateway \cor inclusive_gateway)}))
+sequence_flow \cisa ((\cnot \ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type}) \cor (\ohasvalue{has_sequence_flow_condition_type}{Expression_sequence_flow_condition_type} \cand \oforall{has_connecting_object_source_ref}{\corof{task, sub_process, data_based_exclusive_gateway, inclusive_gateway}}))
+
+% sequence_flow \cisa (\exists has_connecting_object_source_ref.(data_based_exclusive_gateway \cor inclusive_gateway) \cand \not \hasvalue has_sequence_flow_condition_type.\string{None}) \cor (\not \exists has_connecting_object_source_ref.(data_based_exclusive_gateway \cor inclusive_gateway))
+% sequence_flow \cisa (\not \hasvalue has_sequence_flow_condition_type.\string{Expression}) \cor ((\hasvalue has_sequence_flow_condition_type.\string{Expression}) \cand \forall has_connecting_object_source_ref.(task \cor sub_process \cor data_based_exclusive_gateway \cor inclusive_gateway))
+% sequence_flow \cisa (\not \hasvalue has_sequence_flow_condition_type.\string{Default}) \cor ((\hasvalue has_sequence_flow_condition_type.\string{Default}) \cand \forall has_connecting_object_source_ref.(activity \cor data_based_exclusive_gateway))
+
+% REVISION 24.09.2010 (END)
+
+% In addition, an Expression ConditionType MUST NOT be used if the Sequence Flow is associated with the Default Gate of a Gateway.
+
+% 10.1.3 Message Flow
+
+% Message Flow MUST connect two Pools, either to the Pools themselves or to Flow Objects within the Pools. They cannot connect two objects within the same Pool.
+
+% 10.1.4 Association
+% An Association is used to associate information and Artifacts with Flow Objects. Domain=Artifact and Range=FlowObjects or ?
+% association \cisa (\exists has_connecting_object_source_ref.(artifact) \cand \exists has_connecting_object_target_ref.(flow_object)) \cor (\exists has_connecting_object_target_ref.(artifact) \cand \exists has_connecting_object_source_ref.(flow_object))
+% Changed to add text annotation to graphical element
+association \cisa \corof{(\oexists{has_connecting_object_source_ref}{artifact} \cand \oexists{has_connecting_object_target_ref}{flow_object}), (\oexists{has_connecting_object_target_ref}{artifact} \cand \oexists{has_connecting_object_source_ref}{flow_object}), (\oexists{has_connecting_object_source_ref}{annotation} \cand \oexists{has_connecting_object_target_ref}{graphical_element}), (\oexists{has_connecting_object_target_ref}{annotation} \cand \oexists{has_connecting_object_source_ref}{graphical_element})}
+
+\end{ontology}

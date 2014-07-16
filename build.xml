@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<project name="latexstyle2owl" basedir="." default="jar">
+  <!-- Sets variables which can later be used. -->
+  <!-- The value of a property is accessed via ${} -->
+  <property name="general.version" value="2.0"/>
+  <property name="general.title" value="latex2owl"/>
+  <property name="general.author" value="Matteo Matassoni"/>
+  
+  <property name="javacc.path" value="/Library/javacc"/>
+  <property name="src.dir" location="src" />
+  <property name="build.dir" location="bin" />
+  <property name="lib.dir" location="lib" />
+  <property name="dist.dir" location="dist" />
+  <property name="docs.dir" location="docs" />
+  <property name="out.dir" location="out" />
+  <property name="parser.src.dir" value="${src.dir}/eu/fbk/irst/dkm/owlapi/latexstyleparser"/>
+  
+  <!--
+    Create a classpath container which can be later used in the ant task
+  -->
+  <path id="build.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
+  
+  <path id="runtime.path">
+    <fileset dir="${dist.dir}" includes="*.jar"/>
+  </path>
+
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete file="${docs.dir}/grammar.html" />
+    <delete dir="${dist.dir}" />
+    <delete dir="${out.dir}" />
+  </target>
+
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+  
+  <!-- JavaCC task: parse the jj grammar file and generate the java code -->
+  <target name="parse" depends="">
+    <javacc target="${parser.src.dir}/OWLLatexStyleSyntaxParser.jj" outputdirectory="${parser.src.dir}" javacchome="${javacc.path}"/>
+  </target>
+
+  <!-- Compiles the java code -->
+  <target name="compile" depends="clean, makedir, parse">
+    <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="build.classpath"/>
+  </target>
+  
+  <!-- jjDoc task: parse the jj grammar file and generate the BNF doc -->
+  <target name="docs">
+    <jjdoc target="${parser.src.dir}/OWLLatexStyleSyntaxParser.jj" outputfile="${docs.dir}/grammar.html" javacchome="${javacc.path}"/>
+  </target>
+
+
+  <!--Creates the deployable jar file  -->
+  <target name="jar" depends="compile">
+    <jar destfile="${dist.dir}/latexstyle2owl.jar" basedir="${build.dir}">
+      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+      <manifest>
+        <attribute name="Product" value="${general.title}"/>
+        <attribute name="Version" value="${general.version}"/>
+        <attribute name="Copyright" value="${general.author}"/>
+        <attribute name="Main-Class" value="eu/fbk/irst/dkm/latex2owl/Latex2OWL"/>
+      </manifest>      
+    </jar>
+  </target>
+
+</project>
