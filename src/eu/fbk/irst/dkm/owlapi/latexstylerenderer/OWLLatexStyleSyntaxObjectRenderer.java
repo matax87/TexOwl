@@ -86,7 +86,7 @@ public class OWLLatexStyleSyntaxObjectRenderer implements OWLObjectVisitor {
         	String prefix = prefixManager.getPrefix(prefixName);        	
         	if (!default_prefix_names.contains(prefixName)) {
         		prefixes.add(prefixName);
-        		if (prefix.equals(prefixManager.getDefaultPrefix())) {
+        		if (prefixName.equals(":")) {
             		writeDefaultPrefix(prefix);
             	} else {
             		writePrefix(prefixName, prefix);

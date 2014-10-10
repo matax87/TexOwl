@@ -244,8 +244,8 @@ SKIP:
 	  	ReInit(streams.pop());
 	  	// Force the next token to be from the (outer) including file.
 	  	Token t = getNextToken();
-		matchedToken.kind = t.kind;
-		matchedToken.image = t.image;
+      matchedToken.kind = t.kind;
+      matchedToken.image = t.image;
 	  }
 	}
 }
