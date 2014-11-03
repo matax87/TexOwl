@@ -1,9 +1,8 @@
-options
-{
+options {
   static = false;
   JAVA_UNICODE_ESCAPE = true;
-  //DEBUG_TOKEN_MANAGER = true;
-  //DEBUG_PARSER = true;
+  // DEBUG_TOKEN_MANAGER = true;
+  // DEBUG_PARSER = true;
 }
 
 PARSER_BEGIN(OWLLatexStyleSyntaxParser)
@@ -24,101 +23,101 @@ public class OWLLatexStyleSyntaxParser {
   
 	private OWLOntologyManager man;
 	
-    private OWLOntologyLoaderConfiguration configuration;
+	private OWLOntologyLoaderConfiguration configuration;
     
-    private OWLOntology ontology;
+	private OWLOntology ontology;
     
-    private OWLDataFactory dataFactory;
+  private OWLDataFactory dataFactory;
     
-    private Map<String, IRI> string2IRI;
+  private Map<String, IRI> string2IRI;
     
-    private Map<String, String> prefixMap;
+  private Map<String, String> prefixMap;
     
-    private IRI ontologyIRI;
+  private IRI ontologyIRI;
     
-    private boolean ignoreAnnotationsAndDeclarations = false;
+  private boolean ignoreAnnotationsAndDeclarations = false;
 
-    private Set<OWLAnnotation> currentAnnotations;
+  private Set<OWLAnnotation> currentAnnotations;
 
-    @Deprecated
-    public void setUp(OWLOntologyManager man, OWLOntology ontology, OWLOntologyLoaderConfiguration configuration) {
-        setUp(ontology, configuration);
-    }
+  @Deprecated
+  public void setUp(OWLOntologyManager man, OWLOntology ontology, OWLOntologyLoaderConfiguration configuration) {
+		setUp(ontology, configuration);
+  }
     
 	public void setUp(OWLOntology ontology, OWLOntologyLoaderConfiguration configuration) {
-        this.man = ontology.getOWLOntologyManager();
-        this.ontology = ontology;
-        this.configuration = configuration;
-        this.dataFactory = man.getOWLDataFactory();
-        this.currentAnnotations = new HashSet<OWLAnnotation>();
-        if (prefixMap == null) {
-            prefixMap = new HashMap<String, String>();
-            prefixMap.put("owl:", Namespaces.OWL.toString());
-            prefixMap.put("rdf:", Namespaces.RDF.toString());
-            prefixMap.put("rdfs:", Namespaces.RDFS.toString());
-            prefixMap.put("xml:", Namespaces.XML.toString());
-            prefixMap.put("xsd:", Namespaces.XSD.toString());
-        }
-        string2IRI = new HashMap<String, IRI>();     
+		this.man = ontology.getOWLOntologyManager();
+		this.ontology = ontology;
+		this.configuration = configuration;
+		this.dataFactory = man.getOWLDataFactory();
+		this.currentAnnotations = new HashSet<OWLAnnotation>();
+		if (prefixMap == null) {
+			prefixMap = new HashMap<String, String>();
+      prefixMap.put("owl:", Namespaces.OWL.toString());
+      prefixMap.put("rdf:", Namespaces.RDF.toString());
+      prefixMap.put("rdfs:", Namespaces.RDFS.toString());
+      prefixMap.put("xml:", Namespaces.XML.toString());
+      prefixMap.put("xsd:", Namespaces.XSD.toString());
+    }
+      string2IRI = new HashMap<String, IRI>();     
     }
 
-    public IRI getIRI(String s) {
-        IRI iri = string2IRI.get(s);
-	    if (iri == null) {
-		    if (s.charAt(0) == '<') {
-		        // fullIRI case
-			    iri = IRI.create(s.substring(1, s.length() - 1));
-		    } else {
-			    int colonIndex = s.indexOf(':');
+	public IRI getIRI(String s) {
+		IRI iri = string2IRI.get(s);
+		if (iri == null) {
+      if (s.charAt(0) == '<') {
+				// fullIRI case
+			  iri = IRI.create(s.substring(1, s.length() - 1));
+		  } else {
+			  int colonIndex = s.indexOf(':');			    
+			  if (colonIndex == -1) {
 			    // simpleIRI case
-			    if (colonIndex == -1) {
-			      String defaultPrefix = prefixMap.get("");
-			        if (defaultPrefix == null) {
-			            throw new OWLRuntimeException("The default prefix has not been set");
-			        }
-			  	    String fullIRIString = defaultPrefix + s;
-			  	    iri = IRI.create(fullIRIString);			  
-			    } else {
-			        // abbreviatedIRI case
-			        String prefixName = s.substring(0, colonIndex + 1);
-			        String prefix = prefixMap.get(prefixName);
-			        if (prefix == null) {
-			            throw new OWLRuntimeException("Undefined prefix name: " + prefixName);
-			        }
-			        String fullIRIString = prefix + s.substring(colonIndex + 1);
-			        iri = IRI.create(fullIRIString);
-			    } 
-		    }
-		    string2IRI.put(s, iri);		    
-	    }
-        return iri;
+			    String defaultPrefix = prefixMap.get("");
+			    if (defaultPrefix == null) {
+			      throw new OWLRuntimeException("The default prefix has not been set");
+			    }
+			  	String fullIRIString = defaultPrefix + s;
+			  	iri = IRI.create(fullIRIString);			  
+			  } else {
+			    // abbreviatedIRI case
+			    String prefixName = s.substring(0, colonIndex + 1);
+			    String prefix = prefixMap.get(prefixName);
+			    if (prefix == null) {
+			      throw new OWLRuntimeException("Undefined prefix name: " + prefixName);
+			    }
+			    String fullIRIString = prefix + s.substring(colonIndex + 1);
+			    iri = IRI.create(fullIRIString);
+			  } 
+		  }
+      string2IRI.put(s, iri);		    
+		}
+	  return iri;
 	}
 
 	public void setIgnoreAnnotationsAndDeclarations(boolean b) {
 		ignoreAnnotationsAndDeclarations = b;
-    }
+	}
 
-    protected void applyChange(OWLOntologyChange chg) {
-        try {
-            man.applyChange(chg);
-        } catch(OWLOntologyChangeException e) {
-            e.printStackTrace();
-        }
-    }
+  protected void applyChange(OWLOntologyChange chg) {
+  	try {
+  		man.applyChange(chg);
+  	} catch(OWLOntologyChangeException e) {
+  		e.printStackTrace();
+  	}
+  }
 
-    protected void addAxiom(OWLAxiom ax) {
-        if (!(ax instanceof OWLAnnotationAxiom) || configuration.isLoadAnnotationAxioms()) {
-            AddAxiom addAxiom = new AddAxiom(ontology, ax);
-            applyChange(addAxiom);
-        }
-    }
+	protected void addAxiom(OWLAxiom ax) {
+		if (!(ax instanceof OWLAnnotationAxiom) || configuration.isLoadAnnotationAxioms()) {
+			AddAxiom addAxiom = new AddAxiom(ontology, ax);
+			applyChange(addAxiom);
+		}
+  }
 
-    public void setPrefixes(PrefixManager nsm) {
-        if (prefixMap == null) {
-            prefixMap = new HashMap<String, String>();
-        }
-        prefixMap.putAll(nsm.getPrefixName2PrefixMap());
+	public void setPrefixes(PrefixManager nsm) {
+		if (prefixMap == null) {
+			prefixMap = new HashMap<String, String>();
     }
+    prefixMap.putAll(nsm.getPrefixName2PrefixMap());
+  }
 }
 
 PARSER_END(OWLLatexStyleSyntaxParser)
@@ -207,42 +206,42 @@ TOKEN:
 
 SKIP:
 {
-    <INPUT_START: <BACKSLASH> "input" <OPENBRACE>> : IN_INPUT
+    <INPUT_START: <BACKSLASH> "input" <OPENBRACE>> : INSIDE_INPUT
 }
 
-<IN_INPUT> SKIP:
+<INSIDE_INPUT> SKIP:
 {
   <INPUT_VALUE: <FILEPATH>> {
     inputValue = image.toString();
   }
 }
 
-<IN_INPUT> SKIP:
+<INSIDE_INPUT> SKIP:
 {
   <INPUT_END: <CLOSEBRACE>> {
     try {
-		URL inputURL = getLocalOrRemoteURL(inputValue);
-		Reader reader = new InputStreamReader(inputURL.openStream());
+		  URL inputURL = getLocalOrRemoteURL(inputValue);
+		  Reader reader = new InputStreamReader(inputURL.openStream());
 			
-		// Push the current stream on the stack.
-		streams.push(input_stream);
-		// reinit token manager with new stream
-		ReInit(new JavaCharStream(reader));
-	} catch (MalformedURLException e) {
-		System.out.println("WARNING: Ignoring input file: \"" + inputValue + "\" Cause: " + e.getMessage());
-	} catch (IOException e) {
-		System.out.println("WARNING: Ignoring input file: \"" + inputValue + "\" Cause: " + e.getMessage());
-	} 
+		  // Push the current stream on the stack.
+		  streams.push(input_stream);
+		  // reinit token manager with new stream
+		  ReInit(new JavaCharStream(reader));
+	  } catch (MalformedURLException e) {
+		  System.out.println("WARNING: Ignoring input file: \"" + inputValue + "\" Cause: " + e.getMessage());
+	  } catch (IOException e) {
+		  System.out.println("WARNING: Ignoring input file: \"" + inputValue + "\" Cause: " + e.getMessage());
+	  } 
   } : DEFAULT
 }
 
 <*>TOKEN:
 {
-	<EOF> {	  
-	  if (!streams.empty()) {
-	  	// Reached EOF in the current include file.
+  // Reached EOF in the current input file
+	<EOF> {	  	  
+	  if (!streams.empty()) {	  	
 	  	ReInit(streams.pop());
-	  	// Force the next token to be from the (outer) including file.
+	  	// Force the matched token to be the next one from the outer file.
 	  	Token t = getNextToken();
       matchedToken.kind = t.kind;
       matchedToken.image = t.image;
@@ -781,7 +780,7 @@ public OWLLatexStyleSyntaxOntologyFormat parse() throws OWLParserException, IOEx
 {
 }
 {
-    ([LOOKAHEAD( 2 )DefaultPrefix()](Prefix())*Ontology()<EOF>) {
+    (Prefixes()Ontology()<EOF>) {
       OWLLatexStyleSyntaxOntologyFormat format = new OWLLatexStyleSyntaxOntologyFormat();      
       for (String pn : prefixMap.keySet()) {
         format.setPrefix(pn, prefixMap.get(pn));
@@ -818,13 +817,20 @@ void Ontology() throws OWLParserException, UnloadableImportException :
     }))*<ENDONTOLOGY>
 }
 
+public void Prefixes() :
+{
+}
+{
+  (LOOKAHEAD( 2 ) Prefix())*[LOOKAHEAD( 2 ) DefaultPrefix()](Prefix())*
+}
+
 public void DefaultPrefix() :
 {
     IRI iri;
 }
 {
     (<PREFIX>iri = FullIRI()) {
-		prefixMap.put("", iri.toString());
+				prefixMap.put("", iri.toString());
     }
 }
 
@@ -835,7 +841,7 @@ public void Prefix() :
 }
 {
     (<PREFIX>prefixName = PrefixName() iri = FullIRI()) {
-        prefixMap.put(prefixName, iri.toString());
+				prefixMap.put(prefixName, iri.toString());
     }
 }
 

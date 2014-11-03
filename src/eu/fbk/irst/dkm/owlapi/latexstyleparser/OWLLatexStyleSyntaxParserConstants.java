@@ -232,7 +232,7 @@ public interface OWLLatexStyleSyntaxParserConstants {
   /** Lexical state. */
   int IN_STRING_LITERAL = 2;
   /** Lexical state. */
-  int IN_INPUT = 3;
+  int INSIDE_INPUT = 3;
 
   /** Literal token values. */
   String[] tokenImage = {

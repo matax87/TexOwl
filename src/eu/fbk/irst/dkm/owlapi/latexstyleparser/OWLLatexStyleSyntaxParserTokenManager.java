@@ -2314,97 +2314,6 @@ private int jjMoveNfa_0(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
-private int jjMoveStringLiteralDfa0_3()
-{
-   return jjMoveNfa_3(1, 0);
-}
-private int jjMoveNfa_3(int startState, int curPos)
-{
-   int startsAt = 0;
-   jjnewStateCnt = 2;
-   int i = 1;
-   jjstateSet[0] = startState;
-   int kind = 0x7fffffff;
-   for (;;)
-   {
-      if (++jjround == 0x7fffffff)
-         ReInitRounds();
-      if (curChar < 64)
-      {
-         long l = 1L << curChar;
-         do
-         {
-            switch(jjstateSet[--i])
-            {
-               case 1:
-               case 0:
-                  if ((0x7ffe00000000000L & l) == 0L)
-                     break;
-                  kind = 14;
-                  jjCheckNAdd(0);
-                  break;
-               default : break;
-            }
-         } while(i != startsAt);
-      }
-      else if (curChar < 128)
-      {
-         long l = 1L << (curChar & 077);
-         do
-         {
-            switch(jjstateSet[--i])
-            {
-               case 1:
-                  if ((0x7fffffe87fffffeL & l) != 0L)
-                  {
-                     if (kind > 14)
-                        kind = 14;
-                     jjCheckNAdd(0);
-                  }
-                  else if (curChar == 125)
-                  {
-                     if (kind > 15)
-                        kind = 15;
-                  }
-                  break;
-               case 0:
-                  if ((0x7fffffe87fffffeL & l) == 0L)
-                     break;
-                  kind = 14;
-                  jjCheckNAdd(0);
-                  break;
-               default : break;
-            }
-         } while(i != startsAt);
-      }
-      else
-      {
-         int hiByte = (int)(curChar >> 8);
-         int i1 = hiByte >> 6;
-         long l1 = 1L << (hiByte & 077);
-         int i2 = (curChar & 0xff) >> 6;
-         long l2 = 1L << (curChar & 077);
-         do
-         {
-            switch(jjstateSet[--i])
-            {
-               default : break;
-            }
-         } while(i != startsAt);
-      }
-      if (kind != 0x7fffffff)
-      {
-         jjmatchedKind = kind;
-         jjmatchedPos = curPos;
-         kind = 0x7fffffff;
-      }
-      ++curPos;
-      if ((i = jjnewStateCnt) == (startsAt = 2 - (jjnewStateCnt = startsAt)))
-         return curPos;
-      try { curChar = input_stream.readChar(); }
-      catch(java.io.IOException e) { return curPos; }
-   }
-}
 private final int jjStopStringLiteralDfa_2(int pos, long active0)
 {
    switch (pos)
@@ -2513,6 +2422,97 @@ private int jjMoveNfa_2(int startState, int curPos)
       }
       ++curPos;
       if ((i = jjnewStateCnt) == (startsAt = 3 - (jjnewStateCnt = startsAt)))
+         return curPos;
+      try { curChar = input_stream.readChar(); }
+      catch(java.io.IOException e) { return curPos; }
+   }
+}
+private int jjMoveStringLiteralDfa0_3()
+{
+   return jjMoveNfa_3(1, 0);
+}
+private int jjMoveNfa_3(int startState, int curPos)
+{
+   int startsAt = 0;
+   jjnewStateCnt = 2;
+   int i = 1;
+   jjstateSet[0] = startState;
+   int kind = 0x7fffffff;
+   for (;;)
+   {
+      if (++jjround == 0x7fffffff)
+         ReInitRounds();
+      if (curChar < 64)
+      {
+         long l = 1L << curChar;
+         do
+         {
+            switch(jjstateSet[--i])
+            {
+               case 1:
+               case 0:
+                  if ((0x7ffe00000000000L & l) == 0L)
+                     break;
+                  kind = 14;
+                  jjCheckNAdd(0);
+                  break;
+               default : break;
+            }
+         } while(i != startsAt);
+      }
+      else if (curChar < 128)
+      {
+         long l = 1L << (curChar & 077);
+         do
+         {
+            switch(jjstateSet[--i])
+            {
+               case 1:
+                  if ((0x7fffffe87fffffeL & l) != 0L)
+                  {
+                     if (kind > 14)
+                        kind = 14;
+                     jjCheckNAdd(0);
+                  }
+                  else if (curChar == 125)
+                  {
+                     if (kind > 15)
+                        kind = 15;
+                  }
+                  break;
+               case 0:
+                  if ((0x7fffffe87fffffeL & l) == 0L)
+                     break;
+                  kind = 14;
+                  jjCheckNAdd(0);
+                  break;
+               default : break;
+            }
+         } while(i != startsAt);
+      }
+      else
+      {
+         int hiByte = (int)(curChar >> 8);
+         int i1 = hiByte >> 6;
+         long l1 = 1L << (hiByte & 077);
+         int i2 = (curChar & 0xff) >> 6;
+         long l2 = 1L << (curChar & 077);
+         do
+         {
+            switch(jjstateSet[--i])
+            {
+               default : break;
+            }
+         } while(i != startsAt);
+      }
+      if (kind != 0x7fffffff)
+      {
+         jjmatchedKind = kind;
+         jjmatchedPos = curPos;
+         kind = 0x7fffffff;
+      }
+      ++curPos;
+      if ((i = jjnewStateCnt) == (startsAt = 2 - (jjnewStateCnt = startsAt)))
          return curPos;
       try { curChar = input_stream.readChar(); }
       catch(java.io.IOException e) { return curPos; }
@@ -2702,7 +2702,7 @@ public static final String[] lexStateNames = {
    "DEFAULT",
    "IN_COMMENT",
    "IN_STRING_LITERAL",
-   "IN_INPUT",
+   "INSIDE_INPUT",
 };
 
 /** Lex State array. */
@@ -2929,18 +2929,18 @@ void SkipLexicalActions(Token matchedToken)
       case 15 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
     try {
-                URL inputURL = getLocalOrRemoteURL(inputValue);
-                Reader reader = new InputStreamReader(inputURL.openStream());
+                  URL inputURL = getLocalOrRemoteURL(inputValue);
+                  Reader reader = new InputStreamReader(inputURL.openStream());
 
-                // Push the current stream on the stack.
-                streams.push(input_stream);
-                // reinit token manager with new stream
-                ReInit(new JavaCharStream(reader));
-        } catch (MalformedURLException e) {
-                System.out.println("WARNING: Ignoring input file: \u005c"" + inputValue + "\u005c" Cause: " + e.getMessage());
-        } catch (IOException e) {
-                System.out.println("WARNING: Ignoring input file: \u005c"" + inputValue + "\u005c" Cause: " + e.getMessage());
-        }
+                  // Push the current stream on the stack.
+                  streams.push(input_stream);
+                  // reinit token manager with new stream
+                  ReInit(new JavaCharStream(reader));
+          } catch (MalformedURLException e) {
+                  System.out.println("WARNING: Ignoring input file: \u005c"" + inputValue + "\u005c" Cause: " + e.getMessage());
+          } catch (IOException e) {
+                  System.out.println("WARNING: Ignoring input file: \u005c"" + inputValue + "\u005c" Cause: " + e.getMessage());
+          }
          break;
       default :
          break;
@@ -2953,12 +2953,11 @@ void TokenLexicalActions(Token matchedToken)
       case 0 :
       image.setLength(0);
           if (!streams.empty()) {
-                // Reached EOF in the current include file.
                 ReInit(streams.pop());
-                // Force the next token to be from the (outer) including file.
+                // Force the matched token to be the next one from the outer file.
                 Token t = getNextToken();
-                matchedToken.kind = t.kind;
-                matchedToken.image = t.image;
+      matchedToken.kind = t.kind;
+      matchedToken.image = t.image;
           }
          break;
       default :

@@ -6,7 +6,7 @@
   <property name="general.title" value="latex2owl"/>
   <property name="general.author" value="Matteo Matassoni"/>
   
-  <property name="javacc.path" value="/Library/javacc"/>
+  <property name="javacc.path" value="<place your javacc home path here>"/>
   <property name="src.dir" location="src" />
   <property name="build.dir" location="bin" />
   <property name="lib.dir" location="lib" />
