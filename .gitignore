@@ -13,3 +13,6 @@ hs_err_pid*
 
 # others
 .DS_Store
+
+# maven
+target/
