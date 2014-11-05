@@ -37,7 +37,7 @@ import eu.fbk.irst.dkm.owlapi.latexstylerenderer.OWLLatexStyleSyntaxOntologyStor
  * Provides a point of convenience for creating an <code>OWLOntologyManager</code>
  * with commonly required features (such as an RDF parser for example).
  */
-public class OWLEnhancedManager implements OWLOntologyManagerFactory {
+public class OWLManager implements OWLOntologyManagerFactory {
 
     static {
         // Register useful parsers
