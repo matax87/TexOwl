@@ -1854,26 +1854,16 @@ OWLPropertyAxiom NonSequencePropertyAxiom() :
     }
 }
 
-List<OWLObjectPropertyExpression> ChainedObjectPropertyList() :
+List<OWLObjectPropertyExpression> SubObjectPropertyChain() :
 {
     OWLObjectPropertyExpression prop;
     List<OWLObjectPropertyExpression> props = new ArrayList<OWLObjectPropertyExpression>();
 }
 {
-	<OPENBRACE>prop = ObjectPropertyExpression() {props.add(prop);}
-	(<COMMA>prop = ObjectPropertyExpression() {props.add(prop);})+<CLOSEBRACE> {
-		return props;
+    <SUBOBJECTPROPERTYCHAIN><OPENBRACE>prop = ObjectPropertyExpression() {props.add(prop);}
+	  (<COMMA>prop = ObjectPropertyExpression() {props.add(prop);})+<CLOSEBRACE> {
+		  return props;
 	}
-}
-
-List<OWLObjectPropertyExpression> SubObjectPropertyChain() :
-{
-    List<OWLObjectPropertyExpression> props;
-}
-{
-    <SUBOBJECTPROPERTYCHAIN>props = ChainedObjectPropertyList() {
-        return props;
-    }
 }
 
 OWLPropertyAxiom SubObjectPropertyOf() :

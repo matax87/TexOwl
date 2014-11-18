@@ -1649,17 +1649,18 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     throw new Error("Missing return statement in function");
   }
 
-  final public List<OWLObjectPropertyExpression> ChainedObjectPropertyList() throws ParseException {
+  final public List<OWLObjectPropertyExpression> SubObjectPropertyChain() throws ParseException {
     OWLObjectPropertyExpression prop;
     List<OWLObjectPropertyExpression> props = new ArrayList<OWLObjectPropertyExpression>();
+    jj_consume_token(SUBOBJECTPROPERTYCHAIN);
     jj_consume_token(OPENBRACE);
     prop = ObjectPropertyExpression();
-                                                      props.add(prop);
+                                                                          props.add(prop);
     label_12:
     while (true) {
       jj_consume_token(COMMA);
       prop = ObjectPropertyExpression();
-                                                   props.add(prop);
+                                                     props.add(prop);
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case COMMA:
         ;
@@ -1670,15 +1671,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
       }
     }
     jj_consume_token(CLOSEBRACE);
-                {if (true) return props;}
-    throw new Error("Missing return statement in function");
-  }
-
-  final public List<OWLObjectPropertyExpression> SubObjectPropertyChain() throws ParseException {
-    List<OWLObjectPropertyExpression> props;
-    jj_consume_token(SUBOBJECTPROPERTYCHAIN);
-    props = ChainedObjectPropertyList();
-        {if (true) return props;}
+                  {if (true) return props;}
     throw new Error("Missing return statement in function");
   }
 
@@ -2971,9 +2964,49 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_84()) return true;
     if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_195()) return true;
+    if (jj_3R_194()) return true;
     if (jj_scan_token(CLOSEBRACE)) return true;
-    if (jj_3R_196()) return true;
+    if (jj_3R_195()) return true;
+    return false;
+  }
+
+  private boolean jj_3_36() {
+    if (jj_3R_53()) return true;
+    return false;
+  }
+
+  private boolean jj_3_35() {
+    if (jj_3R_52()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_230() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_65()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_202() {
+    if (jj_scan_token(OBJECTMINCARDINALITY)) return true;
+    if (jj_3R_229()) return true;
+    if (jj_scan_token(CLOSESQPAR)) return true;
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_230()) jj_scanpos = xsp;
+    return false;
+  }
+
+  private boolean jj_3R_142() {
+    if (jj_3R_189()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_141() {
+    if (jj_3R_54()) return true;
     return false;
   }
 
@@ -3005,28 +3038,8 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_231() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_65()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
   private boolean jj_3_33() {
     if (jj_3R_50()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_203() {
-    if (jj_scan_token(OBJECTMINCARDINALITY)) return true;
-    if (jj_3R_230()) return true;
-    if (jj_scan_token(CLOSESQPAR)) return true;
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_231()) jj_scanpos = xsp;
     return false;
   }
 
@@ -3055,6 +3068,18 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_246() {
+    if (jj_scan_token(INT)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_217() {
+    if (jj_3R_75()) return true;
+    if (jj_scan_token(DATATYPERESTRICTION)) return true;
+    if (jj_3R_238()) return true;
+    return false;
+  }
+
   private boolean jj_3R_62() {
     if (jj_3R_75()) return true;
     if (jj_scan_token(DATATYPE)) return true;
@@ -3076,15 +3101,14 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_247() {
-    if (jj_scan_token(INT)) return true;
+  private boolean jj_3R_250() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_249()) return true;
     return false;
   }
 
-  private boolean jj_3R_218() {
-    if (jj_3R_75()) return true;
-    if (jj_scan_token(DATATYPERESTRICTION)) return true;
-    if (jj_3R_239()) return true;
+  private boolean jj_3R_229() {
+    if (jj_3R_246()) return true;
     return false;
   }
 
@@ -3106,6 +3130,18 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_238() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_249()) return true;
+    Token xsp;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_250()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
   private boolean jj_3R_61() {
     if (jj_3R_88()) return true;
     if (jj_scan_token(NAMEDINDIVIDUAL)) return true;
@@ -3117,48 +3153,13 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_251() {
+  private boolean jj_3R_148() {
     if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_250()) return true;
+    if (jj_3R_79()) return true;
     return false;
   }
 
-  private boolean jj_3R_230() {
-    if (jj_3R_247()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_239() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_250()) return true;
-    Token xsp;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_251()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_187() {
-    if (jj_scan_token(SEQ_DISJOINTDATAPROPERTIES)) return true;
-    if (jj_3R_222()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_105() {
-    if (jj_scan_token(SUBOBJECTPROPERTYCHAIN)) return true;
-    if (jj_3R_148()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_60() {
-    if (jj_3R_87()) return true;
-    if (jj_scan_token(DATAPROP)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_202() {
+  private boolean jj_3R_201() {
     if (jj_scan_token(OBJECTHASVALUE)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_79()) return true;
@@ -3169,33 +3170,14 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_194() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_79()) return true;
-    return false;
-  }
-
   private boolean jj_3_27() {
     if (jj_3R_44()) return true;
     return false;
   }
 
-  private boolean jj_3R_250() {
+  private boolean jj_3R_249() {
     if (jj_3R_103()) return true;
-    if (jj_3R_223()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_148() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_79()) return true;
-    Token xsp;
-    if (jj_3R_194()) return true;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_194()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSEBRACE)) return true;
+    if (jj_3R_222()) return true;
     return false;
   }
 
@@ -3206,6 +3188,12 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
 
   private boolean jj_3_25() {
     if (jj_3R_42()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_187() {
+    if (jj_scan_token(SEQ_DISJOINTDATAPROPERTIES)) return true;
+    if (jj_3R_221()) return true;
     return false;
   }
 
@@ -3224,14 +3212,22 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_186() {
-    if (jj_scan_token(SEQ_EQUIVALENTDATAPROPERTIES)) return true;
-    if (jj_3R_222()) return true;
+  private boolean jj_3_22() {
+    if (jj_3R_39()) return true;
     return false;
   }
 
-  private boolean jj_3_22() {
-    if (jj_3R_39()) return true;
+  private boolean jj_3R_105() {
+    if (jj_scan_token(SUBOBJECTPROPERTYCHAIN)) return true;
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_79()) return true;
+    Token xsp;
+    if (jj_3R_148()) return true;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_148()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
 
@@ -3240,9 +3236,9 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_59() {
-    if (jj_3R_86()) return true;
-    if (jj_scan_token(OBJECTPROP)) return true;
+  private boolean jj_3R_60() {
+    if (jj_3R_87()) return true;
+    if (jj_scan_token(DATAPROP)) return true;
     return false;
   }
 
@@ -3256,7 +3252,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_201() {
+  private boolean jj_3R_200() {
     if (jj_scan_token(OBJECTALLVALUESFROM)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_79()) return true;
@@ -3283,7 +3279,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_155() {
-    if (jj_3R_199()) return true;
+    if (jj_3R_198()) return true;
     return false;
   }
 
@@ -3307,6 +3303,12 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_186() {
+    if (jj_scan_token(SEQ_EQUIVALENTDATAPROPERTIES)) return true;
+    if (jj_3R_221()) return true;
+    return false;
+  }
+
   private boolean jj_3R_127() {
     if (jj_3R_40()) return true;
     return false;
@@ -3317,7 +3319,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_219() {
+  private boolean jj_3R_218() {
     if (jj_scan_token(DATACOMPLEMENTOF)) return true;
     if (jj_3R_66()) return true;
     return false;
@@ -3328,14 +3330,9 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_58() {
-    if (jj_3R_85()) return true;
-    if (jj_scan_token(CLASS)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_222() {
-    if (jj_scan_token(OPENBRACE)) return true;
+  private boolean jj_3R_59() {
+    if (jj_3R_86()) return true;
+    if (jj_scan_token(OBJECTPROP)) return true;
     return false;
   }
 
@@ -3345,7 +3342,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_161() {
-    if (jj_3R_205()) return true;
+    if (jj_3R_204()) return true;
     return false;
   }
 
@@ -3359,7 +3356,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_200() {
+  private boolean jj_3R_199() {
     if (jj_scan_token(OBJECTSOMEVALUESFROM)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_79()) return true;
@@ -3371,12 +3368,12 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_167() {
-    if (jj_3R_211()) return true;
+    if (jj_3R_210()) return true;
     return false;
   }
 
   private boolean jj_3R_158() {
-    if (jj_3R_202()) return true;
+    if (jj_3R_201()) return true;
     return false;
   }
 
@@ -3390,18 +3387,8 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3_45() {
-    if (jj_3R_62()) return true;
-    return false;
-  }
-
   private boolean jj_3R_164() {
-    if (jj_3R_208()) return true;
-    return false;
-  }
-
-  private boolean jj_3_43() {
-    if (jj_3R_60()) return true;
+    if (jj_3R_207()) return true;
     return false;
   }
 
@@ -3410,13 +3397,14 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3_44() {
-    if (jj_3R_61()) return true;
+  private boolean jj_3R_58() {
+    if (jj_3R_85()) return true;
+    if (jj_scan_token(CLASS)) return true;
     return false;
   }
 
-  private boolean jj_3R_136() {
-    if (jj_3R_186()) return true;
+  private boolean jj_3R_221() {
+    if (jj_scan_token(OPENBRACE)) return true;
     return false;
   }
 
@@ -3470,35 +3458,35 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_100() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_136()) {
-    jj_scanpos = xsp;
-    if (jj_3R_137()) return true;
-    }
-    return false;
-  }
-
-  private boolean jj_3_42() {
-    if (jj_3R_59()) return true;
-    return false;
-  }
-
-  private boolean jj_3_41() {
-    if (jj_3R_58()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_199() {
+  private boolean jj_3R_198() {
     if (jj_scan_token(OBJECTONEOF)) return true;
-    if (jj_3R_229()) return true;
+    if (jj_3R_228()) return true;
     return false;
   }
 
-  private boolean jj_3R_246() {
+  private boolean jj_3_45() {
+    if (jj_3R_62()) return true;
+    return false;
+  }
+
+  private boolean jj_3_43() {
+    if (jj_3R_60()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_245() {
     if (jj_scan_token(COMMA)) return true;
     if (jj_3R_82()) return true;
+    return false;
+  }
+
+  private boolean jj_3_44() {
+    if (jj_3R_61()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_136() {
+    if (jj_3R_186()) return true;
     return false;
   }
 
@@ -3517,24 +3505,38 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_100() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_136()) {
+    jj_scanpos = xsp;
+    if (jj_3R_137()) return true;
+    }
+    return false;
+  }
+
+  private boolean jj_3_42() {
+    if (jj_3R_59()) return true;
+    return false;
+  }
+
   private boolean jj_3_5() {
     if (jj_3R_22()) return true;
     return false;
   }
 
-  private boolean jj_3R_185() {
-    if (jj_3R_81()) return true;
-    if (jj_scan_token(FUNCTIONALDATAPROPERTY)) return true;
+  private boolean jj_3_41() {
+    if (jj_3R_58()) return true;
     return false;
   }
 
-  private boolean jj_3R_229() {
+  private boolean jj_3R_228() {
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_82()) return true;
     Token xsp;
     while (true) {
       xsp = jj_scanpos;
-      if (jj_3R_246()) { jj_scanpos = xsp; break; }
+      if (jj_3R_245()) { jj_scanpos = xsp; break; }
     }
     if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
@@ -3548,7 +3550,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_154() {
-    if (jj_3R_198()) return true;
+    if (jj_3R_197()) return true;
     return false;
   }
 
@@ -3557,13 +3559,19 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_185() {
+    if (jj_3R_81()) return true;
+    if (jj_scan_token(FUNCTIONALDATAPROPERTY)) return true;
+    return false;
+  }
+
   private boolean jj_3R_166() {
-    if (jj_3R_210()) return true;
+    if (jj_3R_209()) return true;
     return false;
   }
 
   private boolean jj_3R_160() {
-    if (jj_3R_204()) return true;
+    if (jj_3R_203()) return true;
     return false;
   }
 
@@ -3573,40 +3581,34 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_163() {
-    if (jj_3R_207()) return true;
+    if (jj_3R_206()) return true;
     return false;
   }
 
   private boolean jj_3R_157() {
-    if (jj_3R_201()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_49() {
-    if (jj_3R_81()) return true;
-    if (jj_scan_token(DATAPROPERTYDOMAIN)) return true;
+    if (jj_3R_200()) return true;
     return false;
   }
 
   private boolean jj_3R_178() {
+    if (jj_3R_218()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_197() {
+    if (jj_scan_token(SEQ_OBJECTUNIONOF)) return true;
     if (jj_3R_219()) return true;
     return false;
   }
 
-  private boolean jj_3R_198() {
-    if (jj_scan_token(SEQ_OBJECTUNIONOF)) return true;
-    if (jj_3R_220()) return true;
-    return false;
-  }
-
   private boolean jj_3R_177() {
-    if (jj_3R_218()) return true;
+    if (jj_3R_217()) return true;
     return false;
   }
 
   private boolean jj_3R_181() {
     if (jj_scan_token(SEQ_DISJOINTCLASSES)) return true;
-    if (jj_3R_220()) return true;
+    if (jj_3R_219()) return true;
     if (jj_3R_80()) return true;
     return false;
   }
@@ -3632,9 +3634,58 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_197() {
+  private boolean jj_3R_49() {
+    if (jj_3R_81()) return true;
+    if (jj_scan_token(DATAPROPERTYDOMAIN)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_196() {
     if (jj_scan_token(SEQ_OBJECTINTERSECTIONOF)) return true;
-    if (jj_3R_220()) return true;
+    if (jj_3R_219()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_216() {
+    if (jj_scan_token(DATAONEOF)) return true;
+    if (jj_3R_237()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_180() {
+    if (jj_scan_token(SEQ_EQUIVALENTCLASSES)) return true;
+    if (jj_3R_219()) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_248() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_222()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_239() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_65()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_119() {
+    if (jj_3R_181()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_219() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_65()) return true;
+    Token xsp;
+    if (jj_3R_239()) return true;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_239()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
 
@@ -3650,68 +3701,25 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_217() {
-    if (jj_scan_token(DATAONEOF)) return true;
-    if (jj_3R_238()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_180() {
-    if (jj_scan_token(SEQ_EQUIVALENTCLASSES)) return true;
-    if (jj_3R_220()) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_249() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_223()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_240() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_65()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_119() {
-    if (jj_3R_181()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_220() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_65()) return true;
-    Token xsp;
-    if (jj_3R_240()) return true;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_240()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
   private boolean jj_3R_118() {
     if (jj_3R_180()) return true;
     return false;
   }
 
-  private boolean jj_3R_238() {
+  private boolean jj_3R_237() {
     if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_223()) return true;
+    if (jj_3R_222()) return true;
     Token xsp;
     while (true) {
       xsp = jj_scanpos;
-      if (jj_3R_249()) { jj_scanpos = xsp; break; }
+      if (jj_3R_248()) { jj_scanpos = xsp; break; }
     }
     if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
 
   private boolean jj_3R_165() {
-    if (jj_3R_209()) return true;
+    if (jj_3R_208()) return true;
     return false;
   }
 
@@ -3725,29 +3733,23 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_47() {
-    if (jj_3R_81()) return true;
-    if (jj_scan_token(DISJOINTDATAPROPERTIES)) return true;
-    return false;
-  }
-
   private boolean jj_3R_162() {
-    if (jj_3R_206()) return true;
+    if (jj_3R_205()) return true;
     return false;
   }
 
   private boolean jj_3R_159() {
-    if (jj_3R_203()) return true;
+    if (jj_3R_202()) return true;
     return false;
   }
 
   private boolean jj_3R_156() {
-    if (jj_3R_200()) return true;
+    if (jj_3R_199()) return true;
     return false;
   }
 
   private boolean jj_3R_153() {
-    if (jj_3R_197()) return true;
+    if (jj_3R_196()) return true;
     return false;
   }
 
@@ -3800,17 +3802,35 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_216() {
+  private boolean jj_3R_215() {
     if (jj_scan_token(SEQ_DATAUNIONOF)) return true;
-    if (jj_3R_237()) return true;
+    if (jj_3R_236()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_47() {
+    if (jj_3R_81()) return true;
+    if (jj_scan_token(DISJOINTDATAPROPERTIES)) return true;
     return false;
   }
 
   private boolean jj_3R_179() {
     if (jj_3R_85()) return true;
     if (jj_scan_token(DISJOINTUNION)) return true;
-    if (jj_3R_220()) return true;
+    if (jj_3R_219()) return true;
     if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_214() {
+    if (jj_scan_token(SEQ_DATAINTERSECTIONOF)) return true;
+    if (jj_3R_236()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_213() {
+    if (jj_scan_token(OBJECTHASSELF)) return true;
+    if (jj_3R_79()) return true;
     return false;
   }
 
@@ -3820,25 +3840,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_46() {
-    if (jj_3R_81()) return true;
-    if (jj_scan_token(EQUIVALENTDATAPROPERTIES)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_215() {
-    if (jj_scan_token(SEQ_DATAINTERSECTIONOF)) return true;
-    if (jj_3R_237()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_214() {
-    if (jj_scan_token(OBJECTHASSELF)) return true;
-    if (jj_3R_79()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_248() {
+  private boolean jj_3R_247() {
     if (jj_scan_token(COMMA)) return true;
     if (jj_3R_66()) return true;
     return false;
@@ -3852,9 +3854,33 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_213() {
+  private boolean jj_3R_46() {
+    if (jj_3R_81()) return true;
+    if (jj_scan_token(EQUIVALENTDATAPROPERTIES)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_212() {
     if (jj_scan_token(OBJECTCOMPLEMENTOF)) return true;
     if (jj_3R_65()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_236() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_66()) return true;
+    Token xsp;
+    if (jj_3R_247()) return true;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_247()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_174() {
+    if (jj_3R_216()) return true;
     return false;
   }
 
@@ -3864,47 +3890,12 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_237() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_66()) return true;
-    Token xsp;
-    if (jj_3R_248()) return true;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_248()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_104() {
-    if (jj_3R_84()) return true;
-    if (jj_scan_token(ANNOTATIONPROPERTYRANGE)) return true;
-    if (jj_3R_103()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_174() {
-    if (jj_3R_217()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_135() {
-    if (jj_3R_185()) return true;
-    return false;
-  }
-
   private boolean jj_3R_173() {
-    if (jj_3R_216()) return true;
+    if (jj_3R_215()) return true;
     return false;
   }
 
-  private boolean jj_3_32() {
-    if (jj_3R_49()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_212() {
+  private boolean jj_3R_211() {
     if (jj_3R_65()) return true;
     if (jj_scan_token(OBJECTUNIONOF)) return true;
     if (jj_3R_65()) return true;
@@ -3919,18 +3910,15 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3_31() {
-    if (jj_3R_48()) return true;
+  private boolean jj_3R_104() {
+    if (jj_3R_84()) return true;
+    if (jj_scan_token(ANNOTATIONPROPERTYRANGE)) return true;
+    if (jj_3R_103()) return true;
     return false;
   }
 
   private boolean jj_3R_172() {
-    if (jj_3R_215()) return true;
-    return false;
-  }
-
-  private boolean jj_3_30() {
-    if (jj_3R_47()) return true;
+    if (jj_3R_214()) return true;
     return false;
   }
 
@@ -3947,8 +3935,62 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_110() {
+    if (jj_3R_152()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_93() {
+    if (jj_3R_115()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_135() {
+    if (jj_3R_185()) return true;
+    return false;
+  }
+
+  private boolean jj_3_32() {
+    if (jj_3R_49()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_20() {
+    if (jj_3R_65()) return true;
+    if (jj_scan_token(OBJECTINTERSECTIONOF)) return true;
+    if (jj_3R_65()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_94() {
+    if (jj_scan_token(OPENPAR)) return true;
+    if (jj_3R_116()) return true;
+    if (jj_scan_token(CLOSEPAR)) return true;
+    return false;
+  }
+
+  private boolean jj_3_31() {
+    if (jj_3R_48()) return true;
+    return false;
+  }
+
+  private boolean jj_3_30() {
+    if (jj_3R_47()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_92() {
+    if (jj_3R_75()) return true;
+    return false;
+  }
+
   private boolean jj_3_29() {
     if (jj_3R_46()) return true;
+    return false;
+  }
+
+  private boolean jj_3_3() {
+    if (jj_3R_20()) return true;
     return false;
   }
 
@@ -3961,6 +4003,27 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     if (jj_3R_84()) return true;
     if (jj_scan_token(ANNOTATIONPROPERTYDOMAIN)) return true;
     if (jj_3R_103()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_66() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_92()) {
+    jj_scanpos = xsp;
+    if (jj_3R_93()) {
+    jj_scanpos = xsp;
+    if (jj_3R_94()) return true;
+    }
+    }
+    return false;
+  }
+
+  private boolean jj_3R_30() {
+    if (jj_3R_65()) return true;
+    if (jj_scan_token(SUBCLASSOF)) return true;
+    if (jj_3R_65()) return true;
+    if (jj_3R_80()) return true;
     return false;
   }
 
@@ -3986,90 +4049,13 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_110() {
-    if (jj_3R_152()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_93() {
-    if (jj_3R_115()) return true;
-    return false;
-  }
-
   private boolean jj_3R_72() {
     if (jj_3R_100()) return true;
     return false;
   }
 
-  private boolean jj_3R_20() {
-    if (jj_3R_65()) return true;
-    if (jj_scan_token(OBJECTINTERSECTIONOF)) return true;
-    if (jj_3R_65()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_94() {
-    if (jj_scan_token(OPENPAR)) return true;
-    if (jj_3R_116()) return true;
-    if (jj_scan_token(CLOSEPAR)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_92() {
-    if (jj_3R_75()) return true;
-    return false;
-  }
-
-  private boolean jj_3_3() {
-    if (jj_3R_20()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_66() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_92()) {
-    jj_scanpos = xsp;
-    if (jj_3R_93()) {
-    jj_scanpos = xsp;
-    if (jj_3R_94()) return true;
-    }
-    }
-    return false;
-  }
-
-  private boolean jj_3R_30() {
-    if (jj_3R_65()) return true;
-    if (jj_scan_token(SUBCLASSOF)) return true;
-    if (jj_3R_65()) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_71() {
-    if (jj_3R_99()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_25() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_71()) {
-    jj_scanpos = xsp;
-    if (jj_3R_72()) return true;
-    }
-    return false;
-  }
-
-  private boolean jj_3R_56() {
-    if (jj_3R_84()) return true;
-    if (jj_scan_token(SUBANNOTATIONPROPERTYOF)) return true;
-    if (jj_3R_84()) return true;
-    return false;
-  }
-
   private boolean jj_3R_171() {
-    if (jj_3R_214()) return true;
+    if (jj_3R_213()) return true;
     return false;
   }
 
@@ -4079,7 +4065,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_170() {
-    if (jj_3R_213()) return true;
+    if (jj_3R_212()) return true;
     return false;
   }
 
@@ -4089,7 +4075,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3R_169() {
-    if (jj_3R_212()) return true;
+    if (jj_3R_211()) return true;
     return false;
   }
 
@@ -4098,13 +4084,13 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_134() {
-    if (jj_3R_184()) return true;
+  private boolean jj_3R_168() {
+    if (jj_3R_20()) return true;
     return false;
   }
 
-  private boolean jj_3R_168() {
-    if (jj_3R_20()) return true;
+  private boolean jj_3R_71() {
+    if (jj_3R_99()) return true;
     return false;
   }
 
@@ -4124,13 +4110,25 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_25() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_71()) {
+    jj_scanpos = xsp;
+    if (jj_3R_72()) return true;
+    }
+    return false;
+  }
+
   private boolean jj_3_13() {
     if (jj_3R_30()) return true;
     return false;
   }
 
-  private boolean jj_3R_112() {
-    if (jj_3R_152()) return true;
+  private boolean jj_3R_56() {
+    if (jj_3R_84()) return true;
+    if (jj_scan_token(SUBANNOTATIONPROPERTYOF)) return true;
+    if (jj_3R_84()) return true;
     return false;
   }
 
@@ -4155,13 +4153,6 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_55() {
-    if (jj_3R_83()) return true;
-    if (jj_scan_token(ANNOTATION)) return true;
-    if (jj_scan_token(OPENBRACE)) return true;
-    return false;
-  }
-
   private boolean jj_3R_82() {
     Token xsp;
     xsp = jj_scanpos;
@@ -4172,15 +4163,18 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_184() {
-    if (jj_scan_token(SEQ_DISJOINTOBJECTPROPERTIES)) return true;
-    if (jj_3R_221()) return true;
-    if (jj_3R_80()) return true;
+  private boolean jj_3R_134() {
+    if (jj_3R_184()) return true;
     return false;
   }
 
   private boolean jj_3R_68() {
     if (jj_3R_96()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_112() {
+    if (jj_3R_152()) return true;
     return false;
   }
 
@@ -4204,35 +4198,27 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_55() {
+    if (jj_3R_83()) return true;
+    if (jj_scan_token(ANNOTATION)) return true;
+    if (jj_scan_token(OPENBRACE)) return true;
+    return false;
+  }
+
   private boolean jj_3R_88() {
     if (jj_3R_103()) return true;
     return false;
   }
 
-  private boolean jj_3R_111() {
-    if (jj_3R_103()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_83() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_111()) {
-    jj_scanpos = xsp;
-    if (jj_3R_112()) return true;
-    }
+  private boolean jj_3R_184() {
+    if (jj_scan_token(SEQ_DISJOINTOBJECTPROPERTIES)) return true;
+    if (jj_3R_220()) return true;
+    if (jj_3R_80()) return true;
     return false;
   }
 
   private boolean jj_3_9() {
     if (jj_3R_26()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_183() {
-    if (jj_scan_token(SEQ_EQUIVALENTOBJECTPROPERTIES)) return true;
-    if (jj_3R_221()) return true;
-    if (jj_3R_80()) return true;
     return false;
   }
 
@@ -4246,20 +4232,10 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_76() {
-    if (jj_3R_104()) return true;
-    return false;
-  }
-
   private boolean jj_3R_91() {
     if (jj_scan_token(OPENPAR)) return true;
     if (jj_3R_114()) return true;
     if (jj_scan_token(CLOSEPAR)) return true;
-    return false;
-  }
-
-  private boolean jj_3_40() {
-    if (jj_3R_57()) return true;
     return false;
   }
 
@@ -4268,19 +4244,8 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3_39() {
-    if (jj_3R_56()) return true;
-    return false;
-  }
-
   private boolean jj_3R_89() {
     if (jj_3R_85()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_241() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_79()) return true;
     return false;
   }
 
@@ -4307,16 +4272,8 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_221() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_79()) return true;
-    Token xsp;
-    if (jj_3R_241()) return true;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_241()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSEBRACE)) return true;
+  private boolean jj_3R_111() {
+    if (jj_3R_103()) return true;
     return false;
   }
 
@@ -4325,8 +4282,69 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_83() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_111()) {
+    jj_scanpos = xsp;
+    if (jj_3R_112()) return true;
+    }
+    return false;
+  }
+
   private boolean jj_3_10() {
     if (jj_3R_27()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_183() {
+    if (jj_scan_token(SEQ_EQUIVALENTOBJECTPROPERTIES)) return true;
+    if (jj_3R_220()) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3_8() {
+    if (jj_3R_25()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_76() {
+    if (jj_3R_104()) return true;
+    return false;
+  }
+
+  private boolean jj_3_40() {
+    if (jj_3R_57()) return true;
+    return false;
+  }
+
+  private boolean jj_3_39() {
+    if (jj_3R_56()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_240() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_79()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_81() {
+    if (jj_3R_87()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_220() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_79()) return true;
+    Token xsp;
+    if (jj_3R_240()) return true;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_240()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
 
@@ -4335,8 +4353,8 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3_8() {
-    if (jj_3R_25()) return true;
+  private boolean jj_3R_147() {
+    if (jj_3R_193()) return true;
     return false;
   }
 
@@ -4356,13 +4374,13 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_81() {
-    if (jj_3R_87()) return true;
+  private boolean jj_3R_63() {
+    if (jj_scan_token(PNAME_NS)) return true;
     return false;
   }
 
-  private boolean jj_3R_147() {
-    if (jj_3R_193()) return true;
+  private boolean jj_3R_86() {
+    if (jj_3R_103()) return true;
     return false;
   }
 
@@ -4381,37 +4399,8 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_63() {
-    if (jj_scan_token(PNAME_NS)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_86() {
-    if (jj_3R_103()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_191() {
-    if (jj_scan_token(SEQ_DIFFERENTINDIVIDUALS)) return true;
-    if (jj_3R_224()) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_144() {
-    if (jj_3R_191()) return true;
-    return false;
-  }
-
   private boolean jj_3R_193() {
     if (jj_scan_token(PN_LOCAL)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_182() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(TRANSITIVEOBJECTPROPERTY)) return true;
-    if (jj_3R_80()) return true;
     return false;
   }
 
@@ -4426,15 +4415,27 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_190() {
-    if (jj_scan_token(SEQ_SAMEINDIVIDUAL)) return true;
-    if (jj_3R_224()) return true;
+  private boolean jj_3R_191() {
+    if (jj_scan_token(SEQ_DIFFERENTINDIVIDUALS)) return true;
+    if (jj_3R_223()) return true;
     if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_144() {
+    if (jj_3R_191()) return true;
     return false;
   }
 
   private boolean jj_3R_192() {
     if (jj_scan_token(PNAME_LN)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_182() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(TRANSITIVEOBJECTPROPERTY)) return true;
+    if (jj_3R_80()) return true;
     return false;
   }
 
@@ -4448,7 +4449,7 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_254() {
+  private boolean jj_3R_253() {
     if (jj_scan_token(PN_LOCAL)) return true;
     return false;
   }
@@ -4457,19 +4458,6 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     if (jj_scan_token(OPENPAR)) return true;
     if (jj_3R_149()) return true;
     if (jj_scan_token(CLOSEPAR)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_44() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(IRREFLEXIVEOBJECTPROPERTY)) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_244() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_82()) return true;
     return false;
   }
 
@@ -4483,16 +4471,10 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_224() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_82()) return true;
-    Token xsp;
-    if (jj_3R_244()) return true;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_244()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSEBRACE)) return true;
+  private boolean jj_3R_190() {
+    if (jj_scan_token(SEQ_SAMEINDIVIDUAL)) return true;
+    if (jj_3R_223()) return true;
+    if (jj_3R_80()) return true;
     return false;
   }
 
@@ -4501,45 +4483,59 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_242() {
-    if (jj_scan_token(STRINGLITERAL)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_43() {
+  private boolean jj_3R_44() {
     if (jj_3R_79()) return true;
-    if (jj_scan_token(REFLEXIVEOBJECTPROPERTY)) return true;
+    if (jj_scan_token(IRREFLEXIVEOBJECTPROPERTY)) return true;
     if (jj_3R_80()) return true;
     return false;
   }
 
-  private boolean jj_3R_211() {
+  private boolean jj_3R_243() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_82()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_241() {
+    if (jj_scan_token(STRINGLITERAL)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_210() {
     if (jj_scan_token(DATAEXACTCARDINALITY)) return true;
-    if (jj_3R_230()) return true;
+    if (jj_3R_229()) return true;
     if (jj_scan_token(CLOSESQPAR)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_81()) return true;
     if (jj_scan_token(CLOSEBRACE)) return true;
     Token xsp;
     xsp = jj_scanpos;
-    if (jj_3R_236()) jj_scanpos = xsp;
+    if (jj_3R_235()) jj_scanpos = xsp;
     return false;
   }
 
-  private boolean jj_3R_236() {
+  private boolean jj_3R_235() {
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_66()) return true;
     if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
 
-  private boolean jj_3R_145() {
-    if (jj_3R_64()) return true;
+  private boolean jj_3R_223() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_82()) return true;
+    Token xsp;
+    if (jj_3R_243()) return true;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_243()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
 
-  private boolean jj_3R_143() {
-    if (jj_3R_190()) return true;
+  private boolean jj_3R_145() {
+    if (jj_3R_64()) return true;
     return false;
   }
 
@@ -4556,6 +4552,29 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_43() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(REFLEXIVEOBJECTPROPERTY)) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_251() {
+    if (jj_scan_token(LANGIDENTIFIER)) return true;
+    if (jj_3R_253()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_252() {
+    if (jj_3R_75()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_143() {
+    if (jj_3R_190()) return true;
+    return false;
+  }
+
   private boolean jj_3R_102() {
     Token xsp;
     xsp = jj_scanpos;
@@ -4566,128 +4585,9 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_252() {
-    if (jj_scan_token(LANGIDENTIFIER)) return true;
-    if (jj_3R_254()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_42() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(ASYMMETRICOBJECTPROPERTY)) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_253() {
-    if (jj_3R_75()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_189() {
-    if (jj_scan_token(NOT)) return true;
-    if (jj_3R_81()) return true;
-    if (jj_scan_token(OPENPAR)) return true;
-    if (jj_3R_82()) return true;
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_223()) return true;
-    if (jj_scan_token(CLOSEPAR)) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_210() {
-    if (jj_scan_token(DATAMAXCARDINALITY)) return true;
-    if (jj_3R_230()) return true;
-    if (jj_scan_token(CLOSESQPAR)) return true;
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_81()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_235()) jj_scanpos = xsp;
-    return false;
-  }
-
-  private boolean jj_3R_243() {
-    if (jj_scan_token(OPENSQPAR)) return true;
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_252()) {
-    jj_scanpos = xsp;
-    if (jj_3R_253()) return true;
-    }
-    if (jj_scan_token(CLOSESQPAR)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_235() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_66()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_41() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(SYMMETRICOBJECTPROPERTY)) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_223() {
-    if (jj_3R_242()) return true;
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_243()) jj_scanpos = xsp;
-    return false;
-  }
-
-  private boolean jj_3R_227() {
-    if (jj_3R_223()) return true;
-    return false;
-  }
-
-  private boolean jj_3_2() {
-    if (jj_3R_19()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_54() {
-    if (jj_scan_token(NOT)) return true;
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(OPENPAR)) return true;
-    if (jj_3R_82()) return true;
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_82()) return true;
-    if (jj_scan_token(CLOSEPAR)) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_18() {
-    if (jj_scan_token(PREFIX)) return true;
-    if (jj_3R_63()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_40() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(INVERSEFUNCTIONALOBJECTPROPERTY)) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_234() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_66()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
   private boolean jj_3R_209() {
-    if (jj_scan_token(DATAMINCARDINALITY)) return true;
-    if (jj_3R_230()) return true;
+    if (jj_scan_token(DATAMAXCARDINALITY)) return true;
+    if (jj_3R_229()) return true;
     if (jj_scan_token(CLOSESQPAR)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_81()) return true;
@@ -4698,12 +4598,102 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_188() {
+  private boolean jj_3R_242() {
+    if (jj_scan_token(OPENSQPAR)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_251()) {
+    jj_scanpos = xsp;
+    if (jj_3R_252()) return true;
+    }
+    if (jj_scan_token(CLOSESQPAR)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_234() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_66()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_42() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(ASYMMETRICOBJECTPROPERTY)) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_222() {
+    if (jj_3R_241()) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_242()) jj_scanpos = xsp;
+    return false;
+  }
+
+  private boolean jj_3R_226() {
+    if (jj_3R_222()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_189() {
+    if (jj_scan_token(NOT)) return true;
     if (jj_3R_81()) return true;
     if (jj_scan_token(OPENPAR)) return true;
     if (jj_3R_82()) return true;
     if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_223()) return true;
+    if (jj_3R_222()) return true;
+    if (jj_scan_token(CLOSEPAR)) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3_2() {
+    if (jj_3R_19()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_18() {
+    if (jj_scan_token(PREFIX)) return true;
+    if (jj_3R_63()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_41() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(SYMMETRICOBJECTPROPERTY)) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_233() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_66()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_208() {
+    if (jj_scan_token(DATAMINCARDINALITY)) return true;
+    if (jj_3R_229()) return true;
+    if (jj_scan_token(CLOSESQPAR)) return true;
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_81()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_233()) jj_scanpos = xsp;
+    return false;
+  }
+
+  private boolean jj_3R_54() {
+    if (jj_scan_token(NOT)) return true;
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(OPENPAR)) return true;
+    if (jj_3R_82()) return true;
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_82()) return true;
     if (jj_scan_token(CLOSEPAR)) return true;
     if (jj_3R_80()) return true;
     return false;
@@ -4720,20 +4710,20 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_39() {
+  private boolean jj_3R_40() {
     if (jj_3R_79()) return true;
-    if (jj_scan_token(FUNCTIONALOBJECTPROPERTY)) return true;
+    if (jj_scan_token(INVERSEFUNCTIONALOBJECTPROPERTY)) return true;
     if (jj_3R_80()) return true;
     return false;
   }
 
-  private boolean jj_3R_208() {
+  private boolean jj_3R_207() {
     if (jj_scan_token(DATAHASVALUE)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_81()) return true;
     if (jj_scan_token(CLOSEBRACE)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_223()) return true;
+    if (jj_3R_222()) return true;
     if (jj_scan_token(CLOSEBRACE)) return true;
     return false;
   }
@@ -4749,31 +4739,30 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_226() {
-    if (jj_3R_152()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_53() {
-    if (jj_3R_79()) return true;
+  private boolean jj_3R_188() {
+    if (jj_3R_81()) return true;
     if (jj_scan_token(OPENPAR)) return true;
     if (jj_3R_82()) return true;
     if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_82()) return true;
+    if (jj_3R_222()) return true;
     if (jj_scan_token(CLOSEPAR)) return true;
     if (jj_3R_80()) return true;
     return false;
   }
 
-  private boolean jj_3R_38() {
+  private boolean jj_3R_39() {
     if (jj_3R_79()) return true;
-    if (jj_scan_token(INVERSEOBJECTPROPERTIES)) return true;
-    if (jj_3R_79()) return true;
+    if (jj_scan_token(FUNCTIONALOBJECTPROPERTY)) return true;
     if (jj_3R_80()) return true;
     return false;
   }
 
-  private boolean jj_3R_207() {
+  private boolean jj_3R_225() {
+    if (jj_3R_152()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_206() {
     if (jj_scan_token(DATAALLVALUESFROM)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_81()) return true;
@@ -4803,7 +4792,26 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_206() {
+  private boolean jj_3R_53() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(OPENPAR)) return true;
+    if (jj_3R_82()) return true;
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_82()) return true;
+    if (jj_scan_token(CLOSEPAR)) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_38() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(INVERSEOBJECTPROPERTIES)) return true;
+    if (jj_3R_79()) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_205() {
     if (jj_scan_token(DATASOMEVALUESFROM)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_81()) return true;
@@ -4811,6 +4819,30 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_66()) return true;
     if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_224() {
+    if (jj_3R_103()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_194() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_224()) {
+    jj_scanpos = xsp;
+    if (jj_3R_225()) {
+    jj_scanpos = xsp;
+    if (jj_3R_226()) return true;
+    }
+    }
+    return false;
+  }
+
+  private boolean jj_3R_244() {
+    if (jj_scan_token(COMMA)) return true;
+    if (jj_3R_150()) return true;
     return false;
   }
 
@@ -4831,106 +4863,9 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
-  private boolean jj_3R_225() {
-    if (jj_3R_103()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_195() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_225()) {
-    jj_scanpos = xsp;
-    if (jj_3R_226()) {
-    jj_scanpos = xsp;
-    if (jj_3R_227()) return true;
-    }
-    }
-    return false;
-  }
-
-  private boolean jj_3R_245() {
-    if (jj_scan_token(COMMA)) return true;
-    if (jj_3R_150()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_205() {
-    if (jj_scan_token(OBJECTEXACTCARDINALITY)) return true;
-    if (jj_3R_230()) return true;
-    if (jj_scan_token(CLOSESQPAR)) return true;
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_233()) jj_scanpos = xsp;
-    return false;
-  }
-
-  private boolean jj_3R_36() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(OBJECTPROPERTYRANGE)) return true;
-    if (jj_3R_65()) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_233() {
-    if (jj_scan_token(OPENBRACE)) return true;
-    if (jj_3R_65()) return true;
-    if (jj_scan_token(CLOSEBRACE)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_51() {
-    if (jj_3R_82()) return true;
-    if (jj_scan_token(DIFFERENTINDIVIDUALS)) return true;
-    if (jj_3R_82()) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_228() {
-    if (jj_scan_token(OPENSQPAR)) return true;
-    if (jj_3R_150()) return true;
-    Token xsp;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_245()) { jj_scanpos = xsp; break; }
-    }
-    if (jj_scan_token(CLOSESQPAR)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_78() {
-    if (jj_3R_105()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_196() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_228()) jj_scanpos = xsp;
-    return false;
-  }
-
-  private boolean jj_3R_74() {
-    if (jj_3R_102()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_35() {
-    if (jj_3R_79()) return true;
-    if (jj_scan_token(DISJOINTOBJECTPROPERTIES)) return true;
-    if (jj_3R_79()) return true;
-    if (jj_3R_80()) return true;
-    return false;
-  }
-
   private boolean jj_3R_204() {
-    if (jj_scan_token(OBJECTMAXCARDINALITY)) return true;
-    if (jj_3R_230()) return true;
+    if (jj_scan_token(OBJECTEXACTCARDINALITY)) return true;
+    if (jj_3R_229()) return true;
     if (jj_scan_token(CLOSESQPAR)) return true;
     if (jj_scan_token(OPENBRACE)) return true;
     if (jj_3R_79()) return true;
@@ -4948,6 +4883,84 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
     return false;
   }
 
+  private boolean jj_3R_227() {
+    if (jj_scan_token(OPENSQPAR)) return true;
+    if (jj_3R_150()) return true;
+    Token xsp;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_244()) { jj_scanpos = xsp; break; }
+    }
+    if (jj_scan_token(CLOSESQPAR)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_195() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_227()) jj_scanpos = xsp;
+    return false;
+  }
+
+  private boolean jj_3R_36() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(OBJECTPROPERTYRANGE)) return true;
+    if (jj_3R_65()) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_51() {
+    if (jj_3R_82()) return true;
+    if (jj_scan_token(DIFFERENTINDIVIDUALS)) return true;
+    if (jj_3R_82()) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_203() {
+    if (jj_scan_token(OBJECTMAXCARDINALITY)) return true;
+    if (jj_3R_229()) return true;
+    if (jj_scan_token(CLOSESQPAR)) return true;
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_231()) jj_scanpos = xsp;
+    return false;
+  }
+
+  private boolean jj_3R_231() {
+    if (jj_scan_token(OPENBRACE)) return true;
+    if (jj_3R_65()) return true;
+    if (jj_scan_token(CLOSEBRACE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_78() {
+    if (jj_3R_105()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_84() {
+    if (jj_3R_103()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_74() {
+    if (jj_3R_102()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_35() {
+    if (jj_3R_79()) return true;
+    if (jj_scan_token(DISJOINTOBJECTPROPERTIES)) return true;
+    if (jj_3R_79()) return true;
+    if (jj_3R_80()) return true;
+    return false;
+  }
+
   private boolean jj_3R_50() {
     if (jj_3R_82()) return true;
     if (jj_scan_token(SAMEINDIVIDUAL)) return true;
@@ -4957,31 +4970,6 @@ public class OWLLatexStyleSyntaxParser implements OWLLatexStyleSyntaxParserConst
   }
 
   private boolean jj_3_37() {
-    if (jj_3R_54()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_84() {
-    if (jj_3R_103()) return true;
-    return false;
-  }
-
-  private boolean jj_3_36() {
-    if (jj_3R_53()) return true;
-    return false;
-  }
-
-  private boolean jj_3_35() {
-    if (jj_3R_52()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_142() {
-    if (jj_3R_189()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_141() {
     if (jj_3R_54()) return true;
     return false;
   }
